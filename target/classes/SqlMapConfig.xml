@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <!--    配置properties -->
+    <properties resource="jdbcConfig.properties"></properties>
+<!--    配置log4j打印mybatis日志-->
+    <settings>
+        <setting name="logImpl" value="LOG4J" />
+    </settings>
+    <!--    使用typeAliases配置别名，他只能配置domain中类的别名-->
+    <typeAliases >
+        <!--        package指定类的包路径-->
+        <package name="com.qiang.domain"></package>
+    </typeAliases>
+    <!--配置插件-->
+    <plugins>
+        <plugin interceptor="com.github.pagehelper.PageInterceptor">
+
+        </plugin>
+    </plugins>
+<!--    配置环境-->
+    <environments default="mysql">
+        <environment id="mysql">
+            <transactionManager type="JDBC"></transactionManager>
+            <dataSource type="POOLED">
+                <!--配置连接数据库的4个基本信息-->
+                <property name="driver" value="${jdbc.driver}"/>
+                <property name="url" value="${jdbc.url}"/>
+                <property name="username" value="${jdbc.username}"/>
+                <property name="password" value="${jdbc.password}"/>
+            </dataSource>
+        </environment>
+    </environments>
+<!--    配置引入映射环境-->
+    <mappers>
+        <package name="com.qiang.dao"/>
+    </mappers>
+
+</configuration>

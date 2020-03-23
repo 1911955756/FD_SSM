@@ -16,6 +16,7 @@ import java.util.List;
 public class ITypeMenuServiceImpl implements ITypeMenuService {
     @Autowired
     private ITypeMenuDao typeMenuDao;
+
     @Override
     public void saveTypeMenu(TypeMenu tymenu) {
         typeMenuDao.saveTypeMenu(tymenu);
@@ -26,5 +27,10 @@ public class ITypeMenuServiceImpl implements ITypeMenuService {
         typeMenuDao.deleteTypeMenu(tymenu);
     }
 
-
+    @Override
+    public List<TypeMenu> findtypeid(String typeid) {
+        return typeMenuDao.findtypeid(typeid);
+    }
 }
+
+

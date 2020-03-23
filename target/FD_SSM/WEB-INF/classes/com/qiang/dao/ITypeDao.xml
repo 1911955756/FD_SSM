@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qiang.dao.ITypeDao">
+    <resultMap id="TMap" type="com.qiang.domain.Type1">
+        <id property="typeid" column="typeid"></id>
+        <result property="name" column="name"></result>
+        <collection property="menus" ofType="com.qiang.domain.Menu">
+            <id property="menuid" column="menuid"></id>
+            <result property="menuname" column="menuname"></result>
+            <result property="price" column="price"></result>
+            <result property="image" column="image"></result>
+            <result property="sell_num" column="sell_num"></result>
+            <result property="description" column="description"></result>
+            <result property="kucun" column="kucun"></result>
+        </collection>
+    </resultMap>
+    <select id="findTM" resultMap="TMap" parameterType="java.lang.String">
+SELECT
+	t.*,
+	m.*
+FROM
+	type1 t,
+	type_menu tm,
+	menu m
+WHERE
+	t.typeid = tm.typeid
+AND tm.menuid = m.menuid
+AND t. STATUS = '上架'
+AND m. STATUS = '上架'
+<if test="tyname!=null and tyname!=''">
+    and t.name like '%${tyname}%'
+</if>
+<if test="mname!=null and mname!=''">
+    and m.menuname like '%${mname}%'
+</if>
+AND m.kucun > 0
+    </select>
+</mapper>

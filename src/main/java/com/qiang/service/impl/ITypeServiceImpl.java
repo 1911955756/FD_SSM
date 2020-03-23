@@ -23,6 +23,7 @@ public class ITypeServiceImpl implements ITypeService {
         return typeDao.findtypeAll();
     }
 
+
     @Override
     public PageInfo<Type1> findAll(Integer num) {
         PageHelper.startPage(num,5);
@@ -39,6 +40,11 @@ public class ITypeServiceImpl implements ITypeService {
     @Override
     public void saveType(String name) {
         typeDao.saveType(name);
+    }
+
+    @Override
+    public void deletetype(String typeid) {
+        typeDao.deletetype(typeid);
     }
 
     @Override

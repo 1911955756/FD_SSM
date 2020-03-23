@@ -3,6 +3,7 @@ package com.qiang.service;
 import com.qiang.domain.TypeMenu;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Select;
 
 import java.util.List;
 
@@ -25,6 +26,14 @@ public interface ITypeMenuService {
      */
     @Delete("delete from type_menu where typeid=#{typeid} and menuid=#{menuid}")
     void deleteTypeMenu(TypeMenu tymenu);
+
+    /**
+     * 查询typeid
+     * @param typeid
+     * @return
+     */
+    @Select("select typeid from typeid where typeid=#{typeid}")
+    List<TypeMenu> findtypeid(String typeid);
 
     }
 

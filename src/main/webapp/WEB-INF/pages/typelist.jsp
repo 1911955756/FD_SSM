@@ -67,8 +67,32 @@
                     $("#addtypeform").submit();
                     return ture;
                 }
-            })
+            });
         })
+        function checktype(typeid) {
+            var flag=false;
+            $.ajax({
+                url:'../typemenu/findtypeid',
+                datatype : "json",
+                type : "post",
+                data:{
+                    typeid:typeid
+                },
+                async:false,
+                success:function (res) {
+                    console.log(res)
+                    if(res==true){
+                        alert("删除失败，类型已绑定");
+                        flag=false;
+                    }else{
+                        alert("删除成功!");
+                        flag=true;
+                    }
+                }
+                ,
+            })
+            return flag;
+        }
     </script>
 </head>
 <body class="inner-container">
@@ -102,18 +126,19 @@
             <tr>
                 <td title="${type.typeid}">${type.typeid}</td>
                 <td title="${type.name}">${type.name}</td>
-                <td >${type.status}</td>
-                <td >${type.createtime}</td>
-                <td >${type.updatetime}</td>
+                <td title="${type.status}">${type.status}</td>
+                <td title="${type.createtime}">${type.createtime}</td>
+                <td title="${type.updatetime}">${type.updatetime}</td>
                 <td>
                     <c:choose>
                         <c:when test="${type.status=='下架'}">
-                    <a href="../type/updatetypestatus?typeid=${type.typeid}&&status=上架&&num=${typelist.pageNum}" class="btn btn-success">上架</a>
+                    <a href="../type/updatetypestatus?typeid=${type.typeid}&&status=上架&&num=${typelist.pageNum}" class="btn btn-success">上架</a><br/>
                         </c:when>
                         <c:otherwise>
-                    <a href="../type/updatetypestatus?typeid=${type.typeid}&&status=下架&&num=${typelist.pageNum}" class="btn btn-warning">下架</a>
+                    <a href="../type/updatetypestatus?typeid=${type.typeid}&&status=下架&&num=${typelist.pageNum}" class="btn btn-warning">下架</a><br/>
                         </c:otherwise>
                     </c:choose>
+                    <a href="../type/deletetype?typeid=${type.typeid}" class="btn btn-danger" onclick='return checktype("${type.typeid}")' >删除</a>
                 </td>
             </tr>
         </c:forEach>

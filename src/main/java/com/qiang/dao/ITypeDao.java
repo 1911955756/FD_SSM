@@ -1,10 +1,7 @@
 package com.qiang.dao;
 
 import com.qiang.domain.Type1;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
+import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -42,6 +39,13 @@ public interface ITypeDao {
      */
     @Insert("insert into type1(name)values(#{name})")
     void saveType(String name);
+
+    /**
+     * 删除类目信息
+     * @param typeid
+     */
+    @Delete("delete from type1 where typeid=#{typeid}")
+    void deletetype(String typeid);
 
     /**
      * 查询菜单类型

@@ -61,7 +61,11 @@ public class TypeController {
         typeService.updatestatus(type1);
         request.getRequestDispatcher("/type/findAll?num="+num+"").forward(request,response);
     }
-
+    @RequestMapping("/deletetype")
+    public void deletetype(String typeid,HttpServletRequest request, HttpServletResponse response)throws Exception{
+        typeService.deletetype(typeid);
+        request.getRequestDispatcher("/type/findAll").forward(request,response);
+    }
     @RequestMapping("/findTM")
     public @ResponseBody List findTM(){
         System.out.println("表现层：findTM方法执行了。。。");

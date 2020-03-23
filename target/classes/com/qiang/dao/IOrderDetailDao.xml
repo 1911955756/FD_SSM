@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qiang.dao.IOrderDetailDao">
+    <resultMap id="ODMenuMap" type="com.qiang.domain.OrderDetail">
+        <id property="odid" column="odid"></id>
+        <result property="orderid" column="orderid"></result>
+        <result property="menuid" column="menuid"></result>
+        <result property="status" column="status"></result>
+        <result property="createtime" column="createtime"></result>
+        <result property="updatetime" column="updatetime"></result>
+        <association property="menu" column="menuid" javaType="com.qiang.domain.Menu" select="com.qiang.dao.IMenuDao.findByMenuid">
+            <id property="menuid" column="menuid"></id>
+            <result property="menuname" column="menuname"></result>
+            <result property="image" column="image"></result>
+        </association>
+        <association property="order1" column="orderid" javaType="com.qiang.domain.Order1" select="com.qiang.dao.IOrderDao.findByOrderid">
+            <id property="orderid" column="orderid"></id>
+            <result property="tableid" column="tableid"></result>
+            <result property="cs_id" column="cs_id"></result>
+        </association>
+    </resultMap>
+    <!--查询所有 -->
+    <select id="findAll" resultMap="ODMenuMap" parameterType="com.qiang.domain.OrderDetail">
+SELECT
+	od.*, m.menuname,
+	ord.tableid
+FROM
+	order_detail od,
+	menu m,
+	order1 ord
+WHERE
+	od.menuid = m.menuid
+AND ord.orderid = od.orderid
+AND od.status=#{status}
+order by od.odid
+    </select>
+    <!--查询我的上菜单 -->
+    <select id="findMyOD" resultMap="ODMenuMap">
+SELECT
+	m.menuname,
+	m.Image,
+	od.*
+FROM
+	order1 o,
+	order_detail od,
+	menu m
+WHERE
+	o.orderid = od.orderid
+AND od.menuid = m.menuid
+AND o. STATUS = '待上菜'
+AND od. STATUS != '已上菜'
+AND od. STATUS != '已取消'
+AND o.cs_id = #{cs_id}
+    </select>
+<!--查询我的订单-->
+    <select id="findMyorderdetail" resultMap="ODMenuMap">
+SELECT
+	o.orderid,
+	o.tableid,
+	o.total,
+	od.orderid AS oid,
+	od.menu_num,
+	od.menuid AS mid,
+	m.menuid,
+	m.menuname,
+	m.price
+FROM
+	order1 o,
+	order_detail od,
+	menu m
+WHERE
+	o.orderid = od.orderid
+AND o.orderid = #{orderid}
+AND od. STATUS != '已取消'
+AND od.menuid = m.menuid
+    </select>
+</mapper>

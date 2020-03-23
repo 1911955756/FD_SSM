@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qiang.dao.IUserDao">
+    <!--    定义User的resulMap-->
+    <resultMap id="userRoleMap" type="com.qiang.domain.User1">
+        <id property="userid" column="userid"></id>
+        <result property="username" column="username"></result>
+        <result property="phone" column="phone"></result>
+        <result property="password" column="password"></result>
+        <result property="job" column="job"></result>
+        <result property="deleteflag" column="deleteflag"></result>
+        <result property="createtime" column="createtime"></result>
+        <result property="updatetime" column="updatetime"></result>
+        <collection property="roles" ofType="com.qiang.domain.Role">
+            <id property="roleid" column="rid"></id>
+            <result property="rolename" column="rolename"></result>
+        </collection>
+    </resultMap>
+
+    <select id="findAllByPhone" resultMap="userRoleMap">
+SELECT
+	u.*, r.roleid AS rid,
+	r.ROLENAME
+FROM
+	user1 u,
+	userrole ur,
+	role r
+WHERE
+	u.userid = ur.userid
+AND r.roleid = ur.roleid
+AND u.phone = #{phone}
+    </select>
+</mapper>

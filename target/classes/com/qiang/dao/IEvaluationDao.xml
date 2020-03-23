@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qiang.dao.IEvaluationDao">
+    <resultMap id="ECMap" type="com.qiang.domain.Evaluation">
+        <result property="orderid" column="orderid"></result>
+        <result property="cs_id" column="cs_id"></result>
+        <result property="createtime" column="createtime"></result>
+        <result property="updatetime" column="updatetime"></result>
+        <result property="tuijian_num" column="tuijian_num"></result>
+        <result property="e_content" column="e_content"></result>
+        <association property="customer" column="cs_id" javaType="com.qiang.domain.Customer">
+            <id property="cs_id" column="cs_id"></id>
+            <result property="cs_name" column="cs_name"></result>
+            <result property="image" column="image"></result>
+        </association>
+    </resultMap>
+<!--    查询所有评价-->
+    <select id="findAll" resultMap="ECMap">
+SELECT
+	*
+FROM
+	evaluation e,
+	customer c
+WHERE
+	e.cs_id = c.cs_id
+ORDER BY
+	e.createTime DESC
+    </select>
+<!--    查询我的评价-->
+    <select id="findMine" resultMap="ECMap">
+SELECT
+	*
+FROM
+	evaluation e,
+	customer c
+WHERE
+	e.cs_id = c.cs_id
+AND e.cs_id=#{cs_id}
+ORDER BY
+	e.createTime DESC
+    </select>
+</mapper>
