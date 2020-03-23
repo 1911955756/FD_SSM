@@ -48,8 +48,8 @@ public class ITypeServiceImpl implements ITypeService {
     }
 
     @Override
-    public List<Type1> findTM() {
-        return typeDao.findTM(null,null);
+    public List<Type1> findTM(String mname) {
+        return typeDao.findTM(null,mname);
     }
 
     @Override

@@ -67,10 +67,10 @@ public class TypeController {
         request.getRequestDispatcher("/type/findAll").forward(request,response);
     }
     @RequestMapping("/findTM")
-    public @ResponseBody List findTM(){
+    public @ResponseBody List findTM(@RequestParam(required = false) String mname){
         System.out.println("表现层：findTM方法执行了。。。");
         //调用service的方法
-        List<Type1> list = typeService.findTM();
+        List<Type1> list = typeService.findTM(mname);
         return list;
     }
 }

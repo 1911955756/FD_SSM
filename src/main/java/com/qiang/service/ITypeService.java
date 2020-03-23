@@ -45,7 +45,7 @@ public interface ITypeService {
      */
     void deletetype(String typeid);
 
-    List<Type1> findTM();
+    List<Type1> findTM(String mname);
 
     PageInfo<Type1> findPageTM(Integer num,String tyname,String mname);
 }
