@@ -1,0 +1,61 @@
+#login{
+    width:300px;
+    height:400px;
+    position:absolute;
+    left: 50%;
+    top: 50%;
+    margin-left:-150px;
+    margin-top:-200px;
+    border:1px;
+    background-color: rgba(201, 196, 194, 0.68);
+    align:center;
+
+
+}
+#form{
+    width:200px;
+    height:300px;
+    position:relative;
+    left:50%;
+    top:50%;
+    margin-left:-110px;
+    margin-top:-170px;
+
+}
+#background{
+    /*background: linear-gradient(#671aaa, rgba(31, 181, 204, 0.77));*/
+    background-image: url("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1583752041645&di=be4f0a461f79e46b9558c6c78ffd6fe6&imgtype=0&src=http%3A%2F%2Fimg.hecaijing.com%2Fproduction%2Fpicts%2F20180625%2Fc67411e1e288ab345951b33aa03547f2.jpg");
+    background-size:100% 100%;
+
+}
+
+.login-button { /* 按钮美化 */
+    margin-top: 30px;
+    width: 160px; /* 宽度 */
+    height: 40px; /* 高度 */
+    border-width: 0px; /* 边框宽度 */
+    border-radius: 10px; /* 边框半径 */
+    background: #1E90FF; /* 背景颜色 */
+    cursor: pointer; /* 鼠标移入按钮范围时出现手势 */
+    outline: none; /* 不显示轮廓线 */
+    font-family: Microsoft YaHei; /* 设置字体 */
+    color: white; /* 字体颜色 */
+    font-size: 17px; /* 字体大小 */
+}
+.login-button:hover { /* 鼠标移入按钮范围时改变颜色 */
+    background: #5599FF;
+}
+.login-input{
+    margin-top: 20px;
+    background: #ffffff;
+    border: 1px solid #eee;
+    height: 40px;
+    font-size: 17px;
+    font-family: Microsoft YaHei; /* 设置字体 */
+    color: #000000;
+    border-radius: 15px;                            //圆角设置
+}
+.login-logo{
+    width: 60px;
+    height: 60px;
+}

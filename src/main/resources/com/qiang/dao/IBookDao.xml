@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qiang.dao.IBookDao">
+    <resultMap id="cancelMap" type="com.qiang.domain.Book">
+        <id property="bookid" column="bookid"></id>
+        <result property="plan_num" column="plan_num"></result>
+        <result property="cs_id" column="cs_id"></result>
+        <result property="createtime" column="createtime"></result>
+        <result property="wait_num" column="wait_num"></result>
+        <result property="updatetime" column="updatetime"></result>
+        <result property="status" column="status"></result>
+    </resultMap>
+    <select id="cancelwaitnum" parameterType="java.util.Map" statementType="CALLABLE">
+        {
+        call cancel(#{abc,mode=IN,jdbcType=VARCHAR})
+        }
+
+    </select>
+    <select id="findAll" resultType="com.qiang.domain.Book" parameterType="java.lang.String">
+        select* from book where 1=1
+        <if test="bookid!=null and bookid!=''">
+            and bookid like '%${bookid}%'
+        </if>
+        <if test="plannum!=null and plannum!=''">
+            and plan_num =#{plannum}
+        </if>
+        <if test='now=="yes"'>
+        and status!='就餐'
+        and createtime>DATE_FORMAT(CURDATE(),'%Y-%m-%d %H:%i:%s')
+        </if>
+    </select>
+</mapper>

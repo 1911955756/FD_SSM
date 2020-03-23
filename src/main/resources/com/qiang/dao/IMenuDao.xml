@@ -1,0 +1,64 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qiang.dao.IMenuDao">
+    <resultMap id="CSNMap" type="java.util.Map">
+        <result property="name" column="menuname"  jdbcType="VARCHAR"></result>
+        <result property="num" column="sell_num"  jdbcType="VARCHAR"></result>
+    </resultMap>
+    <resultMap id="CNFMap" type="java.util.Map">
+        <result property="name" column="menuname"  jdbcType="VARCHAR"></result>
+        <result property="num" column="sum(ord.menu_num)"  jdbcType="VARCHAR"></result>
+    </resultMap>
+    <resultMap id="MT" type="com.qiang.domain.Menu">
+        <id property="menuid" column="menuid"></id>
+        <result property="menuname" column="menuname"></result>
+        <collection property="type1s" ofType="com.qiang.domain.Type1">
+            <id property="typeid" column="typeid"></id>
+            <result property="name" column="name"></result>
+        </collection>
+    </resultMap>
+    <select id="findAll" parameterType="java.lang.String" resultType="com.qiang.domain.Menu">
+        select * from menu where 1=1
+        <if test="mname!=null and mname!=''">
+            and menuname like '%${mname}%'
+        </if>
+        <if test="msta!=null and msta!=''">
+            and status like '%${msta}%'
+        </if>
+        order by createtime desc
+    </select>
+    <select id="findMenuByName" resultMap="MT">
+        select * from menu m,type1 t,type_menu tm where m.menuid=tm.menuid and tm.typeid=t.typeid and m.menuname like #{menuname}
+    </select>
+    <select id="countsellnum" resultMap="CSNMap">
+        SELECT
+	menuname,
+	sell_num
+FROM
+	menu
+WHERE
+	YEAR (createTime) = YEAR (SYSDATE())
+AND MONTH (createTime) = MONTH (SYSDATE())
+AND sell_num > 0
+AND status='上架'
+    </select>
+    <select id="countnewfood" resultMap="CNFMap">
+        SELECT
+	m.menuname,
+	sum(ord.menu_num)
+FROM
+	type1 t,
+	type_menu tm,
+	menu m,
+	order_detail ord
+WHERE
+	t.typeid = tm.typeid
+AND tm.menuid = m.menuid
+AND m.menuid = ord.menuid
+AND t.`name` = '新菜推荐'
+AND m.`status` = '上架'
+AND ord.`status` != '已取消'
+GROUP BY
+	m.menuname
+    </select>
+</mapper>

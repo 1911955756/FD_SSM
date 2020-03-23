@@ -1,0 +1,34 @@
+table {
+
+    bmenu-collapse: collapse;
+
+    font-family: Futura, Arial, sans-serif;
+
+}
+
+
+td {
+
+    padding: .65em;
+
+}
+
+thead td {
+
+    background: #555 ;
+
+    bmenu: 1px solid #777;
+
+    color: #fff;
+
+}
+
+td {
+
+    bmenu: 1px solid#777;
+}
+tbody tr:nth-child(odd) {
+
+    background: #ccc;
+
+}

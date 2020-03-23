@@ -1,0 +1,65 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qiang.dao.IOrderDao">
+    <resultMap id="CPNMap" type="java.util.Map">
+    <result property="time" column="t"  jdbcType="VARCHAR"></result>
+        <result property="num" column="COUNT(1)"  jdbcType="VARCHAR"></result>
+    </resultMap>
+    <resultMap id="CMMap" type="java.util.Map">
+        <result property="time" column="m"  jdbcType="VARCHAR"></result>
+        <result property="num" column="ROUND(SUM(total),2)"  jdbcType="VARCHAR"></result>
+    </resultMap>
+    <select id="findAll" resultType="com.qiang.domain.Order1" parameterType="java.lang.String">
+        select * from order1 where 1=1
+        <if test="tableid!=null and tableid!=''">
+			and tableid like '%${tableid}%'
+		</if>
+		<if test="orderid!=null and orderid!=''">
+			and orderid like '%${orderid}%'
+		</if>
+		<if test="status!=null and status!=''">
+			and status like '%${status}%'
+		</if>
+        <if test='now=="yes"'>
+            and status in('待点餐','待上菜')
+            and createtime>DATE_FORMAT(CURDATE(),'%Y-%m-%d %H:%i:%s')
+        </if>
+        order by orderid desc
+    </select>
+    <select id="countpeoplenum" resultMap="CPNMap">
+   SELECT
+	T.t,
+	COUNT(1)
+FROM
+	(
+		SELECT
+			*,HOUR(createtime) t
+		FROM
+			order1
+		WHERE
+			DATE(createTime) = DATE(SYSDATE())
+	) T
+GROUP BY
+	T.t
+ORDER BY
+	T.t
+    </select>
+    <select id="countmoney" resultMap="CMMap">
+SELECT
+	M.m,
+ROUND(SUM(total),2)
+FROM
+	(
+		SELECT
+			*,MONTH(createtime) m
+		FROM
+			order1
+		WHERE
+			YEAR(createTime) = YEAR(SYSDATE())
+	) M
+GROUP BY
+	M.m
+ORDER BY
+	M.m
+    </select>
+</mapper>

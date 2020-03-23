@@ -1,0 +1,64 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qiang.dao.ITableDao">
+    <resultMap id="TBMap" type="com.qiang.domain.Table1">
+        <id property="tableid" column="tableid"></id>
+        <result property="people_num" column="people_num"></result>
+        <result property="status" column="status"></result>
+        <collection property="books" ofType="com.qiang.domain.Book">
+            <result property="plan_num" column="plan_num"></result>
+            <result property="createtime" column="createtime"></result>
+            <result property="wait_num" column="wait_num"></result>
+            <result property="status" column="status"></result>
+        </collection>
+    </resultMap>
+    <select id="findTpeoplenum" resultMap="TBMap">
+SELECT
+	t.*, b.wait_num,
+	b.createtime
+FROM
+	(
+		SELECT DISTINCT
+			people_num
+		FROM
+			table1
+	) AS t
+LEFT OUTER JOIN (
+	SELECT
+		*
+	FROM
+		book b1
+	WHERE
+		wait_num = (
+			SELECT
+				max(wait_num)
+			FROM
+				book b2
+			WHERE
+				b1.plan_num = b2.plan_num
+			AND b2. STATUS = '等待中'
+			AND b2.createtime > DATE_FORMAT(
+				CURDATE(),
+				'%Y-%m-%d %H:%i:%s'
+			)
+		)
+	AND b1. STATUS = '等待中'
+	AND b1.createtime > DATE_FORMAT(
+		CURDATE(),
+		'%Y-%m-%d %H:%i:%s'
+	)
+) AS b ON t.people_num = b.plan_num
+    </select>
+	<select id="findAll" resultType="com.qiang.domain.Table1" parameterType="java.lang.String">
+		select* from table1 where 1=1
+		<if test="taid!=null and taid!=''">
+			and tableid like '%${taid}%'
+		</if>
+		<if test="penum!=null and penum!=''">
+			and people_num=#{penum}
+		</if>
+		<if test="tasta!=null and tasta!=''">
+			and status like '%${tasta}%'
+		</if>
+	</select>
+</mapper>
