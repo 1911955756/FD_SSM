@@ -21,4 +21,14 @@ public class IUserRoleServiceImpl implements IUserRoleService {
     public void saveUserRole(UserRole userRole) {
         userRoleDao.saveUserRole(userRole);
     }
+
+    @Override
+    public List<UserRole> findroleid(String roleid, String userid) {
+        return userRoleDao.findroleid(roleid,userid);
+    }
+
+    @Override
+    public void deleteuserrole(UserRole userrole) {
+        userRoleDao.deleteuserrole(userrole);
+    }
 }

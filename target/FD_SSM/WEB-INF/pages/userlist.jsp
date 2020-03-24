@@ -56,9 +56,12 @@
                     },
                     type : "post",
                     success : function (data) {
-                        if(data){
+                        if(data==false){
                             alert("授权成功");
                             return ture;
+                        }else{
+                            alert("已存在该授权");
+                            return false;
                         }
                     }
                 })

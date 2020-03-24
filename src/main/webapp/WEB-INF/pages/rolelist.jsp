@@ -56,7 +56,7 @@
     <script type="text/javascript" src="../js/bootstrap.min.js"></script>
     <script>
         $(function () {
-            $("#addtypebtn").click(function () {
+            $("#addrolebtn").click(function () {
                 var addrole=$("#addrole").val();
                 if(addrole==""){
                     alert("名称不能为空");
@@ -72,7 +72,7 @@
         function checkrole(roleid) {
             var flag=false;
             $.ajax({
-                url:'../rolemenu/findroleid',
+                url:'../userrole/findroleid',
                 datatype : "json",
                 type : "post",
                 data:{
@@ -99,7 +99,7 @@
 <div class="container-fluid margintop">
     <div class="row">
 <div class="table-responsive col-sm-12 col-md-7">
-    <div class="bottom">已有类型：</div>
+    <div class="bottom">已有角色：</div>
     <table class="table table-striped table-bordered table-hover">
         <thead>
         <tr>
@@ -187,8 +187,8 @@
     </nav>
 </div>
         <div class="table-responsive col-sm-12 col-md-5  outer-container">
-            <div class="bottom">已关联角色:</div>
-            <iframe marginWidth=0 marginHeight=0 src=""  scrolling="auto" frameBorder=0 width="100%" height="80%"></iframe>
+            <div class="bottom">已关联用户:</div>
+            <iframe marginWidth=0 marginHeight=0 src="../role/findPageUR"  scrolling="auto" frameBorder=0 width="100%" height="80%"></iframe>
         </div>
 </div>
 </div>

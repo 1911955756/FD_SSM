@@ -30,6 +30,29 @@ public class IRoleServiceImpl implements IRoleService {
     }
 
     @Override
+    public void deleterole(String roleid) {
+        roleDao.deleterole(roleid);
+    }
+
+    @Override
+    public void saverole(String rolename) {
+        roleDao.saverole(rolename);
+    }
+
+    @Override
+    public PageInfo<Role> findPageUR(Integer num, String rname, String uname) {
+        PageHelper.startPage(num,5);
+        List<Role> ur = roleDao.findUR(rname, uname);
+        PageInfo<Role> rolePageInfo = new PageInfo<>(ur);
+        return rolePageInfo;
+    }
+
+    @Override
+    public void updaterolestatus(Role role) {
+    roleDao.updaterolestatus(role);
+    }
+
+    @Override
     public PageInfo<Role> findAll(Integer num) {
         PageHelper.startPage(num,5);
         List<Role> all = roleDao.findAll();

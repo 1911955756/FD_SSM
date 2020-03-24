@@ -3,6 +3,7 @@ package com.qiang.domain;
 import lombok.Data;
 
 import java.sql.Timestamp;
+import java.util.List;
 
 /**
  * @author Mr.锵
@@ -15,4 +16,5 @@ public class Role {
     private String status;
     private Timestamp createtime;
     private Timestamp updatetime;
+    private List<User1> user1s;
 }

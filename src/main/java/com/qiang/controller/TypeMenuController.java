@@ -28,7 +28,6 @@ public class TypeMenuController {
         typeMenu.setTypeid(typeid);
         typeMenu.setMenuid(menuid);
         List<TypeMenu> findtypeid = typeMenuService.findtypeid(typeid, menuid);
-        System.out.println(findtypeid.size());
         boolean have=true;
         if (findtypeid.size()==0){
         typeMenuService.saveTypeMenu(typeMenu);

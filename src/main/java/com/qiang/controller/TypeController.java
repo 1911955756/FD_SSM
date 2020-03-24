@@ -50,7 +50,6 @@ public class TypeController {
     }
     @RequestMapping("/savetype")
     public void savetype(String name, HttpServletRequest request, HttpServletResponse response)throws Exception{
-        System.out.println(name);
         typeService.saveType(name);
         System.out.println("添加成功");
         request.getRequestDispatcher("/type/findAll").forward(request,response);

@@ -78,14 +78,14 @@
                     // 动态加载分页栏
                     $(".pagination").html("");
                     if(data.isFirstPage){
-                        var first="<li class=\"disabled\"><a href=\"#\" aria-label=\"Previous\"><span aria-hidden=\"true\">&laquo;</span></a></li>";
+                        var first="<li class=\"disabled\"><a href=\"#\" aria-label=\"Previous\"><span aria-hidden=\"true\">&laquo;</span></a></li>" +
+                            "<li class=\"disabled\"><a href=\"#\" aria-label=\"Previous\"><span aria-hidden=\"true\">首</span></a></li>";
                     }
                     else if(!data.isFirstPage){
-                        var first="                <li>\n" +
-                            "                    <a href=\"../book/findAll?num="+(data.pageNum+1)+"&&now="+change+"&&bookid="+bookid+"&&plannum="+plannum+"\" aria-label=\"Previous\">\n" +
-                            "                        <span aria-hidden=\"true\">&laquo;</span>\n" +
-                            "                    </a>\n" +
-                            "                </li>";
+                        var first="<li><a href=\"../book/findAll?num="+(data.pageNum-1)+"&&now="+change+"&&bookid="+bookid+"&&plannum="+plannum+"\" aria-label=\"Previous\">\n" +
+                            "                        <span aria-hidden=\"true\">&laquo;</span></a></li>" +
+                            "<li><a href=\"../book/findAll?num=1&&now="+change+"&&bookid="+bookid+"&&plannum="+plannum+"\" aria-label=\"Previous\">\n" +
+                            "                        <span aria-hidden=\"true\">首</span></a></li>";
                     }
                     var center="";
                     for(var i=0;i<data.navigatepageNums.length;i++){
@@ -99,14 +99,14 @@
                         center=center+now;
                     }
                     if(data.isLastPage){
-                        var last="<li class=\"disabled\"><a href=\"#\" aria-label=\"Next\"><span aria-hidden=\"true\">&raquo;</span></a></li>";
+                        var last="<li class=\"disabled\"><a href=\"#\" aria-label=\"Next\"><span aria-hidden=\"true\">尾</span></a></li>" +
+                            "<li class=\"disabled\"><a href=\"#\" aria-label=\"Next\"><span aria-hidden=\"true\">&raquo;</span></a></li>";
                     }
                     else if(!data.isLastPage){
-                        var last="                <li>\n" +
-                            "                    <a href=\"../book/findAll?num="+(data.pageNum-1)+"&&now="+change+"&&bookid="+bookid+"&&plannum="+plannum+"\" aria-label=\"Previous\">\n" +
-                            "                        <span aria-hidden=\"true\">&raquo;</span>\n" +
-                            "                    </a>\n" +
-                            "                </li>";
+                        var last="<li><a href=\"../book/findAll?num="+(data.pages)+"&&now="+change+"&&bookid="+bookid+"&&plannum="+plannum+"\" aria-label=\"Previous\">\n" +
+                            "                        <span aria-hidden=\"true\">尾</span></a></li>" +
+                            "<li><a href=\"../book/findAll?num="+(data.pageNum+1)+"&&now="+change+"&&bookid="+bookid+"&&plannum="+plannum+"\" aria-label=\"Previous\">\n" +
+                            "                        <span aria-hidden=\"true\">&raquo;</span></a></li>";
                     }
                     var all=first+center+last;
                     $(".pagination").append(all);
@@ -161,11 +161,17 @@
             <c:choose>
                 <c:when test="${booklist.isFirstPage}">
                     <li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
+                    <li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">首</span></a></li>
                 </c:when>
                 <c:otherwise>
                     <li>
                         <a href="../book/findAll?num=${booklist.pageNum-1}" aria-label="Previous">
                             <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../book/findAll?num=1" aria-label="Previous">
+                            <span aria-hidden="true">首</span>
                         </a>
                     </li>
                 </c:otherwise>
@@ -184,9 +190,15 @@
             </c:forEach>
             <c:choose>
                 <c:when test="${booklist.isLastPage}">
+                    <li class="disabled"><a href="#" aria-label="Next"><span aria-hidden="true">尾</span></a></li>
                     <li class="disabled"><a href="#" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li>
                 </c:when>
                 <c:otherwise>
+                    <li>
+                        <a href="../book/findAll?num=${booklist.pages}" aria-label="Next">
+                            <span aria-hidden="true">尾</span>
+                        </a>
+                    </li>
                     <li>
                         <a href="../book/findAll?num=${booklist.pageNum+1}" aria-label="Next">
                             <span aria-hidden="true">&raquo;</span>
