@@ -4,6 +4,7 @@ package com.qiang.dao;
 import com.qiang.domain.TypeMenu;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
 
@@ -34,6 +35,5 @@ public interface ITypeMenuDao {
      * @param typeid
      * @return
      */
-    @Select("select * from type_menu where typeid=#{typeid}")
-    List<TypeMenu> findtypeid(String typeid);
+    List<TypeMenu> findtypeid(@Param("typeid") String typeid, @Param("menuid")String menuid);
 }

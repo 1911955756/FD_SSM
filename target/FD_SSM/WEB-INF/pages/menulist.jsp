@@ -54,14 +54,33 @@
                     data:{'typeid':$("#typeid").val(),'menuid':$("#menuid").val()},
                     type : "post",
                     success : function (data) {
-                        if(data){
+                        if(data==false){
                             alert("关联成功");
                             return ture;
+                        }else{
+                            alert("已存在该关联");
+                            return false;
                         }
                     }
                 })
-            })
-        })
+
+            });
+            $("#front").click(function () {
+                $("#front").attr("href","../menu/findAll?num=${listmenu.pageNum-1}&&msta="+$("#msta").val()+"&&mname="+$("#mname").val()+"")
+            });
+            $("#first").click(function () {
+                $("#first").attr("href","../menu/findAll?num=1&&msta="+$("#msta").val()+"&&mname="+$("#mname").val()+"")
+            });
+            $("#last").click(function () {
+                $("#last").attr("href","../menu/findAll?num=${listmenu.pages}&&msta="+$("#msta").val()+"&&mname="+$("#mname").val()+"")
+            });
+            $("#next").click(function () {
+                $("#next").attr("href","../menu/findAll?num=${listmenu.pageNum+1}&&msta="+$("#msta").val()+"&&mname="+$("#mname").val()+"")
+            });
+        });
+        function gonum(num) {
+            $(".aurlcenter").attr("href","../menu/findAll?num="+num+"&&msta="+$("#msta").val()+"&&mname="+$("#mname").val()+"")
+        }
     </script>
 
 </head>
@@ -108,10 +127,10 @@
         <tr>
             <form action="../menu/findAll">
             <td ></td>
-            <td><input class="form-control" name="mname" placeholder="输入菜名搜索"></td>
+            <td><input class="form-control" name="mname" placeholder="输入菜名搜索" value="${mname}" id="mname"></td>
             <td></td>
             <td></td>
-            <td><input class="form-control" name="msta" placeholder="输入状态搜索"></td>
+            <td><input class="form-control" name="msta" placeholder="输入状态搜索" value="${msta}" id="msta"></td>
             <td></td>
             <td></td>
             <td></td>
@@ -143,40 +162,52 @@
         </tbody>
     </table>
 
-<%--    分页条--%>
+    <%--    分页条--%>
     <nav aria-label="Page navigation" class="right">
         <ul class="pagination">
             <c:choose>
                 <c:when test="${listmenu.isFirstPage}">
                     <li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
+                    <li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">首</span></a></li>
                 </c:when>
                 <c:otherwise>
                     <li>
-                        <a href="../menu/findAll?num=${listmenu.pageNum-1}" aria-label="Previous">
-                        <span aria-hidden="true">&laquo;</span>
+                        <a href="" aria-label="Previous" id="front">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="" aria-label="Previous" id="first">
+                            <span aria-hidden="true">首</span>
                         </a>
                     </li>
                 </c:otherwise>
             </c:choose>
-        <c:forEach items="${listmenu.navigatepageNums}" var="num">
-            <c:choose>
-            <c:when test="${num==listmenu.pageNum}">
-            <li class="active">
-                <span>${num}<span class="sr-only">(current)</span></span>
-            </li>
-            </c:when>
-            <c:otherwise>
-            <li><a href="../menu/findAll?num=${num}">${num}</a></li>
-            </c:otherwise>
-            </c:choose>
-        </c:forEach>
+            <c:forEach items="${listmenu.navigatepageNums}" var="num">
+                <c:choose>
+                    <c:when test="${num==listmenu.pageNum}">
+                        <li class="active">
+                            <span>${num}<span class="sr-only">(current)</span></span>
+                        </li>
+                    </c:when>
+                    <c:otherwise>
+                        <li><a href="" class="aurlcenter" onclick='gonum("${num}")'>${num}</a></li>
+                    </c:otherwise>
+                </c:choose>
+            </c:forEach>
             <c:choose>
                 <c:when test="${listmenu.isLastPage}">
+                    <li class="disabled"><a href="#" aria-label="Next"><span aria-hidden="true">尾</span></a></li>
                     <li class="disabled"><a href="#" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li>
                 </c:when>
                 <c:otherwise>
                     <li>
-                        <a href="../menu/findAll?num=${listmenu.pageNum+1}" aria-label="Next">
+                        <a href="" aria-label="Next" id="last">
+                            <span aria-hidden="true">尾</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="" aria-label="Next" id="next">
                             <span aria-hidden="true">&raquo;</span>
                         </a>
                     </li>

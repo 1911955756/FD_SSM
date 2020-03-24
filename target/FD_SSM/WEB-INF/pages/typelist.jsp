@@ -85,6 +85,7 @@
                         alert("删除失败，类型已绑定");
                         flag=false;
                     }else{
+                        alert("删除成功!");
                         flag=true;
                     }
                 }
@@ -97,7 +98,7 @@
 <body class="inner-container">
 <div class="container-fluid margintop">
     <div class="row">
-<div class="table-responsive col-sm-12 col-md-6">
+<div class="table-responsive col-sm-12 col-md-7">
     <div class="bottom">已有类型：</div>
     <table class="table table-striped table-bordered table-hover">
         <thead>
@@ -112,7 +113,7 @@
         <tr>
             <td ></td>
             <form id="addtypeform" method="post" action="../type/savetype">
-            <td><input id="addtype" name="name" placeholder="请输入名称" type="text"/></td>
+            <td><input id="addtype" name="name" placeholder="请输入名称" type="text" class="form-control"/></td>
                 <td ></td>
                 <td ></td>
                 <td ></td>
@@ -185,7 +186,7 @@
         </ul>
     </nav>
 </div>
-        <div class="table-responsive col-sm-12 col-md-5 col-md-offset-1 outer-container">
+        <div class="table-responsive col-sm-12 col-md-5  outer-container">
             <div class="bottom">已关联类目:</div>
             <iframe marginWidth=0 marginHeight=0 src="../type/findPageTM"  scrolling="auto" frameBorder=0 width="100%" height="80%"></iframe>
         </div>

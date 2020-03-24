@@ -39,11 +39,14 @@ public class TypeController {
     public ModelAndView  findPageTM(@RequestParam(required = false,defaultValue ="1") Integer num,
                                    @RequestParam(required = false) String tyname,
                                    @RequestParam(required = false) String  mname){
-        ModelAndView modelAndView = new ModelAndView();
+
+        ModelMap modelMap = new ModelMap();
         PageInfo<Type1> tmlist = typeService.findPageTM(num,tyname,mname);
-        modelAndView.addObject("tmlist",tmlist);
-        modelAndView.setViewName("typemenulist");
-        return modelAndView;
+        modelMap.addAttribute("tmlist",tmlist);
+        modelMap.addAttribute("tyname",tyname);
+        modelMap.addAttribute("mname",mname);
+        ModelAndView typemenulist = new ModelAndView("typemenulist", modelMap);
+        return typemenulist;
     }
     @RequestMapping("/savetype")
     public void savetype(String name, HttpServletRequest request, HttpServletResponse response)throws Exception{

@@ -43,6 +43,25 @@
     </style>
     <script type="text/javascript" src="../js/jquery.min.js"></script>
     <script type="text/javascript" src="../js/bootstrap.min.js"></script>
+    <script>
+        $(function () {
+            $("#front").click(function () {
+                $("#front").attr("href","../type/findPageTM?num=${tmlist.pageNum-1}&&tyname="+$("#tyname").val()+"&&mname="+$("#mname").val()+"")
+            });
+            $("#first").click(function () {
+                $("#first").attr("href","../type/findPageTM?num=1&&tyname="+$("#tyname").val()+"&&mname="+$("#mname").val()+"")
+            });
+            $("#last").click(function () {
+                $("#last").attr("href","../type/findPageTM?num=${tmlist.pages}&&tyname="+$("#tyname").val()+"&&mname="+$("#mname").val()+"")
+            });
+            $("#next").click(function () {
+                $("#next").attr("href","../type/findPageTM?num=${tmlist.pageNum+1}&&tyname="+$("#tyname").val()+"&&mname="+$("#mname").val()+"")
+            });
+        })
+        function gonum(num) {
+            $(".aurlcenter").attr("href","../type/findPageTM?num="+num+"&&tyname="+$("#tyname").val()+"&&mname="+$("#mname").val()+"")
+        }
+    </script>
 </head>
 <body class="inner-container">
 <div class="table-responsive col-sm-12">
@@ -55,8 +74,8 @@
     </tr>
     <tr>
         <form action="../type/findPageTM">
-        <td><input  class="form-control" placeholder="输入类名查询" name="tyname" id="tyname"></td>
-        <td><input  class="form-control" placeholder="输入菜名查询" name="mname" id="mname"></td>
+        <td><input  class="form-control" placeholder="输入类名查询" name="tyname" id="tyname" value="${tyname}"></td>
+        <td><input  class="form-control" placeholder="输入菜名查询" name="mname" id="mname" value="${mname}"></td>
         <td><button type="submit" class="btn btn-success" id="pagebtn">查询</button></td>
         </form>
     </tr>
@@ -79,11 +98,17 @@
         <c:choose>
             <c:when test="${tmlist.isFirstPage}">
                 <li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
+                <li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">首</span></a></li>
             </c:when>
             <c:otherwise>
                 <li>
-                    <a href="../type/findPageTM?num=${tmlist.pageNum-1}" aria-label="Previous" id="aurlhead">
+                    <a href="" aria-label="Previous" id="front">
                         <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="" aria-label="Previous" id="first">
+                        <span aria-hidden="true">首</span>
                     </a>
                 </li>
             </c:otherwise>
@@ -96,17 +121,23 @@
                     </li>
                 </c:when>
                 <c:otherwise>
-                    <li><a href="../type/findPageTM?num=${num}" id="aurlcenter">${num}</a></li>
+                    <li><a href="" class="aurlcenter" onclick='gonum("${num}")'>${num}</a></li>
                 </c:otherwise>
             </c:choose>
         </c:forEach>
         <c:choose>
             <c:when test="${tmlist.isLastPage}">
+                <li class="disabled"><a href="#" aria-label="Next"><span aria-hidden="true">尾</span></a></li>
                 <li class="disabled"><a href="#" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li>
             </c:when>
             <c:otherwise>
                 <li>
-                    <a href="../type/findPageTM?num=${tmlist.pageNum+1}" aria-label="Next" id="aurlend">
+                    <a href="" aria-label="Next" id="last">
+                        <span aria-hidden="true">尾</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="" aria-label="Next" id="next">
                         <span aria-hidden="true">&raquo;</span>
                     </a>
                 </li>

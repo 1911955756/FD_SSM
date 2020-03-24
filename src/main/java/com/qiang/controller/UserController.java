@@ -79,7 +79,7 @@ public class UserController {
     public ModelAndView findAll(@RequestParam(required = false,defaultValue ="1") Integer num){
         ModelMap modelMap=new ModelMap();
         PageInfo<User1> list = userService.findAll(num);
-        List<Role> list2 = roleService.findAll();
+        List<Role> list2 = roleService.findroleAll();
         modelMap.addAttribute("userlist",list);
         modelMap.addAttribute("rolelist",list2);
         ModelAndView mv=new ModelAndView("list",modelMap);

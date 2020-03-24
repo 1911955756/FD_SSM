@@ -38,6 +38,8 @@ public class MenuController {
         List<Type1> list2=typeService.findtypeAll();
         modelMap.addAttribute("listmenu",list1);
         modelMap.addAttribute("listtype",list2);
+        modelMap.addAttribute("mname",mname);
+        modelMap.addAttribute("msta",msta);
         ModelAndView mv=new ModelAndView("tmlist",modelMap);
         mv.setViewName("menulist");
         return mv;

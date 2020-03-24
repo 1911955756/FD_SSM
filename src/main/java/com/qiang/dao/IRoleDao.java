@@ -21,9 +21,16 @@ public interface IRoleDao {
     List<Role> findByRid(String  roleid);
 
     /**
-     * 查询所有角色
+     * 查询可使用角色
      * @return
      */
-    @Select("select * from role")
+    @Select("select * from role where status='使用' order by createtime desc")
+    List<Role> findroleAll();
+
+    /**
+     * 分页查询所有角色
+     * @return
+     */
+    @Select("select * from role order by createtime desc")
     List<Role> findAll();
 }

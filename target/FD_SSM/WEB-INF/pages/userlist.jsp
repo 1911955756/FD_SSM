@@ -70,6 +70,7 @@
 <div class="table-responsive">
     <table class="table-responsive">
         <tr>
+            <td><a href="../role/findAll">角色管理</a></td>
             <td>角色授权：</td>
             <td><select name="roleid" id="roleid" class="form-control maxwidth">
                 <c:forEach items="${rolelist}" var="role">

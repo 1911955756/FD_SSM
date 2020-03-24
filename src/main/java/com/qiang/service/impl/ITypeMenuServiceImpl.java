@@ -28,8 +28,8 @@ public class ITypeMenuServiceImpl implements ITypeMenuService {
     }
 
     @Override
-    public List<TypeMenu> findtypeid(String typeid) {
-        return typeMenuDao.findtypeid(typeid);
+    public List<TypeMenu> findtypeid(String typeid,String menuid) {
+        return typeMenuDao.findtypeid(typeid,menuid);
     }
 }
 

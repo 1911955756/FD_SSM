@@ -22,12 +22,17 @@
         }
         .margintop{
             margin-top:50px;
+            background-color: #3c3c3c;
         }
         .name{
             height: 50px;
             color: whitesmoke;
             text-align: center;
             line-height: 50px;
+        }
+        .left{
+            height: 85%;
+
         }
         .right{
             background-color: whitesmoke;
@@ -73,7 +78,7 @@
     <div class="row">
         <!-- 左侧导航 -->
         <div class="col-sm-3 col-md-2 sidebar">
-            <ul class="nav nav-sidebar">
+            <ul class="nav nav-sidebar left">
                 <c:forEach items="${userrolelist}" var="ur">
                     <h5></h5><br/>
                     <c:choose>
@@ -102,7 +107,7 @@
             </ul>
         </div>
 <%--        右侧内容--%>
-        <div class="col-sm-9 col-md-10 outer-container right"><iframe marginWidth=0 marginHeight=0 src=""  scrolling="auto" frameBorder=0 width="100%" height="90%"></iframe></div>
+        <div class="col-sm-9 col-md-10 outer-container right"><iframe marginWidth=0 marginHeight=0 src=""  scrolling="auto" frameBorder=0 width="100%" height="91%"></iframe></div>
     </div>
 </div>
 </body>

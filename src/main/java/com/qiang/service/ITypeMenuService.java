@@ -32,8 +32,7 @@ public interface ITypeMenuService {
      * @param typeid
      * @return
      */
-    @Select("select typeid from typeid where typeid=#{typeid}")
-    List<TypeMenu> findtypeid(String typeid);
+    List<TypeMenu> findtypeid(String typeid,String menuid);
 
     }
 

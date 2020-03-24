@@ -113,7 +113,7 @@
         <tr>
             <td ></td>
             <form id="addtypeform" method="post" action="../type/savetype">
-            <td><input id="addtype" name="name" placeholder="请输入名称" type="text"/></td>
+            <td><input id="addtype" name="name" placeholder="请输入名称" type="text" class="form-control"/></td>
                 <td ></td>
                 <td ></td>
                 <td ></td>

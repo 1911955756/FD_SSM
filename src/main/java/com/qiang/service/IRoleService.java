@@ -1,5 +1,6 @@
 package com.qiang.service;
 
+import com.github.pagehelper.PageInfo;
 import com.qiang.domain.Role;
 import org.apache.ibatis.annotations.Select;
 
@@ -21,6 +22,11 @@ public interface IRoleService {
      * 查询所有角色
      * @return
      */
-    @Select("select * from role")
-    List<Role> findAll();
+    List<Role> findroleAll();
+
+    /**
+     * 分页查询所有角色
+     * @return
+     */
+    PageInfo<Role> findAll(Integer num);
 }

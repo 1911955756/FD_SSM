@@ -27,8 +27,13 @@ public class TypeMenuController {
         TypeMenu typeMenu=new TypeMenu();
         typeMenu.setTypeid(typeid);
         typeMenu.setMenuid(menuid);
+        List<TypeMenu> findtypeid = typeMenuService.findtypeid(typeid, menuid);
+        System.out.println(findtypeid.size());
+        boolean have=true;
+        if (findtypeid.size()==0){
         typeMenuService.saveTypeMenu(typeMenu);
-        return true;
+        have =false;}
+        return have;
     }
 
     @RequestMapping("/deletetypemenu")
@@ -42,9 +47,9 @@ public class TypeMenuController {
     }
 
     @RequestMapping("/findtypeid")
-    public @ResponseBody Boolean findtypeid(@RequestParam  String typeid){
-        System.out.println("findtypeid执行了");
-        List<TypeMenu> findtypeid = typeMenuService.findtypeid(typeid);
+    public @ResponseBody Boolean findtypeid(String typeid){
+        List<TypeMenu> findtypeid = typeMenuService.findtypeid(typeid,null);
+        System.out.println(findtypeid.size());
         boolean have=false;
         if(findtypeid.size()!=0){
             have=true;
