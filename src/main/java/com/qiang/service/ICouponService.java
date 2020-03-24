@@ -1,5 +1,6 @@
 package com.qiang.service;
 
+import com.github.pagehelper.PageInfo;
 import com.qiang.domain.Coupon;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
@@ -13,23 +14,46 @@ import java.util.List;
  */
 public interface ICouponService {
     /**
+     * 查询所有的优惠券
+     * @return
+     */
+    PageInfo<Coupon> findAll(Integer num, String couname,String coutype, String coustatus,Float couprice);
+
+    /**
      * 查询所有上架的优惠券
      * @return
      */
-    @Select("select * from coupon where status='上架' order by createtime desc")
-    List<Coupon> findAll();
+    List<Coupon> findcouponAll();
+
+    /**
+     * 根据couponid查询优惠券信息
+     * @param couponid
+     * @return
+     */
+    Coupon findByid(String couponid);
+
+    /**
+     * 根据couponname查询优惠券信息
+     * @param couponname
+     * @return
+     */
+    List<Coupon> findCoupon(String couponname);
 
     /**
      * 保存优惠券
      * @param coupon
      */
-    @Insert("insert into coupon set couponname=#{couponname},endtime=#{endtime},type=#{type},price=#{price}")
     void savecoupon(Coupon  coupon);
 
     /**
      * 根据couponid实现优惠券上下架
      * @param coupon
      */
-    @Update("update coupon set status=#{status} where couponid=#{couponid}")
     void updatecouponstatus(Coupon coupon);
+
+    /**
+     * 根据couponid实现优惠券上下架
+     * @param coupon
+     */
+    void updatecoupon(Coupon coupon);
 }

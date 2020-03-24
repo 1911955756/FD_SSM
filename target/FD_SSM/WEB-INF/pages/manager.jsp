@@ -88,6 +88,7 @@
                             <li data-src="../odview/findAll?role=服务员"><a href="#">上菜列表</a></li>
                             <li data-src="../table/findAll"><a href="#">餐桌列表</a></li>
                             <li data-src="../menu/findAll"><a href="#">菜单列表</a></li>
+                            <li data-src="../coupon/findAll"><a href="#">优惠券列表</a></li>
                             <li data-src="../user/findAll"><a href="#">用户列表</a></li>
                             <li data-src="../picture/findAll"><a href="#">轮播图列表</a></li>
                             <li data-src="../chart/findAll"><a href="#">图表列表</a></li>

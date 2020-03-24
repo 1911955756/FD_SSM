@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qiang.dao.ICouponDao">
+    <select id="findAll" parameterType="string" resultType="com.qiang.domain.Coupon">
+        select * from coupon where status not in('默认','删除')
+        <if test="couname!=null and couname!=''">
+            and couponname like '%${couname}%'
+        </if>
+        <if test="coutype!=null and coutype!=''">
+            and type like '%${coutype}%'
+        </if>
+        <if test="coustatus!=null and coustatus!=''">
+            and status like '%${coustatus}%'
+        </if>
+        <if test="couprice!=null and couprice!=''">
+            and price =#{couprice}
+        </if>
+        order by createtime desc
+    </select>
+</mapper>

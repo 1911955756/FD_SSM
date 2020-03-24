@@ -37,8 +37,6 @@ public class UserController {
         return true;}
         else{
             System.out.println("失败");
-            System.out.println(user.getPhone());
-            System.out.println(user.getPassword());
             return false;
          }
 
@@ -46,16 +44,11 @@ public class UserController {
     @RequestMapping("/login")
         public ModelAndView  login(Integer phone) {
         System.out.println("表现层：密码正确，登录。。。");
-        System.out.println(phone);
         ModelAndView mv=new ModelAndView();
         //调用service的方法
         //暂无
         if(phone!=null){
             List<User1> allByPhone = userService.findAllByPhone(phone);
-            for(User1 user1:allByPhone){
-                System.out.println(user1);
-                System.out.println(user1.getRoles());
-            }
             mv.addObject("userrolelist",allByPhone);
             mv.setViewName("manager");
             return mv;}

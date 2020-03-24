@@ -117,7 +117,7 @@ public class TestMyBatis {
         coupon.setPrice(0.9f);
         coupon.setType("折扣券");
         couponDao.savecoupon(coupon);
-        List<Coupon> all = couponDao.findAll();
+        List<Coupon> all = couponDao.findcouponAll();
         for (Coupon coupon1:all){
             System.out.println(coupon1);
         }
