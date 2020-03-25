@@ -33,7 +33,7 @@ public interface IUserService {
      * @return
      */
     @Select("select* from user1 where  deleteflag=0")
-    PageInfo<User1> findAll(Integer num);
+    PageInfo<User1> findAll(Integer num,String uname,String ujob,Integer uphone);
 
     /**
      * 把用户的删除标志改为1

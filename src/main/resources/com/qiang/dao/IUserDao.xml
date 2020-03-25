@@ -30,4 +30,17 @@ WHERE
 AND r.roleid = ur.roleid
 AND u.phone = #{phone}
     </select>
+
+    <select id="findAll" resultType="com.qiang.domain.User1" parameterType="string">
+        select * from user1 where  deleteflag=0
+        <if test="uname!=null and uname!=''">
+            and username like '%${uname}%'
+        </if>
+        <if test="ujob!=null and ujob!=''">
+            and job like '%${ujob}%'
+        </if>
+        <if test="uphone!=null and uphone!=''">
+            and phone like '%${uphone}%'
+        </if>
+    </select>
 </mapper>

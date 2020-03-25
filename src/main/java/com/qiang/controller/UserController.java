@@ -69,22 +69,34 @@ public class UserController {
         request.getRequestDispatcher("/user/findAll").forward(request,response);
     }
     @RequestMapping("/findAll")
-    public ModelAndView findAll(@RequestParam(required = false,defaultValue ="1") Integer num){
+    public ModelAndView findAll(@RequestParam(required = false,defaultValue ="1") Integer num,
+                                @RequestParam(required = false) Integer uphone,
+                                @RequestParam(required = false) String  uname,
+                                @RequestParam(required = false) String ujob){
         ModelMap modelMap=new ModelMap();
-        PageInfo<User1> list = userService.findAll(num);
+        PageInfo<User1> list = userService.findAll(num,uname,ujob,uphone);
         List<Role> list2 = roleService.findroleAll();
         modelMap.addAttribute("userlist",list);
         modelMap.addAttribute("rolelist",list2);
+        modelMap.addAttribute("uphone",uphone);
+        modelMap.addAttribute("uname",uname);
+        modelMap.addAttribute("ujob",ujob);
         ModelAndView mv=new ModelAndView("list",modelMap);
         System.out.println("加入成功");
         mv.setViewName("userlist");
         return mv;
     }
     @RequestMapping("/findAll2")
-    public @ResponseBody ModelAndView findAll2(@RequestParam(required = false,defaultValue ="1") Integer num){
+    public @ResponseBody ModelAndView findAll2(@RequestParam(required = false,defaultValue ="1") Integer num,
+                                               @RequestParam(required = false) Integer uphone,
+                                               @RequestParam(required = false) String  uname,
+                                               @RequestParam(required = false) String  ujob){
         ModelMap modelMap=new ModelMap();
-        PageInfo<User1> list = userService.findAll(num);
+        PageInfo<User1> list = userService.findAll(num,uname,ujob,uphone);
         modelMap.addAttribute("userlist",list);
+        modelMap.addAttribute("uphone",uphone);
+        modelMap.addAttribute("uname",uname);
+        modelMap.addAttribute("ujob",ujob);
         ModelAndView mv=new ModelAndView("message",modelMap);
         return mv;
     }

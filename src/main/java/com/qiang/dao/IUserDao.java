@@ -27,8 +27,7 @@ public interface IUserDao {
      * 查询删除标志不为1的所有用户
      * @return
      */
-    @Select("select * from user1 where  deleteflag=0")
-    List<User1>findAll();
+    List<User1>findAll(@Param("uname") String uname,@Param("ujob") String ujob,@Param("uphone") Integer uphone);
 
     /**
      * 根据userid查询用户信息
