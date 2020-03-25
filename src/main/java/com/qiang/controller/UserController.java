@@ -80,6 +80,14 @@ public class UserController {
         mv.setViewName("userlist");
         return mv;
     }
+    @RequestMapping("/findAll2")
+    public @ResponseBody ModelAndView findAll2(@RequestParam(required = false,defaultValue ="1") Integer num){
+        ModelMap modelMap=new ModelMap();
+        PageInfo<User1> list = userService.findAll(num);
+        modelMap.addAttribute("userlist",list);
+        ModelAndView mv=new ModelAndView("message",modelMap);
+        return mv;
+    }
     @RequestMapping("/toupdateUser")
     public ModelAndView toupdateUser(String userid){
         System.out.println("toupdateMenu方法执行"+userid);

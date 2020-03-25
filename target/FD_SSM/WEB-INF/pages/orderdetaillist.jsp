@@ -85,7 +85,7 @@
                     }
                     else if(!data.isFirstPage){
                         var first="                <li>\n" +
-                            "                    <a href=\"../orderdetail/findAll?num="+(data.pageNum+1)+"&&status="+ data.list[0].status +"\" aria-label=\"Previous\">\n" +
+                            "                    <a href=\"../orderdetail/findAll?num="+(data.pageNum-1)+"&&status="+ data.list[0].status +"\" aria-label=\"Previous\">\n" +
                             "                        <span aria-hidden=\"true\">&laquo;</span>\n" +
                             "                    </a>\n" +
                             "                </li>";
@@ -106,7 +106,7 @@
                     }
                     else if(!data.isLastPage){
                         var last="                <li>\n" +
-                            "                    <a href=\"../orderdetail/findAll?num="+(data.pageNum-1)+"&&status="+ data.list[0].status +"\" aria-label=\"Previous\">\n" +
+                            "                    <a href=\"../orderdetail/findAll?num="+(data.pageNum+1)+"&&status="+ data.list[0].status +"\" aria-label=\"Previous\">\n" +
                             "                        <span aria-hidden=\"true\">&raquo;</span>\n" +
                             "                    </a>\n" +
                             "                </li>";

@@ -44,12 +44,30 @@
         $(function(){
             $(".sidebar li").on("click",function(){
                 var address =$(this).attr("data-src");
-                $("iframe").attr("src",address);
+                $("#iframecontext").attr("src",address);
+            });
+            $("#tittle").popover();
+            $('#myModal').on('shown.bs.modal', function () {
+                $('#myInput').focus()
             });
         });
     </script>
 </head>
 <body>
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">联系方式</h4>
+            </div>
+            <div class="modal-body outer-container">
+                <iframe marginWidth=0 marginHeight=0 src="../user/findAll2"  scrolling="auto" frameBorder=0 width="100%" height="50%"></iframe>
+            </div>
+        </div>
+    </div>
+</div>
 <%--顶部导航栏--%>
 <nav class="navbar navbar-inverse navbar-fixed-top">
             <div class="container-fluid">
@@ -60,7 +78,9 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">饭店点菜系统管理后台</a>
+            <a id="tittle" class="navbar-brand" href="#" data-toggle="modal" data-target="#myModal"
+               role="button" data-toggle="popover" data-placement="bottom" data-trigger="hover" data-animation="true"
+               data-content="点击显示联系方式">饭店点菜系统管理后台</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <c:forEach items="${userrolelist}" var="ur"><a class="name">您好：${ur.username}${ur.roles[0].rolename}</a></c:forEach>
@@ -108,7 +128,7 @@
             </ul>
         </div>
 <%--        右侧内容--%>
-        <div class="col-sm-9 col-md-10 outer-container right"><iframe marginWidth=0 marginHeight=0 src=""  scrolling="auto" frameBorder=0 width="100%" height="91%"></iframe></div>
+        <div class="col-sm-9 col-md-10 outer-container right"><iframe id="iframecontext" marginWidth=0 marginHeight=0 src=""  scrolling="auto" frameBorder=0 width="100%" height="91%"></iframe></div>
     </div>
 </div>
 </body>

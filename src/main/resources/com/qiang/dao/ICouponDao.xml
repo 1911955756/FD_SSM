@@ -13,7 +13,7 @@
             and status like '%${coustatus}%'
         </if>
         <if test="couprice!=null and couprice!=''">
-            and price =#{couprice}
+            and price like '%${couprice}%'
         </if>
         order by createtime desc
     </select>

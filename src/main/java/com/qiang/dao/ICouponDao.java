@@ -40,14 +40,14 @@ public interface ICouponDao {
      * @param couponname
      * @return
      */
-    @Select("select * from coupon where couponname=#{couponname}")
+    @Select("select * from coupon where couponname like #{couponname} and status in('上架','下架')")
     List<Coupon> findCoupon(String couponname);
 
     /**
      * 保存优惠券
      * @param coupon
      */
-    @Insert("insert into coupon(couponname,endtime,type，price)values(#{couponname},#{endtime},#{type},#{price})")
+    @Insert("insert into coupon(couponname,endtime,type,price)values(#{couponname},#{endtime},#{type},#{price})")
     void savecoupon(Coupon  coupon);
 
     /**
@@ -61,6 +61,6 @@ public interface ICouponDao {
      * 根据couponid实现优惠券上下架
      * @param coupon
      */
-    @Update("update coupon set couponname=#{couponname},type=#{type},endtime=#{endtime},price=#{price} where couponid=#{couponid}")
+    @Update("update coupon set couponname=#{couponname},type=#{type},endtime=#{endtime},price=#{price},status=#{status} where couponid=#{couponid}")
     void updatecoupon(Coupon coupon);
 }
