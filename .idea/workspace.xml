@@ -6,29 +6,7 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3b3cac37-047d-4494-a743-857062dcce53" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/message.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/qiang/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/qiang/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/qiang/dao/ICouponDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/qiang/dao/ICouponDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/qiang/dao/IUserDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/qiang/dao/IUserDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/qiang/dao/ICouponDao.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/qiang/dao/ICouponDao.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/log4j.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/log4j.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/coupon.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/coupon.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/manager.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/manager.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/orderdetaillist.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/orderdetaillist.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/FD_SSM.war" beforeDir="false" afterPath="$PROJECT_DIR$/target/FD_SSM.war" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/FD_SSM/WEB-INF/classes/com/qiang/controller/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/FD_SSM/WEB-INF/classes/com/qiang/controller/UserController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/FD_SSM/WEB-INF/classes/com/qiang/dao/ICouponDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/FD_SSM/WEB-INF/classes/com/qiang/dao/ICouponDao.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/FD_SSM/WEB-INF/classes/com/qiang/dao/IUserDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/FD_SSM/WEB-INF/classes/com/qiang/dao/IUserDao.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/FD_SSM/WEB-INF/classes/log4j.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/FD_SSM/WEB-INF/classes/log4j.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/FD_SSM/WEB-INF/pages/manager.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/FD_SSM/WEB-INF/pages/manager.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/FD_SSM/WEB-INF/pages/orderdetaillist.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/FD_SSM/WEB-INF/pages/orderdetaillist.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/qiang/controller/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/qiang/controller/UserController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/qiang/dao/ICouponDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/qiang/dao/ICouponDao.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/qiang/dao/IUserDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/qiang/dao/IUserDao.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/log4j.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/log4j.properties" afterDir="false" />
-    </list>
+    <list default="true" id="3b3cac37-047d-4494-a743-857062dcce53" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -45,8 +23,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/manager.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="71">
-              <caret line="43" column="21" lean-forward="true" selection-start-line="43" selection-start-column="21" selection-end-line="43" selection-end-column="21" />
+            <state relative-caret-position="128">
+              <caret line="46" column="26" selection-start-line="46" selection-start-column="26" selection-end-line="46" selection-end-column="26" />
               <folding>
                 <element signature="e#2036#2043#1#HTML" expanded="true" />
               </folding>
@@ -121,9 +99,6 @@
     <option name="ROOT_SYNC" value="DONT_SYNC" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GithubDefaultAccount">
-    <option name="defaultAccountId" value="f0496c2e-9ba9-487f-a63d-7e01a2b58fda" />
-  </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
@@ -184,9 +159,9 @@
     <option name="CUSTOM_FILTER" />
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-8" />
-    <option name="width" value="977" />
-    <option name="height" value="1038" />
+    <option name="x" value="-9" />
+    <option name="width" value="978" />
+    <option name="height" value="1039" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -432,7 +407,7 @@
       <workItem from="1584960149241" duration="14257000" />
       <workItem from="1585014649152" duration="17173000" />
       <workItem from="1585037996488" duration="22812000" />
-      <workItem from="1585104923934" duration="16868000" />
+      <workItem from="1585104923934" duration="19477000" />
     </task>
     <task id="LOCAL-00001" summary="饭店点餐管理系统202003232227">
       <created>1584974247497</created>
@@ -483,11 +458,18 @@
       <option name="project" value="LOCAL" />
       <updated>1585105177484</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="nothing">
+      <created>1585132971443</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1585132971443</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="73110000" />
+    <option name="totallyTimeSpent" value="75719000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -504,7 +486,7 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="MyBatis Log" order="2" weight="0.3186969" />
-      <window_info active="true" anchor="bottom" id="Run" order="3" sideWeight="0.49865952" visible="true" weight="0.3512748" />
+      <window_info anchor="bottom" id="Run" order="3" sideWeight="0.49865952" weight="0.3512748" />
       <window_info anchor="bottom" id="Debug" order="4" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
@@ -551,7 +533,8 @@
     <MESSAGE value="饭店点餐管理系统202003232227" />
     <MESSAGE value="饭店点餐管理系统20200324" />
     <MESSAGE value="优惠券查询和新增还没行" />
-    <option name="LAST_COMMIT_MESSAGE" value="优惠券查询和新增还没行" />
+    <MESSAGE value="nothing" />
+    <option name="LAST_COMMIT_MESSAGE" value="nothing" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/main/java/com/qiang/dao/ITypeMenuDao.java">
@@ -945,8 +928,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/manager.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="71">
-          <caret line="43" column="21" lean-forward="true" selection-start-line="43" selection-start-column="21" selection-end-line="43" selection-end-column="21" />
+        <state relative-caret-position="128">
+          <caret line="46" column="26" selection-start-line="46" selection-start-column="26" selection-end-line="46" selection-end-column="26" />
           <folding>
             <element signature="e#2036#2043#1#HTML" expanded="true" />
           </folding>
