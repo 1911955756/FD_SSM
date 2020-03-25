@@ -69,7 +69,6 @@
                     for (var i = 0; i < data.list.length; i++) {
                         $("tbody").append( "<tr>"
                             +"<td title='"+data.list[i].orderid+"'>"+data.list[i].orderid+"</td>"
-                            +"<td title='"+data.list[i].cs_id+"'>"+data.list[i].cs_id+"</td>"
                             +"<td title='"+ data.list[i].tableid +"'>"+ data.list[i].tableid +"</td>"
                             +"<td title='"+ data.list[i].status +"'>"+ data.list[i].status +"</td>"
                             +"<td title='"+ data.list[i].createtime +"'>"+ data.list[i].createtime +"</td>"
@@ -127,7 +126,6 @@
         <thead>
         <tr>
             <td>订单id</td>
-            <td>顾客id</td>
             <td>餐桌号</td>
             <td>状态</td>
             <td>创建时间</td>
@@ -136,7 +134,6 @@
         </tr>
         <tr>
             <td><input class="form-control" placeholder="输入订单号查询"  id="inputorderid"></td>
-            <td></td>
             <td><input class="form-control" placeholder="输入餐桌号查询"  id="inputtableid"></td>
             <td><input class="form-control" placeholder="输入状态查询"  id="inputstatus"></td>
             <td></td>
@@ -148,7 +145,6 @@
         <c:forEach items="${orderlist.list}" var="order">
             <tr>
                 <td title="${order.orderid}">${order.orderid}</td>
-                <td title="${order.cs_id}">${order.cs_id}</td>
                 <td title="${order.tableid}">${order.tableid}</td>
                 <td title="${order.status}">${order.status}</td>
                 <td title="${order.createtime}">${order.createtime}</td>

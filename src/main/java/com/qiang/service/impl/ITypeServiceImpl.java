@@ -24,10 +24,12 @@ public class ITypeServiceImpl implements ITypeService {
     }
 
 
+
+
     @Override
-    public PageInfo<Type1> findAll(Integer num) {
+    public PageInfo<Type1> findAll(Integer num,String tyname,String tystatus) {
         PageHelper.startPage(num,5);
-        List<Type1> all = typeDao.findAll();
+        List<Type1> all = typeDao.findAll(tyname,tystatus);
         PageInfo<Type1> type1PageInfo = new PageInfo<>(all);
         return type1PageInfo;
     }
@@ -45,6 +47,11 @@ public class ITypeServiceImpl implements ITypeService {
     @Override
     public void deletetype(String typeid) {
         typeDao.deletetype(typeid);
+    }
+
+    @Override
+    public String findIdByname(String name) {
+        return typeDao.findIdByname(name);
     }
 
     @Override

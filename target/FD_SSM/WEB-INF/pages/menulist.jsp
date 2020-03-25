@@ -112,7 +112,6 @@
     <table class="table table-striped table-bordered table-hover">
         <thead>
         <tr>
-            <td >菜单id</td>
             <td>菜名</td>
             <td>单价</td>
             <td>图片路径</td>
@@ -126,7 +125,6 @@
         </tr>
         <tr>
             <form action="../menu/findAll">
-            <td ></td>
             <td><input class="form-control" name="mname" placeholder="输入菜名搜索" value="${mname}" id="mname"></td>
             <td></td>
             <td></td>
@@ -143,7 +141,6 @@
         <tbody>
         <c:forEach items="${listmenu.list}" var="menu">
             <tr>
-                <td title="${menu.menuid}">${menu.menuid}</td>
                 <td title="${menu.menuname}">${menu.menuname}</td>
                 <td title="${menu.price}">${menu.price}</td>
                 <td title="${menu.image}"><img src=${menu.image} width:=50px; height=50px; /></td>
@@ -155,7 +152,7 @@
                 <td title="${menu.kucun}">${menu.kucun}</td>
                 <td><a href="../menu/toupdateMenu?menuid=1" class="btn btn-primary">添加</a><br/>
                     <a href="../menu/toupdateMenu?menuid=${menu.menuid}" class="btn btn-warning">修改</a><br/>
-                    <a href="../menu/deleteMenu?menuid=${menu.menuid}" class="btn btn-danger">删除</a><br/>
+<%--                    <a href="../menu/deleteMenu?menuid=${menu.menuid}" class="btn btn-danger">删除</a><br/>--%>
                 </td>
             </tr>
         </c:forEach>

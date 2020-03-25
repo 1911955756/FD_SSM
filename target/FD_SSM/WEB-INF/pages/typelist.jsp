@@ -64,11 +64,43 @@
                     return false;
                 }
                 else{
-                    $("#addtypeform").submit();
-                    return ture;
+                    $.ajax({
+                        // 编写json格式，设置属性和值
+                        url:"../type/findIdByname",
+                        data:{
+                            name:$("#addtype").val()
+                        },
+                        dataType:"json",
+                        type:"post",
+                        success:function(result){
+                            // data服务器端响应的json的数据，进行解析
+                            if(result==true)
+                            {$("#addtypeform").submit();return true;}
+                            else
+                            {alert("已存在该类型");return false;}
+                        }
+                    });
                 }
             });
-        })
+            $("#check").click(function () {
+                $("#check").attr("href","../type/findAll?tyname="+$("#addtype").val()+"&&tystatus="+$("#typestatus").val()+"")
+            });
+            $("#front").click(function () {
+                $("#front").attr("href","../type/findAll?num=${typelist.pageNum-1}&&tyname="+$("#addtype").val()+"&&tystatus="+$("#typestatus").val()+"")
+            });
+            $("#first").click(function () {
+                $("#first").attr("href","../type/findAll?num=1&&tyname="+$("#addtype").val()+"&&tystatus="+$("#typestatus").val()+"")
+            });
+            $("#last").click(function () {
+                $("#last").attr("href","../type/findAll?num=${typelist.pages}&&tyname="+$("#addtype").val()+"&&tystatus="+$("#typestatus").val()+"")
+            });
+            $("#next").click(function () {
+                $("#next").attr("href","../type/findAll?num=${typelist.pageNum+1}&&tyname="+$("#addtype").val()+"&&tystatus="+$("#typestatus").val()+"")
+            });
+        });
+        function gonum(num) {
+            $(".aurlcenter").attr("href","../type/findAll?num="+num+"&&tyname="+$("#addtype").val()+"&&tystatus="+$("#typestatus").val()+"")
+        };
         function checktype(typeid) {
             var flag=false;
             $.ajax({
@@ -103,7 +135,6 @@
     <table class="table table-striped table-bordered table-hover">
         <thead>
         <tr>
-            <td>类型id</td>
             <td>名称</td>
             <td>状态</td>
             <td>创建时间</td>
@@ -111,20 +142,21 @@
             <td>操作</td>
         </tr>
         <tr>
-            <td ></td>
             <form id="addtypeform" method="post" action="../type/savetype">
-            <td><input id="addtype" name="name" placeholder="请输入名称" type="text" class="form-control"/></td>
+            <td><input id="addtype" name="name" placeholder="请输入名称" type="text" class="form-control" value="${tyname}"/></td>
+                <td ><input id="typestatus" name="status" placeholder="输入状态查询" type="text" class="form-control" value="${tystatus}"/></td>
                 <td ></td>
                 <td ></td>
-                <td ></td>
-            <td><input id="addtypebtn" type="button" value="添加" class="btn btn-primary"/></td>
+            <td>
+                <a id="check" href="" class="btn btn-success">查询</a>
+                <input id="addtypebtn" type="button" value="添加" class="btn btn-primary"/>
+            </td>
             </form>
         </tr>
         </thead>
         <tbody>
         <c:forEach items="${typelist.list}" var="type">
             <tr>
-                <td title="${type.typeid}">${type.typeid}</td>
                 <td title="${type.name}">${type.name}</td>
                 <td title="${type.status}">${type.status}</td>
                 <td title="${type.createtime}">${type.createtime}</td>
@@ -150,11 +182,17 @@
             <c:choose>
                 <c:when test="${typelist.isFirstPage}">
                     <li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
+                    <li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">首</span></a></li>
                 </c:when>
                 <c:otherwise>
                     <li>
-                        <a href="../type/findAll?num=${typelist.pageNum-1}" aria-label="Previous">
+                        <a href="" aria-label="Previous" id="front">
                             <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="" aria-label="Previous" id="first">
+                            <span aria-hidden="true">首</span>
                         </a>
                     </li>
                 </c:otherwise>
@@ -167,17 +205,23 @@
                         </li>
                     </c:when>
                     <c:otherwise>
-                        <li><a href="../type/findAll?num=${num}">${num}</a></li>
+                        <li><a href="" class="aurlcenter" onclick='gonum("${num}")'>${num}</a></li>
                     </c:otherwise>
                 </c:choose>
             </c:forEach>
             <c:choose>
                 <c:when test="${typelist.isLastPage}">
+                    <li class="disabled"><a href="#" aria-label="Next"><span aria-hidden="true">尾</span></a></li>
                     <li class="disabled"><a href="#" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li>
                 </c:when>
                 <c:otherwise>
                     <li>
-                        <a href="../type/findAll?num=${typelist.pageNum+1}" aria-label="Next">
+                        <a href="" aria-label="Next" id="last">
+                            <span aria-hidden="true">尾</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="" aria-label="Next" id="next">
                             <span aria-hidden="true">&raquo;</span>
                         </a>
                     </li>

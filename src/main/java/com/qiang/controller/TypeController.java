@@ -26,11 +26,15 @@ public class TypeController {
     @Autowired
     private ITypeService typeService;
     @RequestMapping("/findAll")
-    public ModelAndView findtypeAll(@RequestParam(required = false,defaultValue ="1") Integer num){
+    public ModelAndView findtypeAll(@RequestParam(required = false,defaultValue ="1") Integer num,
+                                    @RequestParam(required = false)String tyname,
+                                    @RequestParam(required = false)String tystatus){
         ModelMap modelMap=new ModelMap();
         //调用service的方法
-        PageInfo<Type1> list1 = typeService.findAll(num);
+        PageInfo<Type1> list1 = typeService.findAll(num,tyname,tystatus);
         modelMap.addAttribute("typelist",list1);
+        modelMap.addAttribute("tyname",tyname);
+        modelMap.addAttribute("tystatus",tystatus);
         ModelAndView mv=new ModelAndView("list",modelMap);
         mv.setViewName("typelist");
         return mv;
@@ -74,5 +78,13 @@ public class TypeController {
         //调用service的方法
         List<Type1> list = typeService.findTM(mname);
         return list;
+    }
+    @RequestMapping("/findIdByname")
+    public @ResponseBody Boolean findIdByname(String name){
+        String idByname = typeService.findIdByname(name);
+        if (idByname==null){
+        return true;}
+        else{
+            return false;}
     }
 }

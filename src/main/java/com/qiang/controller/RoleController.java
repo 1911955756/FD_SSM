@@ -29,10 +29,14 @@ public class RoleController {
     @Autowired
     private IUserRoleService userRoleService;
     @RequestMapping("/findAll")
-    public @ResponseBody ModelAndView findAll(@RequestParam(required=false,defaultValue = "1") Integer num){
+    public @ResponseBody ModelAndView findAll(@RequestParam(required=false,defaultValue = "1") Integer num,
+                                              @RequestParam(required = false) String rname,
+                                              @RequestParam(required = false) String  rstatus){
         ModelMap modelMap = new ModelMap();
-        PageInfo<Role> all = roleService.findAll(num);
+        PageInfo<Role> all = roleService.findAll(num,rname,rstatus);
         modelMap.addAttribute("rolelist",all);
+        modelMap.addAttribute("rname",rname);
+        modelMap.addAttribute("rstatus",rstatus);
         ModelAndView mv = new ModelAndView("rolemoderMap", modelMap);
         mv.setViewName("rolelist");
         return mv;
@@ -71,4 +75,10 @@ public class RoleController {
         roleService.deleterole(roleid);
         request.getRequestDispatcher("/role/findAll").forward(request,response);
     }
+    @RequestMapping("/findRolename")
+    public @ResponseBody  List findRolename(@RequestParam String name){
+        List<Role> byRname = roleService.findByRname(name);
+        return byRname;
+    }
+
 }

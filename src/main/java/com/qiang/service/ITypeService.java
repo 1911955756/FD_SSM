@@ -25,7 +25,8 @@ public interface ITypeService {
      * 分页查询菜单类型
      * @return
      */
-    PageInfo<Type1> findAll(Integer num);
+    PageInfo<Type1> findAll(Integer num,String tyname,String tystatus);
+
 
     /**
      * 更新类目状态
@@ -44,6 +45,12 @@ public interface ITypeService {
      * @param typeid
      */
     void deletetype(String typeid);
+
+    /**
+     * 查询菜单类型
+     * @return
+     */
+    String findIdByname(String name);
 
     List<Type1> findTM(String mname);
 

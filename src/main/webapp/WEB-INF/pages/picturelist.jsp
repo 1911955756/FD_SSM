@@ -82,7 +82,7 @@
 <body class="inner-container">
 <div class="container-fluid">
     <div class="row">
-        <div class="col-md-3 picture margintop">
+        <div class="col-md-5 picture margintop">
             <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
                 <!-- Indicators -->
                 <ol class="carousel-indicators">
@@ -126,7 +126,7 @@
                 </a>
             </div>
         </div>
-        <div class="col-md-9 table-responsive margintop">
+        <div class="col-md-7 table-responsive margintop">
     <table class="table table-striped table-bordered table-hover">
         <thead>
         <tr>

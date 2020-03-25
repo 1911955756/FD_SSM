@@ -67,7 +67,6 @@
                     for (var i = 0; i < data.list.length; i++) {
                         $("tbody").append( "<tr>"
                             +"<td title='"+data.list[i].bookid+"'>"+data.list[i].bookid+"</td>"
-                            +"<td title='"+data.list[i].cs_id+"'>"+data.list[i].cs_id+"</td>"
                             +"<td title='"+data.list[i].plan_num+"'>"+ data.list[i].plan_num +"</td>"
                             +"<td title='"+data.list[i].status+"'>"+ data.list[i].status +"</td>"
                             +"<td title='"+data.list[i].createtime+"'>"+ data.list[i].createtime +"</td>"
@@ -124,7 +123,6 @@
         <thead>
         <tr>
             <td >预约id</td>
-            <td>顾客id</td>
             <td>就餐人数</td>
             <td>状态</td>
             <td>创建时间</td>
@@ -133,7 +131,6 @@
         </tr>
         <tr>
             <td ><input class="form-control" placeholder="输入预约号查询"  id="inputbookid"></td>
-            <td></td>
             <td><input class="form-control" placeholder="输入就餐人数查询"  id="inputplannum"></td>
             <td></td>
             <td></td>
@@ -145,7 +142,6 @@
         <c:forEach items="${booklist.list}" var="book">
             <tr>
                 <td title="${book.bookid}">${book.bookid}</td>
-                <td title="${book.cs_id}">${book.cs_id}</td>
                 <td title="${book.plan_num}">${book.plan_num}</td>
                 <td  title="${book.status}">${book.status}</td>
                 <td title="${book.createtime}">${book.createtime}</td>

@@ -64,11 +64,43 @@
                     return false;
                 }
                 else{
-                    $("#addroleform").submit();
-                    return ture;
+                    $.ajax({
+                        // 编写json格式，设置属性和值
+                        url:"../role/findRolename",
+                        data:{
+                            name:$("#addrole").val()
+                        },
+                        dataType:"json",
+                        type:"post",
+                        success:function(result){
+                            // data服务器端响应的json的数据，进行解析
+                            if(result.length==0)
+                            {$("#addroleform").submit();return true;}
+                            else
+                            {alert("已存在该角色");return false;}
+                        }
+                    });
                 }
             });
-        })
+            $("#check").click(function () {
+                $("#check").attr("href","../role/findAll?rname="+$("#addrole").val()+"&&rstatus="+$("#rolestatus").val()+"")
+            });
+            $("#front").click(function () {
+                $("#front").attr("href","../role/findAll?num=${rolelist.pageNum-1}&&rname="+$("#addrole").val()+"&&rstatus="+$("#rolestatus").val()+"")
+            });
+            $("#first").click(function () {
+                $("#first").attr("href","../role/findAll?num=1&&rname="+$("#addrole").val()+"&&rstatus="+$("#rolestatus").val()+"")
+            });
+            $("#last").click(function () {
+                $("#last").attr("href","../role/findAll?num=${rolelist.pages}&&rname="+$("#addrole").val()+"&&rstatus="+$("#rolestatus").val()+"")
+            });
+            $("#next").click(function () {
+                $("#next").attr("href","../role/findAll?num=${rolelist.pageNum+1}&&rname="+$("#addrole").val()+"&&rstatus="+$("#rolestatus").val()+"")
+            });
+        });
+        function gonum(num) {
+            $(".aurlcenter").attr("href","../role/findAll?num="+num+"&&rname="+$("#addrole").val()+"&&rstatus="+$("#rolestatus").val()+"")
+        };
         function checkrole(roleid) {
             var flag=false;
             $.ajax({
@@ -103,7 +135,6 @@
     <table class="table table-striped table-bordered table-hover">
         <thead>
         <tr>
-            <td>角色id</td>
             <td>名称</td>
             <td>状态</td>
             <td>创建时间</td>
@@ -111,20 +142,19 @@
             <td>操作</td>
         </tr>
         <tr>
-            <td ></td>
             <form id="addroleform" method="post" action="../role/saverole">
-            <td><input id="addrole" name="name" placeholder="请输入名称" type="text" class="form-control"/></td>
+            <td><input id="addrole" name="name" placeholder="请输入名称" type="text" class="form-control" value="${rstatus}"/></td>
+                <td><input id="rolestatus" name="status" placeholder="输入状态查询" type="text" class="form-control" value="${rstatus}"/></td>
                 <td ></td>
                 <td ></td>
-                <td ></td>
-            <td><input id="addrolebtn" type="button" value="添加" class="btn btn-primary"/></td>
+                <td><a id="check" href="" class="btn btn-success">查询</a>
+                <input id="addrolebtn" type="button" value="添加" class="btn btn-primary"/></td>
             </form>
         </tr>
         </thead>
         <tbody>
         <c:forEach items="${rolelist.list}" var="role">
             <tr>
-                <td title="${role.roleid}">${role.roleid}</td>
                 <td title="${role.rolename}">${role.rolename}</td>
                 <td title="${role.status}">${role.status}</td>
                 <td title="${role.createtime}">${role.createtime}</td>
@@ -150,11 +180,17 @@
             <c:choose>
                 <c:when test="${rolelist.isFirstPage}">
                     <li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
+                    <li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">首</span></a></li>
                 </c:when>
                 <c:otherwise>
                     <li>
-                        <a href="../role/findAll?num=${rolelist.pageNum-1}" aria-label="Previous">
+                        <a href="" aria-label="Previous" id="front">
                             <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="" aria-label="Previous" id="first">
+                            <span aria-hidden="true">首</span>
                         </a>
                     </li>
                 </c:otherwise>
@@ -167,17 +203,23 @@
                         </li>
                     </c:when>
                     <c:otherwise>
-                        <li><a href="../role/findAll?num=${num}">${num}</a></li>
+                        <li><a href="" class="aurlcenter" onclick='gonum("${num}")'>${num}</a></li>
                     </c:otherwise>
                 </c:choose>
             </c:forEach>
             <c:choose>
                 <c:when test="${rolelist.isLastPage}">
+                    <li class="disabled"><a href="#" aria-label="Next"><span aria-hidden="true">尾</span></a></li>
                     <li class="disabled"><a href="#" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li>
                 </c:when>
                 <c:otherwise>
                     <li>
-                        <a href="../role/findAll?num=${rolelist.pageNum+1}" aria-label="Next">
+                        <a href="" aria-label="Next" id="last">
+                            <span aria-hidden="true">尾</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="" aria-label="Next" id="next">
                             <span aria-hidden="true">&raquo;</span>
                         </a>
                     </li>

@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.qiang.dao.ICouponDao">
     <select id="findAll" parameterType="string" resultType="com.qiang.domain.Coupon">
-        select * from coupon where status not in('默认','删除')
+        select * from coupon where status not in('默认')
         <if test="couname!=null and couname!=''">
             and couponname like '%${couname}%'
         </if>

@@ -16,11 +16,11 @@ import java.util.List;
  */
 public interface IRoleService {
     /**
-     * 根据roleid查询角色名称
-     * @param roleid
+     * 根据rolename查询角色
+     * @param rolename
      * @return
      */
-    List<Role> findByRid(String  roleid);
+    List<Role> findByRname(String  rolename);
     /**
      * 查询所有角色
      * @return
@@ -31,7 +31,7 @@ public interface IRoleService {
      * 分页查询所有角色
      * @return
      */
-    PageInfo<Role> findAll(Integer num);
+    PageInfo<Role> findAll(Integer num,String rname,String rstatus);
 
     /**
      * 删除角色信息

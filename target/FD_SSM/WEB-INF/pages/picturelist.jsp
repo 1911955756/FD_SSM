@@ -60,14 +60,29 @@
                     $("#formpicurl").submit();
                     return ture;
                 }
-            })
+            });
+            $("#front").click(function () {
+                $("#front").attr("href","../picture/findAll?num=${picturelist.pageNum-1}")
+            });
+            $("#first").click(function () {
+                $("#first").attr("href","../picture/findAll?num=1")
+            });
+            $("#last").click(function () {
+                $("#last").attr("href","../picture/findAll?num=${picturelist.pages}")
+            });
+            $("#next").click(function () {
+                $("#next").attr("href","../picture/findAll?num=${picturelist.pageNum+1}")
+            });
         });
+        function gonum(num) {
+            $(".aurlcenter").attr("href","../picture/findAll?num="+num+"")
+        }
     </script>
 </head>
 <body class="inner-container">
 <div class="container-fluid">
     <div class="row">
-        <div class="col-md-3 picture margintop">
+        <div class="col-md-5 picture margintop">
             <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
                 <!-- Indicators -->
                 <ol class="carousel-indicators">
@@ -111,11 +126,10 @@
                 </a>
             </div>
         </div>
-        <div class="col-md-9 table-responsive margintop">
+        <div class="col-md-7 table-responsive margintop">
     <table class="table table-striped table-bordered table-hover">
         <thead>
         <tr>
-            <td >图片id</td>
             <td >图片路径</td>
             <td >状态</td>
             <td >创建时间</td>
@@ -123,24 +137,18 @@
             <td >修改</td>
         </tr>
         <tr>
-            <td></td>
             <form action="../picture/savePicture" id="formpicurl" method="post">
-                <td>
-                    <input type="text" name="url" id="addpicurl" placeholder="请输入图片路径" class="form-control"/>
-                </td>
+                <td><input type="text" name="url" id="addpicurl" placeholder="请输入图片路径" class="form-control"/></td>
                 <td></td>
                 <td></td>
                 <td></td>
-                <td>
-                     <button id="addpicbtn" type="button"  class="btn btn-primary">添加</button>
-                </td>
+                <td><button id="addpicbtn" type="button"  class="btn btn-primary">添加</button></td>
             </form>
         </tr>
         </thead>
         <tbody>
         <c:forEach items="${picturelist.list}" var="picture">
             <tr >
-                <td title="${picture.pictureid}">${picture.pictureid}</td>
                 <td title="${picture.url}"><img src=${picture.url} width:=50px; height=50px; /></td>
                 <td title="${picture.status}">${picture.status}</td>
                 <td title="${picture.createtime}">${picture.createtime}</td>
@@ -160,47 +168,59 @@
         </c:forEach>
         </tbody>
     </table>
-    <%--    分页条--%>
-    <nav aria-label="Page navigation" class="right">
-        <ul class="pagination">
-            <c:choose>
-                <c:when test="${picturelist.isFirstPage}">
-                    <li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
-                </c:when>
-                <c:otherwise>
-                    <li>
-                        <a href="../picture/findAll?num=${picturelist.pageNum-1}" aria-label="Previous">
-                            <span aria-hidden="true">&laquo;</span>
-                        </a>
-                    </li>
-                </c:otherwise>
-            </c:choose>
-            <c:forEach items="${picturelist.navigatepageNums}" var="num">
-                <c:choose>
-                    <c:when test="${num==picturelist.pageNum}">
-                        <li class="active">
-                            <span>${num}<span class="sr-only">(current)</span></span>
-                        </li>
-                    </c:when>
-                    <c:otherwise>
-                        <li><a href="../picture/findAll?num=${num}">${num}</a></li>
-                    </c:otherwise>
-                </c:choose>
-            </c:forEach>
-            <c:choose>
-                <c:when test="${picturelist.isLastPage}">
-                    <li class="disabled"><a href="#" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li>
-                </c:when>
-                <c:otherwise>
-                    <li>
-                        <a href="../picture/findAll?num=${picturelist.pageNum+1}" aria-label="Next">
-                            <span aria-hidden="true">&raquo;</span>
-                        </a>
-                    </li>
-                </c:otherwise>
-            </c:choose>
-        </ul>
-    </nav>
+            <%--    分页条--%>
+            <nav aria-label="Page navigation" class="right">
+                <ul class="pagination">
+                    <c:choose>
+                        <c:when test="${picturelist.isFirstPage}">
+                            <li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
+                            <li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">首</span></a></li>
+                        </c:when>
+                        <c:otherwise>
+                            <li>
+                                <a href="" aria-label="Previous" id="front">
+                                    <span aria-hidden="true">&laquo;</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="" aria-label="Previous" id="first">
+                                    <span aria-hidden="true">首</span>
+                                </a>
+                            </li>
+                        </c:otherwise>
+                    </c:choose>
+                    <c:forEach items="${picturelist.navigatepageNums}" var="num">
+                        <c:choose>
+                            <c:when test="${num==picturelist.pageNum}">
+                                <li class="active">
+                                    <span>${num}<span class="sr-only">(current)</span></span>
+                                </li>
+                            </c:when>
+                            <c:otherwise>
+                                <li><a href="" class="aurlcenter" onclick='gonum("${num}")'>${num}</a></li>
+                            </c:otherwise>
+                        </c:choose>
+                    </c:forEach>
+                    <c:choose>
+                        <c:when test="${picturelist.isLastPage}">
+                            <li class="disabled"><a href="#" aria-label="Next"><span aria-hidden="true">尾</span></a></li>
+                            <li class="disabled"><a href="#" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li>
+                        </c:when>
+                        <c:otherwise>
+                            <li>
+                                <a href="" aria-label="Next" id="last">
+                                    <span aria-hidden="true">尾</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="" aria-label="Next" id="next">
+                                    <span aria-hidden="true">&raquo;</span>
+                                </a>
+                            </li>
+                        </c:otherwise>
+                    </c:choose>
+                </ul>
+            </nav>
 </div>
     </div>
 </div>

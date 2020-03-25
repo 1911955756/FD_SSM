@@ -13,12 +13,12 @@ import java.util.List;
 @Repository
 public interface IRoleDao {
     /**
-     * 根据roleid查询角色名称
-     * @param roleid
+     * 根据rolename查询角色
+     * @param rolename
      * @return
      */
-    @Select("select * from role where roleid=#{roleid}")
-    List<Role> findByRid(String  roleid);
+    @Select("select * from role where rolename=#{rolename}")
+    List<Role> findByRname(String  rolename);
 
     /**
      * 查询可使用角色
@@ -31,8 +31,7 @@ public interface IRoleDao {
      * 分页查询所有角色
      * @return
      */
-    @Select("select * from role order by createtime desc")
-    List<Role> findAll();
+    List<Role> findAll(@Param("rname") String rname,@Param("rstatus") String rstatus);
 
     /**
      * 删除角色信息

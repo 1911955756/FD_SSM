@@ -19,14 +19,16 @@ import java.util.List;
 public class IRoleServiceImpl implements IRoleService {
     @Autowired
     private IRoleDao roleDao;
-    @Override
-    public List<Role> findByRid(String roleid) {
-        return roleDao.findByRid(roleid);
-    }
+
 
     @Override
     public List<Role> findroleAll() {
         return roleDao.findroleAll();
+    }
+
+    @Override
+    public List<Role> findByRname(String rolename) {
+        return roleDao.findByRname(rolename);
     }
 
     @Override
@@ -53,9 +55,9 @@ public class IRoleServiceImpl implements IRoleService {
     }
 
     @Override
-    public PageInfo<Role> findAll(Integer num) {
+    public PageInfo<Role> findAll(Integer num,String rname,String rstatus) {
         PageHelper.startPage(num,5);
-        List<Role> all = roleDao.findAll();
+        List<Role> all = roleDao.findAll(rname,rstatus);
         PageInfo<Role> rolePageInfo = new PageInfo<>(all);
         return rolePageInfo;
     }

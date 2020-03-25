@@ -23,8 +23,8 @@ public interface ITypeDao {
      * 分页查询菜单类型
      * @return
      */
-    @Select("select * from type1 order by typeid")
-    List<Type1> findAll();
+    List<Type1> findAll(@Param("tyname") String tyname,@Param("tystatus") String tystatus);
+
 
     /**
      * 更新类目状态

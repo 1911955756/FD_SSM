@@ -46,7 +46,7 @@ public interface ICouponService {
     void savecoupon(Coupon  coupon);
 
     /**
-     * 根据couponid实现优惠券上下架
+     * 根据couponid实现优惠券删除
      * @param coupon
      */
     void updatecouponstatus(Coupon coupon);

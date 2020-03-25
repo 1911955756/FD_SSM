@@ -64,25 +64,42 @@
                     return false;
                 }
                 else{
-                    $("#addtypeform").submit();
-                    return ture;
+                    $.ajax({
+                        // 编写json格式，设置属性和值
+                        url:"../type/findIdByname",
+                        data:{
+                            name:$("#addtype").val()
+                        },
+                        dataType:"json",
+                        type:"post",
+                        success:function(result){
+                            // data服务器端响应的json的数据，进行解析
+                            if(result==true)
+                            {$("#addtypeform").submit();return true;}
+                            else
+                            {alert("已存在该类型");return false;}
+                        }
+                    });
                 }
             });
+            $("#check").click(function () {
+                $("#check").attr("href","../type/findAll?tyname="+$("#addtype").val()+"&&tystatus="+$("#typestatus").val()+"")
+            });
             $("#front").click(function () {
-                $("#front").attr("href","../type/findAll?num=${typelist.pageNum-1}")
+                $("#front").attr("href","../type/findAll?num=${typelist.pageNum-1}&&tyname="+$("#addtype").val()+"&&tystatus="+$("#typestatus").val()+"")
             });
             $("#first").click(function () {
-                $("#first").attr("href","../type/findAll?num=1")
+                $("#first").attr("href","../type/findAll?num=1&&tyname="+$("#addtype").val()+"&&tystatus="+$("#typestatus").val()+"")
             });
             $("#last").click(function () {
-                $("#last").attr("href","../type/findAll?num=${typelist.pages}")
+                $("#last").attr("href","../type/findAll?num=${typelist.pages}&&tyname="+$("#addtype").val()+"&&tystatus="+$("#typestatus").val()+"")
             });
             $("#next").click(function () {
-                $("#next").attr("href","../type/findAll?num=${typelist.pageNum+1}")
+                $("#next").attr("href","../type/findAll?num=${typelist.pageNum+1}&&tyname="+$("#addtype").val()+"&&tystatus="+$("#typestatus").val()+"")
             });
         });
         function gonum(num) {
-            $(".aurlcenter").attr("href","../type/findAll?num="+num+"")
+            $(".aurlcenter").attr("href","../type/findAll?num="+num+"&&tyname="+$("#addtype").val()+"&&tystatus="+$("#typestatus").val()+"")
         };
         function checktype(typeid) {
             var flag=false;
@@ -126,11 +143,14 @@
         </tr>
         <tr>
             <form id="addtypeform" method="post" action="../type/savetype">
-            <td><input id="addtype" name="name" placeholder="请输入名称" type="text" class="form-control"/></td>
+            <td><input id="addtype" name="name" placeholder="请输入名称" type="text" class="form-control" value="${tyname}"/></td>
+                <td ><input id="typestatus" name="status" placeholder="输入状态查询" type="text" class="form-control" value="${tystatus}"/></td>
                 <td ></td>
                 <td ></td>
-                <td ></td>
-            <td><input id="addtypebtn" type="button" value="添加" class="btn btn-primary"/></td>
+            <td>
+                <a id="check" href="" class="btn btn-success">查询</a>
+                <input id="addtypebtn" type="button" value="添加" class="btn btn-primary"/>
+            </td>
             </form>
         </tr>
         </thead>

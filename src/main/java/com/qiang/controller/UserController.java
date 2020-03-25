@@ -41,6 +41,17 @@ public class UserController {
          }
 
     }
+    @RequestMapping("/findPhone")
+    public @ResponseBody boolean findPhone(@RequestParam Integer phone){
+        System.out.println("表现层：查询有无电话号码");
+        //调用service的方法
+        String passwordByphone = userService.findPasswordByphone(phone);
+        if(passwordByphone==null){
+            return true;}
+        else{
+            return false;
+        }
+    }
     @RequestMapping("/login")
         public ModelAndView  login(Integer phone) {
         System.out.println("表现层：密码正确，登录。。。");
@@ -112,7 +123,6 @@ public class UserController {
     }
     @RequestMapping("/saveUser")
     public void saveUser(User1 user1,HttpServletRequest request, HttpServletResponse response) throws Exception{
-        System.out.println(user1);
         userService.saveUser(user1);
         request.getRequestDispatcher("/user/findAll").forward(request,response);
     }

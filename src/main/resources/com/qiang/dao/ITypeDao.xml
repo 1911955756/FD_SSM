@@ -14,6 +14,16 @@
             <result property="kucun" column="kucun"></result>
         </collection>
     </resultMap>
+    <select id="findAll" resultType="com.qiang.domain.Type1" parameterType="java.lang.String">
+        select * from type1 where 1=1
+        <if test="tyname!=null and tyname!=''">
+            and name like '%${tyname}%'
+        </if>
+        <if test="tystatus!=null and tystatus!=''">
+            and status like '%${tystatus}%'
+        </if>
+        order by typeid
+    </select>
     <select id="findTM" resultMap="TMap" parameterType="java.lang.String">
 SELECT
 	t.*,

@@ -152,7 +152,7 @@
                 <td title="${menu.kucun}">${menu.kucun}</td>
                 <td><a href="../menu/toupdateMenu?menuid=1" class="btn btn-primary">添加</a><br/>
                     <a href="../menu/toupdateMenu?menuid=${menu.menuid}" class="btn btn-warning">修改</a><br/>
-                    <a href="../menu/deleteMenu?menuid=${menu.menuid}" class="btn btn-danger">删除</a><br/>
+<%--                    <a href="../menu/deleteMenu?menuid=${menu.menuid}" class="btn btn-danger">删除</a><br/>--%>
                 </td>
             </tr>
         </c:forEach>

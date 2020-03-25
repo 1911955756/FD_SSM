@@ -71,6 +71,13 @@ public class CouponController {
         request.getRequestDispatcher("/coupon/findAll").forward(request,response);
     }
 
+    @RequestMapping("/deleteCoupon")
+    public  void deleteCoupon(Coupon coupon,HttpServletRequest request, HttpServletResponse response) throws Exception{
+        couponService.updatecouponstatus(coupon);
+        System.out.println("删除成功");
+        request.getRequestDispatcher("/coupon/findAll").forward(request,response);
+    }
+
     @RequestMapping("/findCoupon")
     public @ResponseBody List findCoupon(@RequestParam String couponname){
         List<Coupon> coupon = couponService.findCoupon("%"+couponname+"%");
