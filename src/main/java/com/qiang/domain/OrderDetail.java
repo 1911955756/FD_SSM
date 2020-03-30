@@ -15,6 +15,7 @@ public class OrderDetail {
     private String menuid;
     private Integer menu_num;
     private String status;
+    private String called;
     private Timestamp createtime;
     private Timestamp updatetime;
     private Menu menu;

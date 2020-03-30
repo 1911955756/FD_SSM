@@ -15,6 +15,14 @@ import java.util.List;
  */
 public interface IBookService {
 
+    /**
+     * 分页模糊查询所有预约
+     * @param num
+     * @param now
+     * @param bookid
+     * @param plannum
+     * @return
+     */
     PageInfo<Book> findAll(Integer num,String now,String bookid,Integer plannum);
 
 
@@ -22,7 +30,6 @@ public interface IBookService {
      * 保存预约单
      * @param book
      */
-    @Insert("insert into book(cs_id,plan_num)values(#{cs_id},#{plan_num})")
     void savebook(Book book);
 
     /**
@@ -30,7 +37,6 @@ public interface IBookService {
      * @param cs_id
      * @return
      */
-    @Select("select * from book where cs_id=#{cs_id} and status='等待中'")
     List<Book> findMyBook(String cs_id);
 
     /**
@@ -38,15 +44,17 @@ public interface IBookService {
      * @param cs_id
      * @return
      */
-    @Select("select * from book where cs_id=#{cs_id} and status！='等待中' order by createtime desc")
     List<Book> findMyoldBook(String cs_id);
 
     /**
      * 更新我的订单状态
      * @param book
      */
-    @Update("update book set status=#{status} where bookid=#{bookid}")
     void updateMyBook(Book book);
 
+    /**
+     *减少等待人数
+     * @param abc
+     */
     void cancelwaitnum(String abc);
 }

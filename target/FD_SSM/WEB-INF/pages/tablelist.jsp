@@ -80,14 +80,14 @@
                     }
                     $(".pagination").html("");
                     if(data.isFirstPage){
-                        var first="<li class=\"disabled\"><a href=\"#\" aria-label=\"Previous\"><span aria-hidden=\"true\">&laquo;</span></a></li>";
+                        var first="<li class=\"disabled\"><a href=\"#\" aria-label=\"Previous\"><span aria-hidden=\"true\">&laquo;</span></a></li>" +
+                            "<li class=\"disabled\"><a href=\"#\" aria-label=\"Previous\"><span aria-hidden=\"true\">首</span></a></li>";
                     }
                     else if(!data.isFirstPage){
-                        var first="                <li>\n" +
-                            "                    <a href=\"../table/findAll?num="+(data.pageNum+1)+"&&tableid="+tableid+"&&peoplenum="+peoplenum+"&&status="+status+"\" aria-label=\"Previous\">\n" +
-                            "                        <span aria-hidden=\"true\">&laquo;</span>\n" +
-                            "                    </a>\n" +
-                            "                </li>";
+                        var first="<li><a href=\"../table/findAll?num="+(data.pageNum-1)+"&&tableid="+tableid+"&&peoplenum="+peoplenum+"&&status="+status+"\" aria-label=\"Previous\">\n" +
+                            "                        <span aria-hidden=\"true\">&laquo;</span></a></li>" +
+                            "<li><a href=\"../table/findAll?num=1&&tableid="+tableid+"&&peoplenum="+peoplenum+"&&status="+status+"\" aria-label=\"Previous\">\n" +
+                            "                        <span aria-hidden=\"true\">首</span></a></li>";
                     }
                     var center="";
                     for(var i=0;i<data.navigatepageNums.length;i++){
@@ -101,14 +101,14 @@
                         center=center+now;
                     }
                     if(data.isLastPage){
-                        var last="<li class=\"disabled\"><a href=\"#\" aria-label=\"Next\"><span aria-hidden=\"true\">&raquo;</span></a></li>";
+                        var last="<li class=\"disabled\"><a href=\"#\" aria-label=\"Next\"><span aria-hidden=\"true\">尾</span></a></li>" +
+                            "<li class=\"disabled\"><a href=\"#\" aria-label=\"Next\"><span aria-hidden=\"true\">&raquo;</span></a></li>";
                     }
                     else if(!data.isLastPage){
-                        var last="                <li>\n" +
-                            "                    <a href=\"../table/findAll?num="+(data.pageNum-1)+"&&tableid="+tableid+"&&peoplenum="+peoplenum+"&&status="+status+"\" aria-label=\"Previous\">\n" +
-                            "                        <span aria-hidden=\"true\">&raquo;</span>\n" +
-                            "                    </a>\n" +
-                            "                </li>";
+                        var last="<li><a href=\"../table/findAll?num="+(data.pages)+"&&tableid="+tableid+"&&peoplenum="+peoplenum+"&&status="+status+"\" aria-label=\"Previous\">\n" +
+                            "                        <span aria-hidden=\"true\">尾</span></a></li>" +
+                            "<li><a href=\"../table/findAll?num="+(data.pageNum+1)+"&&tableid="+tableid+"&&peoplenum="+peoplenum+"&&status="+status+"\" aria-label=\"Previous\">\n" +
+                            "                        <span aria-hidden=\"true\">&raquo;</span></a></li>";
                     }
                     var all=first+center+last;
                     $(".pagination").append(all);
@@ -193,11 +193,17 @@
         <c:choose>
             <c:when test="${tablelist.isFirstPage}">
                 <li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
+                <li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">首</span></a></li>
             </c:when>
             <c:otherwise>
                 <li>
                     <a href="../table/findAll?num=${tablelist.pageNum-1}" aria-label="Previous">
                         <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="../table/findAll?num=1" aria-label="Previous">
+                        <span aria-hidden="true">首</span>
                     </a>
                 </li>
             </c:otherwise>
@@ -216,9 +222,15 @@
         </c:forEach>
         <c:choose>
             <c:when test="${tablelist.isLastPage}">
+                <li class="disabled"><a href="#" aria-label="Next"><span aria-hidden="true">尾</span></a></li>
                 <li class="disabled"><a href="#" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li>
             </c:when>
             <c:otherwise>
+                <li>
+                    <a href="../table/findAll?num=${tablelist.pages}" aria-label="Next">
+                        <span aria-hidden="true">尾</span>
+                    </a>
+                </li>
                 <li>
                     <a href="../table/findAll?num=${tablelist.pageNum+1}" aria-label="Next">
                         <span aria-hidden="true">&raquo;</span>

@@ -18,5 +18,6 @@ public class Evaluation {
     private Timestamp createtime;
     private Timestamp updatetime;
     private Integer tuijian_num;
+    private String photourl;
     private Customer customer;
 }

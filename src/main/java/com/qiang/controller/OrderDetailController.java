@@ -30,7 +30,7 @@ public class OrderDetailController {
     private IOrderDetailService orderDetailService;
     @RequestMapping("/findAll")
     public ModelAndView findAll(@RequestParam(required = false,defaultValue ="1") Integer num,
-                                @RequestParam(required = false,defaultValue ="1") String status){
+                                @RequestParam(required = false) String status){
         System.out.println("查询第"+num+"页,状态为："+status+"的上菜单");
         ModelMap modelMap=new ModelMap();
         //调用service的方法
@@ -104,5 +104,10 @@ public class OrderDetailController {
     public @ResponseBody List findMyorderdetail(String orderid){
         List<OrderDetail> myorderdetail = orderDetailService.findMyorderdetail(orderid);
         return myorderdetail;
+    }
+
+    @RequestMapping("/call")
+    public @ResponseBody void call(String odid){
+        orderDetailService.updateODcall(odid);
     }
 }

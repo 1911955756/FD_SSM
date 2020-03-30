@@ -53,14 +53,20 @@ public interface IMenuDao {
      */
     @Insert("insert into menu(menuname,image,kucun,description,price)values(#{menuname},#{image},#{kucun},#{description},#{price})")
     void saveMenu(Menu menu);
-
     /**
      * 根据菜名模糊查询菜品信息
      * @param menuname
      * @return
      */
     List<Menu> findMenuByName(String menuname);
-
+    /**
+     * 统计月销情况
+     * @return
+     */
     List<Map> countsellnum();
+    /**
+     * 统计新菜受欢迎程度
+     * @return
+     */
     List<Map> countnewfood();
 }

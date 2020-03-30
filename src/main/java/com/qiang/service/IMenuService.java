@@ -27,27 +27,23 @@ public interface IMenuService {
      * 根据menuid删除轮播图
      * @param menuid
      */
-    @Delete("delete from menu where menuid=#{menuid}")
     void deleteMenu(String menuid);
     /**
      * 根据menuid查询菜单信息
      * @param menuid
      */
-    @Select("select * from menu where menuid=#{menuid}")
     Menu findByMenuid(String menuid);
 
     /**
      * 更新菜单
      * @param menu
      */
-    @Update("update menu set menuname=#{menuname},image=#{image},status=#{status},kucun=#{kucun},price=#{price},description=#{description} where menuid=#{menuid}")
     void updateMenu(Menu menu);
 
     /**
      * 保存菜单
      * @param menu
      */
-    @Insert("insert into menu(menuname,image,kucun,description,price)values(#{menuname},#{image},#{kucun},#{description},#{price})")
     void saveMenu(Menu menu);
 
     /**

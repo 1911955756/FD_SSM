@@ -31,5 +31,9 @@ public interface ITableDao {
     @Insert("insert into table1(tableid,people_num)values(#{tableid},#{people_num})")
     void saveTable(Table1 table1);
 
+    /**
+     * 查询餐桌等待人数
+     * @return
+     */
     List<Table1> findTpeoplenum();
 }

@@ -44,7 +44,48 @@
     </style>
     <script type="text/javascript" src="../js/jquery.min.js"></script>
     <script type="text/javascript" src="../js/bootstrap.min.js"></script>
-
+    <script>
+        $(function () {
+            var flag=false;
+            $("#addbtn").click(function () {
+                if($("#username").val()==""){
+                    alert("用户名不能为空");
+                    $("#username").focus();
+                    flag=false;
+                    return flag;
+                }else if($("#phone").val()==""){
+                    alert("联系方式不能为空");
+                    $("#phone").focus();
+                    flag=false;
+                    return flag;
+                }
+                else if($("#password").val()==""){
+                    alert("密码不能为空");
+                    $("#password").focus();
+                    flag=false;
+                    return flag;
+                }
+                else{
+                    $.ajax({
+                        // 编写json格式，设置属性和值
+                        url:"../user/findPhone",
+                        data:{
+                            phone:$("#phone").val()
+                        },
+                        dataType:"json",
+                        type:"post",
+                        success:function(result){
+                            // data服务器端响应的json的数据，进行解析
+                            if(result==true)
+                            {$("#addform").submit();return true;}
+                            else
+                            {alert("已存在该联系方式");return false;}
+                        }
+                    });
+                }
+            })
+        })
+    </script>
 
 </head>
 <body class="inner-container">
@@ -58,12 +99,12 @@
         </thead>
         <tbody>
         <c:if test="${empty byuserid.phone}" var="result">
-        <form action="../user/saveUser" class="form-inline" method="post">
-            <tr><td>用户名：</td><td><input type="text" name="username" class="form-control"/></td></tr>
-            <tr><td>联系方式:</td><td><input type="text"  name="phone" class="form-control"/></td></tr>
-            <tr><td>密码:</td><td><input type="text"  name="password" class="form-control"/></td></tr>
-            <tr><td>职位:</td><td><input type="text"  name="job" class="form-control"/></td></tr>
-            <tr><td></td><td><input type="submit"value="添加" class="btn btn-primary"/>
+        <form action="../user/saveUser" class="form-inline" method="post" id="addform">
+            <tr><td>用户名：</td><td><input type="text" name="username" class="form-control" id="username"/></td></tr>
+            <tr><td>联系方式:</td><td><input type="text"  name="phone" class="form-control" id="phone"/></td></tr>
+            <tr><td>密码:</td><td><input type="text"  name="password" class="form-control" id="password"/></td></tr>
+            <tr><td>职位:</td><td><input type="text"  name="job" class="form-control" /></td></tr>
+            <tr><td></td><td><input type="button"value="添加" class="btn btn-primary" id="addbtn" />
         </form>
         <a href="../user/findAll" class="btn btn-warning">取消</a></td></tr>
         </c:if>

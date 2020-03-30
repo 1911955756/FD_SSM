@@ -62,12 +62,11 @@
                     var html="";
                     for (var i = 0; i < data.list.length; i++) {
                         var content="<tr>"
-                            +"<td title='"+data.list[i].odid+"'>"+data.list[i].odid+"</td>"
-                            +"<td title='"+data.list[i].orderid+"'>"+data.list[i].orderid+"</td>"
-                            +"<td title='"+data.list[i].menu.menuname+"'>"+data.list[i].menu.menuname+"</td>"
+                            +"<td title='"+data.list[i].odid+"'onclick=\'changeImage(\""+data.list[i].menu.image+"\")'>"+data.list[i].odid+"</td>"
+                            +"<td title='"+data.list[i].orderid+"'onclick=\'changeImage(\""+data.list[i].menu.image+"\")'>"+data.list[i].orderid+"</td>"
+                            +"<td title='"+data.list[i].menu.menuname+"'onclick=\'changeImage(\""+data.list[i].menu.image+"\")'>"+data.list[i].menu.menuname+"</td>"
                             +"<td title='"+ data.list[i].menu_num +"'>"+ data.list[i].menu_num +"</td>"
                             +"<td title='"+ data.list[i].order1.tableid +"'>"+ data.list[i].order1.tableid +"</td>"
-                            +"<td title='"+ data.list[i].status +"'>"+ data.list[i].status +"</td>"
                             +"<td title='"+ data.list[i].createtime +"'>"+ data.list[i].createtime +"</td>"
                             +"<td title='"+ data.list[i].updatetime +"'>"+ data.list[i].updatetime +"</td>";
                         if (data.list[i].status=='待烹饪'){
@@ -81,14 +80,14 @@
                     }
                     $(".pagination").html("");
                     if(data.isFirstPage){
-                        var first="<li class=\"disabled\"><a href=\"#\" aria-label=\"Previous\"><span aria-hidden=\"true\">&laquo;</span></a></li>";
+                        var first="<li class=\"disabled\"><a href=\"#\" aria-label=\"Previous\"><span aria-hidden=\"true\">&laquo;</span></a></li>" +
+                            "<li class=\"disabled\"><a href=\"#\" aria-label=\"Previous\"><span aria-hidden=\"true\">首</span></a></li>";
                     }
                     else if(!data.isFirstPage){
-                        var first="                <li>\n" +
-                            "                    <a href=\"../orderdetail/findAll?num="+(data.pageNum-1)+"&&status="+ data.list[0].status +"\" aria-label=\"Previous\">\n" +
-                            "                        <span aria-hidden=\"true\">&laquo;</span>\n" +
-                            "                    </a>\n" +
-                            "                </li>";
+                        var first="<li><a href=\"../orderdetail/findAll?num="+(data.pageNum-1)+"&&status="+ data.list[0].status +"\" aria-label=\"Previous\">\n" +
+                            "                        <span aria-hidden=\"true\">&laquo;</span></a></li>" +
+                            "<li><a href=\"../orderdetail/findAll?num=1&&status="+ data.list[0].status +"\" aria-label=\"Previous\">\n" +
+                            "                        <span aria-hidden=\"true\">首</span></a></li>";
                     }
                     var center="";
                     for(var i=0;i<data.navigatepageNums.length;i++){
@@ -102,24 +101,30 @@
                         center=center+now;
                     }
                     if(data.isLastPage){
-                        var last="<li class=\"disabled\"><a href=\"#\" aria-label=\"Next\"><span aria-hidden=\"true\">&raquo;</span></a></li>";
+                        var last="<li class=\"disabled\"><a href=\"#\" aria-label=\"Next\"><span aria-hidden=\"true\">尾</span></a></li>" +
+                            "<li class=\"disabled\"><a href=\"#\" aria-label=\"Next\"><span aria-hidden=\"true\">&raquo;</span></a></li>";
                     }
                     else if(!data.isLastPage){
-                        var last="                <li>\n" +
-                            "                    <a href=\"../orderdetail/findAll?num="+(data.pageNum+1)+"&&status="+ data.list[0].status +"\" aria-label=\"Previous\">\n" +
-                            "                        <span aria-hidden=\"true\">&raquo;</span>\n" +
-                            "                    </a>\n" +
-                            "                </li>";
+                        var last="<li><a href=\"../orderdetail/findAll?num="+(data.pages)+"&&status="+ data.list[0].status +"\" aria-label=\"Previous\">\n" +
+                            "                        <span aria-hidden=\"true\">尾</span></a></li>" +
+                            "<li><a href=\"../orderdetail/findAll?num="+(data.pageNum+1)+"&&status="+ data.list[0].status +"\" aria-label=\"Previous\">\n" +
+                            "                        <span aria-hidden=\"true\">&raquo;</span></a></li>";
                     }
                     var all=first+center+last;
                     $(".pagination").append(all);
                 }
             });
         },3000);
+        function changeImage(url) {
+            $("#image").attr("src",url)
+        }
     </script>
 </head>
 <body class="inner-container">
-<div class="table-responsive">
+<div >
+    <img src="" id="image" class="img-responsive" style="max-width: 100px;max-height: 100px">
+</div>
+        <div class="table-responsive">
     <table class="table table-striped table-bordered table-hover">
         <div style="display: none"><input id="inputstatus" value="${orderdetailstatus}"></div>
         <thead>
@@ -129,7 +134,6 @@
             <td>菜名</td>
             <td>数量</td>
             <td>桌号</td>
-            <td>状态</td>
             <td>创建时间</td>
             <td>更新时间</td>
             <td>操作</td>
@@ -137,13 +141,12 @@
         </thead>
         <tbody>
         <c:forEach items="${orderdetaillist.list}" var="orderdetail">
-            <tr>
-                <td title="${orderdetail.odid}">${orderdetail.odid}</td>
-                <td title="${orderdetail.orderid}">${orderdetail.orderid}</td>
-                <td title="${orderdetail.menu.menuname}">${orderdetail.menu.menuname}</td>
+            <tr >
+                <td title="${orderdetail.odid}"onclick='changeImage("${orderdetail.menu.image}")'>${orderdetail.odid}</td>
+                <td title="${orderdetail.orderid}"onclick='changeImage("${orderdetail.menu.image}")'>${orderdetail.orderid}</td>
+                <td title="${orderdetail.menu.menuname}"onclick='changeImage("${orderdetail.menu.image}")'>${orderdetail.menu.menuname}</td>
                 <td title="${orderdetail.menu_num}">${orderdetail.menu_num}</td>
                 <td title="${orderdetail.order1.tableid}">${orderdetail.order1.tableid}</td>
-                <td title="${orderdetail.status}">${orderdetail.status}</td>
                 <td title="${orderdetail.createtime}">${orderdetail.createtime}</td>
                 <td title="${orderdetail.updatetime}">${orderdetail.updatetime}</td>
                 <td>
@@ -163,18 +166,24 @@
         </c:forEach>
         </tbody>
     </table>
-</div>
+
 <%--    分页条--%>
 <nav aria-label="Page navigation" class="right">
     <ul class="pagination">
         <c:choose>
             <c:when test="${orderdetaillist.isFirstPage}">
                 <li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
+                <li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">首</span></a></li>
             </c:when>
             <c:otherwise>
                 <li>
                     <a href="../orderdetail/findAll?num=${orderdetaillist.pageNum-1}&&status=${orderdetaillist.list.get(0).status}" aria-label="Previous">
                         <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="../orderdetail/findAll?num=1&&status=${orderdetaillist.list.get(0).status}" aria-label="Previous">
+                        <span aria-hidden="true">首</span>
                     </a>
                 </li>
             </c:otherwise>
@@ -193,9 +202,15 @@
         </c:forEach>
         <c:choose>
             <c:when test="${orderdetaillist.isLastPage}">
+                <li class="disabled"><a href="#" aria-label="Next"><span aria-hidden="true">尾</span></a></li>
                 <li class="disabled"><a href="#" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li>
             </c:when>
             <c:otherwise>
+                <li>
+                    <a href="../orderdetail/findAll?num=${orderdetaillist.pages}&&status=${orderdetaillist.list.get(0).status}" aria-label="Next">
+                        <span aria-hidden="true">尾</span>
+                    </a>
+                </li>
                 <li>
                     <a href="../orderdetail/findAll?num=${orderdetaillist.pageNum+1}&&status=${orderdetaillist.list.get(0).status}" aria-label="Next">
                         <span aria-hidden="true">&raquo;</span>
@@ -205,5 +220,7 @@
         </c:choose>
     </ul>
 </nav>
+</div>
+
 </body>
 </html>

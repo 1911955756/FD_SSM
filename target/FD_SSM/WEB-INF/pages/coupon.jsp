@@ -109,7 +109,7 @@
                 <tr><td>优惠券：</td><td><input type="text" name="couponname" class="form-control" id="couname"/></td></tr>
                 <tr><td>类型:</td><td><input type="text"  name="type" class="form-control" id="coutype"/></td></tr>
                 <tr><td>优惠价格:</td><td><input type="text"  name="price" class="form-control" id="couprice"/></td></tr>
-                <tr><td>结束时间:</td><td><input type="text"  name="endtime" class="form-control" id="couend"/></td></tr>
+                <tr><td>结束时间:</td><td><input type="text"  name="endtime" placeholder="输入格式：年-月-日 时：分：秒" class="form-control" id="couend"/></td></tr>
                 <tr><td></td><td><input type="button"value="添加" class="btn btn-primary" id="addbtn"/>
             </form>
             <a href="../coupon/findAll" class="btn btn-warning">取消</a></td></tr>
@@ -121,7 +121,7 @@
                 <tr><td>类型:</td><td><input type="text"  name="type" class="form-control" value="${bycouponid.type}"/></td></tr>
                 <tr><td>状态:</td><td><input type="text"  name="status" class="form-control" value="${bycouponid.status}"/></td></tr>
                 <tr><td>优惠价格:</td><td><input type="text"  name="price" class="form-control" value="${bycouponid.price}" /></td></tr>
-                <tr><td>结束时间:</td><td><input type="text"  name="endtime" class="form-control" value="${bycouponid.endtime}"/></td></tr>
+                <tr><td>结束时间:</td><td><input type="text"  name="endtime"placeholder="输入格式：年-月-日 时：分：秒" class="form-control" value="${bycouponid.endtime}"/></td></tr>
                 <tr><td></td><td><input type="submit"value="更新" class="btn btn-success"/>
             </form>
             <a href="../coupon/findAll" class="btn btn-warning">取消</a></td></tr>

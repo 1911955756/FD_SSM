@@ -6,6 +6,7 @@
         <result property="orderid" column="orderid"></result>
         <result property="menuid" column="menuid"></result>
         <result property="status" column="status"></result>
+		<result property="called" column="called"></result>
         <result property="createtime" column="createtime"></result>
         <result property="updatetime" column="updatetime"></result>
         <association property="menu" column="menuid" javaType="com.qiang.domain.Menu" select="com.qiang.dao.IMenuDao.findByMenuid">

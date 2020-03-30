@@ -52,7 +52,19 @@ public interface ITypeService {
      */
     String findIdByname(String name);
 
+    /**
+     * 根据菜名查询所属类型
+     * @param mname
+     * @return
+     */
     List<Type1> findTM(String mname);
 
+    /**
+     * 分页模糊查询菜单类型
+     * @param num
+     * @param tyname
+     * @param mname
+     * @return
+     */
     PageInfo<Type1> findPageTM(Integer num,String tyname,String mname);
 }

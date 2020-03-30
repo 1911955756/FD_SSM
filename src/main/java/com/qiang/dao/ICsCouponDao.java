@@ -14,6 +14,11 @@ import java.util.List;
 @Repository
 public interface ICsCouponDao {
 
+    /**
+     * 根据cs_id查询我的优惠券
+     * @param cs_id
+     * @return
+     */
     List<CsCoupon> findMine(String cs_id);
 
     /**

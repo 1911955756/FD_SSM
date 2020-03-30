@@ -8,6 +8,7 @@
         <result property="updatetime" column="updatetime"></result>
         <result property="tuijian_num" column="tuijian_num"></result>
         <result property="e_content" column="e_content"></result>
+        <result property="photourl" column="photourl"></result>
         <association property="customer" column="cs_id" javaType="com.qiang.domain.Customer">
             <id property="cs_id" column="cs_id"></id>
             <result property="cs_name" column="cs_name"></result>

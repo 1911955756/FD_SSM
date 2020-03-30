@@ -18,6 +18,16 @@
             <result property="deleteflag" column="deleteflag"></result>
         </collection>
     </resultMap>
+    <select id="findAll" resultType="com.qiang.domain.Role" parameterType="string">
+        select * from role where 1=1
+        <if test="rname!=null and rname!=''">
+            and rolename like '%${rname}%'
+        </if>
+        <if test="rstatus!=null and rstatus!=''">
+            and status like '%${rstatus}%'
+        </if>
+        order by createtime desc
+    </select>
     <select id="findUR" resultMap="RUMap" parameterType="java.lang.String">
         SELECT
 	r.*,u.*

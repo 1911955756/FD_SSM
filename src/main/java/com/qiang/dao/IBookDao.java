@@ -17,7 +17,13 @@ import java.util.Map;
  */
 @Repository
 public interface IBookDao {
-
+    /**
+     * 分页模糊查询菜单信息
+     * @param now
+     * @param bookid
+     * @param plannum
+     * @return
+     */
     List<Book> findAll(@Param("now") String now,@Param("bookid") String bookid,@Param("plannum") Integer plannum);
 
     /**
@@ -50,6 +56,10 @@ public interface IBookDao {
     @Update("update book set status=#{status} where bookid=#{bookid}")
     void updateMyBook(Book book);
 
+    /**
+     * 存储过程减少相应等待人数
+     * @param abc
+     */
     void cancelwaitnum(String abc);
 
 }

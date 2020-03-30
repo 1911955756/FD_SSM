@@ -34,6 +34,11 @@ public class IOrderDetailServiceImpl implements IOrderDetailService {
     }
 
     @Override
+    public void updateODcall(String odid) {
+        orderDetailDao.updateODcall(odid);
+    }
+
+    @Override
     public void saveorderDetail(OrderDetail orderDetail) {
         orderDetailDao.saveorderDetail(orderDetail);
     }

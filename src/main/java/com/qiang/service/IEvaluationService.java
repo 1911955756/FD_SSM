@@ -15,7 +15,6 @@ public interface IEvaluationService {
      * 保存用户评价
      * @param evaluation
      */
-    @Insert("insert into evaluation(cs_id,orderid,e_content,tuijian_num)values(#{cs_id},#{orderid},#{e_content},#{tuijian_num})")
     void saveEvaluation(Evaluation evaluation);
 
 

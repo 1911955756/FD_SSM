@@ -15,6 +15,11 @@
         //页面加载，绑定单击事件
         $(function () {
             var flag=false;
+            $(document).keyup(function(event){
+                if(event.keyCode ==13){
+                    $("#btn1").trigger("click");
+                }
+            });
             $("#btn1").click(function () {
                 if($("#phone").val()==""){
                     alert("账号不能为空");

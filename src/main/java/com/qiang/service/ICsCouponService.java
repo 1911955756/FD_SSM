@@ -11,13 +11,17 @@ import java.util.List;
  * date 2020-03-07
  */
 public interface ICsCouponService {
+    /**
+     * 根据cs_id查询我的优惠券
+     * @param cs_id
+     * @return
+     */
     List<CsCoupon> findMine(String cs_id);
 
     /**
      * 保存顾客优惠券
      * @param csCoupon
      */
-    @Insert("insert into cs_coupon(cs_id,couponid) values(#{cs_id},#{couponid})")
     void saveCsCoupon(CsCoupon csCoupon);
 
     /**
@@ -25,6 +29,5 @@ public interface ICsCouponService {
      * @param csCoupon
      * @return
      */
-    @Select("select * from cs_coupon where cs_id=#{cs_id} and couponid=#{couponid}")
     String checkCoupon(CsCoupon csCoupon);
 }

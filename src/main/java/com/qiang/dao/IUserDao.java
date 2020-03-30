@@ -57,5 +57,10 @@ public interface IUserDao {
     @Update("update user1 set username=#{username},phone=#{phone},job=#{job},password=#{password} where userid=#{userid}")
     void updateUser(User1 user1);
 
+    /**
+     * 根据phone查询用户信息
+     * @param phone
+     * @return
+     */
      List<User1> findAllByPhone(Integer phone);
 }

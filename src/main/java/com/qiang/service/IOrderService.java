@@ -24,7 +24,6 @@ public interface IOrderService {
      * 根据orderid查询订单信息
      * @param orderid
      */
-    @Select("select * from order1 where orderid=#{orderid}")
     Order1 findByOrderid(String orderid);
 
     /**
@@ -32,14 +31,12 @@ public interface IOrderService {
      * @param cs_id
      * @return
      */
-    @Select("select orderid from order1 where cs_id=#{cs_id} and status='待上菜' or status='待点餐' order by createtime desc")
     String findOridByCsid(String cs_id);
 
     /**
      * 保存订单
      * @param order1
      */
-    @Insert("insert into order1(cs_id,tableid)values(#{cs_id},#{tableid})")
     void saveOrder(Order1 order1);
 
     /**
@@ -47,21 +44,18 @@ public interface IOrderService {
      * @param order1
      * @return
      */
-    @Select("select * from order1 where cs_id=#{cs_id} and status=#{status} order by createtime desc")
     List<Order1> findMyOrderByCsid(Order1 order1);
 
     /**
      * 根据orderid更新订单状态
      * @param order1
      */
-    @Update("update order1 set status=#{status} where orderid=#{orderid}")
     void updateorder(Order1 order1);
 
     /**
      * 更新实际支付金额
      * @param order1
      */
-    @Insert("update order1 set couponid=#{couponid},total=#{total} where orderid=#{orderid}")
     void updateReality(Order1 order1);
 
     /**

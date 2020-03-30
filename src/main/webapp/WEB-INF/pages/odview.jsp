@@ -55,21 +55,21 @@
 <body class="inner-container">
 <div class="container-fluid ">
     <div class="row">
-        <div class="col-sm-3 col-md-3">
+        <div class="col-sm-2 col-md-2">
             <div class="bottom">后厨：</div>
             <img src="../images/egg.jpg" class="img-responsive">
         </div>
-        <div class="table-responsive col-sm-9 col-md-8 col-md-offset-1 outer-container">
+        <div class="table-responsive col-sm-10 col-md-9 col-md-offset-1 outer-container">
             <div class="bottom">正在烹饪......</div>
             <iframe marginWidth=0 marginHeight=0 src="../orderdetail/findAll?status=烹饪中"  scrolling="auto" frameBorder=0 width="100%" height="50%"></iframe>
         </div>
     </div>
     <div class="row">
-        <div class="col-sm-3 col-md-3">
+        <div class="col-sm-2 col-md-2">
             <div class="bottom">后厨与服务员：</div>
             <img src="../images/waiter.png" class="img-responsive">
         </div>
-        <div class="table-responsive col-sm-9 col-md-8 col-md-offset-1 outer-container">
+        <div class="table-responsive col-sm-10 col-md-9 col-md-offset-1 outer-container">
             <div class="bottom">尽快处理:</div>
             <iframe marginWidth=0 marginHeight=0 src="../orderdetail/findAll?status=${status}"  scrolling="auto" frameBorder=0 width="100%" height="50%"></iframe>
         </div>

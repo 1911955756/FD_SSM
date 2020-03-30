@@ -51,5 +51,12 @@ public interface IRoleService {
      */
     void saverole(String rolename);
 
+    /**
+     * 分页模糊查询用户角色信息
+     * @param num
+     * @param rname
+     * @param uname
+     * @return
+     */
     PageInfo<Role> findPageUR(Integer num, String rname, String uname);
 }

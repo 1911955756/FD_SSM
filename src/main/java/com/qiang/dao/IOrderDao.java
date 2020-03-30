@@ -17,6 +17,14 @@ import java.util.Map;
 @Repository
 public interface IOrderDao {
 
+    /**
+     * 分页模糊查询所有订单信息
+     * @param now
+     * @param tableid
+     * @param orderid
+     * @param status
+     * @return
+     */
     List<Order1> findAll(@Param("now") String now,@Param("tableid") String tableid,@Param("orderid") String orderid,@Param("status") String status);
 
     /**
@@ -63,6 +71,15 @@ public interface IOrderDao {
     @Insert("update order1 set couponid=#{couponid},total=#{total} where orderid=#{orderid}")
     void updateReality(Order1 order1);
 
+    /**
+     * 统计每日人数
+     * @return
+     */
     List<Map> countpeoplenum();
+
+    /**
+     * 统计销售额
+     * @return
+     */
     List<Map> countmoney();
 }

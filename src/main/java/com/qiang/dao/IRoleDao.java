@@ -54,5 +54,11 @@ public interface IRoleDao {
     @Update("update role set status=#{status} where roleid=#{roleid}")
     void updaterolestatus(Role role);
 
+    /**
+     * 分页模糊查询用户角色信息
+     * @param rname
+     * @param uname
+     * @return
+     */
     List<Role> findUR(@Param("rname") String rname,@Param("uname") String uname);
 }

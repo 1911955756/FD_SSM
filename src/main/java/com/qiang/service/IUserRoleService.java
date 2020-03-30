@@ -17,7 +17,6 @@ public interface IUserRoleService {
      * 保存用户角色
      * @param userRole
      */
-    @Insert("insert into userrole(userid,roleid) values(#{userid},#{roleid})")
     void saveUserRole(UserRole userRole);
 
     /**
@@ -32,6 +31,5 @@ public interface IUserRoleService {
      * 删除用户角色信息
      * @param userrole
      */
-    @Delete("delete from userrole where userid=#{userid} and roleid=#{roleid}")
     void deleteuserrole(UserRole userrole);
 }

@@ -54,5 +54,11 @@ public interface ITypeDao {
     @Select("select typeid from type1 where name=#{name}")
     String findIdByname(String name);
 
+    /**
+     * 分页模糊查询菜单类型
+     * @param tyname
+     * @param mname
+     * @return
+     */
     List<Type1> findTM(@Param("tyname") String tyname,@Param("mname") String mname);
 }

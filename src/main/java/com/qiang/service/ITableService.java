@@ -19,21 +19,28 @@ public interface ITableService {
      */
     PageInfo<Table1> findAll(Integer num,String taid,Integer penum,String tasta);
 
-    @Update("update table1 set status=#{status} where tableid=#{tableid}")
+
+    /**
+     * 更新餐桌信息
+     * @param table1
+     */
     void updatetablestatus(Table1 table1);
+
     /**
      * 查询所有餐桌
      * @return
      */
-    @Select("select * from table1")
     List<Table1> findtable();
 
     /**
      * 保存餐桌
      * @param table1
      */
-    @Insert("insert into table1(tableid,people_num)values(#{tableid},#{people_num})")
     void saveTable(Table1 table1);
 
+    /**
+     * 查询餐桌人数
+     * @return
+     */
     List<Table1> findTpeoplenum();
 }

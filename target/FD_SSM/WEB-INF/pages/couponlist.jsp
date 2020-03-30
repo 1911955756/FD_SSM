@@ -105,7 +105,7 @@
                 <td title="${coupon.updatetime}">${coupon.updatetime}</td>
                 <td><a href="../coupon/toupdatecoupon?couponid=1" class="btn btn-primary">添加</a><br/>
                     <a href="../coupon/toupdatecoupon?couponid=${coupon.couponid}" class="btn btn-warning">修改</a><br/>
-                    <a href="../coupon/deletecoupon?couponid=${coupon.couponid}" class="btn btn-danger">删除</a><br/>
+<%--                    <a href="../coupon/deleteCoupon?couponid=${coupon.couponid}&&status=已过期" class="btn btn-danger">删除</a><br/>--%>
                 </td>
             </tr>
         </c:forEach>
