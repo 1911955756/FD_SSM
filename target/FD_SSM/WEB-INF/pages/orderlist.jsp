@@ -133,9 +133,9 @@
             <td>应付</td>
         </tr>
         <tr>
-            <td><input class="form-control" placeholder="输入订单号查询"  id="inputorderid"></td>
-            <td><input class="form-control" placeholder="输入餐桌号查询"  id="inputtableid"></td>
-            <td><input class="form-control" placeholder="输入状态查询"  id="inputstatus"></td>
+            <td><input class="form-control" placeholder="输入订单号查询"  id="inputorderid" value="${orderid}"></td>
+            <td><input class="form-control" placeholder="输入餐桌号查询"  id="inputtableid" value="${tableid}"></td>
+            <td><input class="form-control" placeholder="输入状态查询"  id="inputstatus" value="${status}"></td>
             <td></td>
             <td></td>
             <td></td>

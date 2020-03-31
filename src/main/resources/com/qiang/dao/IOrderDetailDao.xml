@@ -21,7 +21,7 @@
         </association>
     </resultMap>
     <!--查询所有 -->
-    <select id="findAll" resultMap="ODMenuMap" parameterType="com.qiang.domain.OrderDetail">
+    <select id="findAll" resultMap="ODMenuMap" parameterType="string">
 SELECT
 	od.*, m.menuname,
 	ord.tableid
@@ -32,7 +32,21 @@ FROM
 WHERE
 	od.menuid = m.menuid
 AND ord.orderid = od.orderid
-AND od.status=#{status}
+<if test="orddstatus!=null and orddstatus!=''">
+	and od.status like '%${orddstatus}%'
+</if>
+<if test="tbid!=null and tbid!=''">
+	and ord.tableid like '%${tbid}%'
+</if>
+<if test="mname!=null and mname!=''">
+	and m.menuname like '%${mname}%'
+</if>
+<if test="orddid!=null and orddid!=''">
+	and od.odid like '%${orddid}%'
+</if>
+<if test="ordid!=null and ordid!=''">
+	and ord.orderid like '%${ordid}%'
+</if>
 order by od.odid
     </select>
     <!--查询我的上菜单 -->

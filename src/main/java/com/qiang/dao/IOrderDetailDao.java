@@ -3,6 +3,7 @@ package com.qiang.dao;
 import com.qiang.domain.OrderDetail;
 import com.qiang.domain.Picture;
 import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Update;
 import org.springframework.stereotype.Repository;
 
@@ -16,10 +17,10 @@ import java.util.List;
 public interface IOrderDetailDao {
     /**
      * 根据状态查询上菜单
-     * @param status
+     * @param
      * @return
      */
-    List<OrderDetail> findAll(String status);
+    List<OrderDetail> findAll(@Param("orddstatus") String orddstatus, @Param("tbid") String tbid, @Param("mname") String mname, @Param("orddid") String orddid, @Param("ordid")String ordid);
 
     /**
      * 根据odid更新上菜单状态

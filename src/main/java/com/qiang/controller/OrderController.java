@@ -36,6 +36,9 @@ public class OrderController {
         PageInfo<Order1> list = orderService.findAll(num,now,tableid,orderid,status);
         modelMap.addAttribute("orderlist",list);
         modelMap.addAttribute("now",now);
+        modelMap.addAttribute("orderid",orderid);
+        modelMap.addAttribute("tableid",tableid);
+        modelMap.addAttribute("status",status);
         ModelAndView mv=new ModelAndView("mvlist",modelMap);
         mv.setViewName("orderlist");
         return mv;

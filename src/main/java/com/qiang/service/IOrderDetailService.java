@@ -17,7 +17,7 @@ public interface IOrderDetailService {
      * @param status
      * @return
      */
-    PageInfo<OrderDetail> findAll(Integer num,String status);
+    PageInfo<OrderDetail> findAll(Integer num,String status,String tbid,String orddid,String mname,String ordid);
 
     /**
      * 根据orderid和menuid更新上菜单状态

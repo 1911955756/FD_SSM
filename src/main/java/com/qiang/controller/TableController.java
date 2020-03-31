@@ -5,6 +5,7 @@ import com.qiang.domain.Table1;
 import com.qiang.service.ITableService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -30,11 +31,14 @@ public class TableController {
                                 @RequestParam(required = false) String   tasta){
         System.out.println("表现层：查询所有订单。。。");
         System.out.println(num+","+taid+","+penum+","+tasta);
-        ModelAndView mv=new ModelAndView();
+        ModelMap modelMap=new ModelMap();
         //调用service的方法
         PageInfo<Table1> list = tableService.findAll(num,taid,penum,tasta);
-        mv.addObject("tablelist",list);
-        mv.setViewName("tablelist");
+        modelMap.addAttribute("tablelist",list);
+        modelMap.addAttribute("taid",taid);
+        modelMap.addAttribute("penum",penum);
+        modelMap.addAttribute("tasta",tasta);
+        ModelAndView mv=new ModelAndView("tablelist",modelMap);
         return mv;
     }
     @RequestMapping("/findAll2")

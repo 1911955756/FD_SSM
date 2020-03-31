@@ -32,6 +32,8 @@ public class BookController {
         PageInfo<Book> list = bookService.findAll(num,now,bookid,plannum);
         modelMap.addAttribute("booklist",list);
         modelMap.addAttribute("now",now);
+        modelMap.addAttribute("bookid",bookid);
+        modelMap.addAttribute("plannum",plannum);
         ModelAndView mv=new ModelAndView("mvlist",modelMap);
         mv.setViewName("booklist");
         return mv;

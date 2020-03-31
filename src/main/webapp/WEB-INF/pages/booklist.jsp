@@ -112,6 +112,23 @@
                 }
             });
         },1000);
+        $(function () {
+            $("#front").click(function () {
+                $("#front").attr("href","../book/findAll?num=${booklist.pageNum-1}&&bookid="+$("#inputbookid").val()+"&&plannum="+$("#inputplannum").val()+"&&now="+$("#change").val()+"")
+            });
+            $("#first").click(function () {
+                $("#first").attr("href","../book/findAll?num=1&&bookid="+$("#inputbookid").val()+"&&plannum="+$("#inputplannum").val()+"&&now="+$("#change").val()+"")
+            });
+            $("#last").click(function () {
+                $("#last").attr("href","../book/findAll?num=${booklist.pages}&&bookid="+$("#inputbookid").val()+"&&plannum="+$("#inputplannum").val()+"&&now="+$("#change").val()+"")
+            });
+            $("#next").click(function () {
+                $("#next").attr("href","../book/findAll?num=${booklist.pageNum+1}&&bookid="+$("#inputbookid").val()+"&&plannum="+$("#inputplannum").val()+"&&now="+$("#change").val()+"")
+            });
+        })
+        function gonum(num) {
+            $(".aurlcenter").attr("href","../book/findAll?num="+num+"&&bookid="+$("#inputbookid").val()+"&&plannum="+$("#inputplannum").val()+"&&now="+$("#change").val()+"")
+        }
     </script>
 </head>
 <body class="inner-container">
@@ -130,8 +147,8 @@
             <td>等待人数</td>
         </tr>
         <tr>
-            <td ><input class="form-control" placeholder="输入预约号查询"  id="inputbookid"></td>
-            <td><input class="form-control" placeholder="输入就餐人数查询"  id="inputplannum"></td>
+            <td ><input class="form-control" placeholder="输入预约号查询"  id="inputbookid" value="${bookid}"></td>
+            <td><input class="form-control" placeholder="输入就餐人数查询"  id="inputplannum" value="${plannum}"></td>
             <td></td>
             <td></td>
             <td></td>
@@ -161,12 +178,12 @@
                 </c:when>
                 <c:otherwise>
                     <li>
-                        <a href="../book/findAll?num=${booklist.pageNum-1}" aria-label="Previous">
+                        <a href="" aria-label="Previous" id="front">
                             <span aria-hidden="true">&laquo;</span>
                         </a>
                     </li>
                     <li>
-                        <a href="../book/findAll?num=1" aria-label="Previous">
+                        <a href="" aria-label="Previous" id="first">
                             <span aria-hidden="true">首</span>
                         </a>
                     </li>
@@ -176,11 +193,11 @@
                 <c:choose>
                     <c:when test="${num==booklist.pageNum}">
                         <li class="active" value="${num}">
-                            <span>${num}</span>
+                            <span>${num}<span class="sr-only">(current)</span></span>
                         </li>
                     </c:when>
                     <c:otherwise>
-                        <li><a href="../book/findAll?num=${num}">${num}</a></li>
+                        <li><a href="" class="aurlcenter" onclick='gonum("${num}")'>${num}</a></li>
                     </c:otherwise>
                 </c:choose>
             </c:forEach>
@@ -191,12 +208,12 @@
                 </c:when>
                 <c:otherwise>
                     <li>
-                        <a href="../book/findAll?num=${booklist.pages}" aria-label="Next">
+                        <a href="" aria-label="Next" id="last">
                             <span aria-hidden="true">尾</span>
                         </a>
                     </li>
                     <li>
-                        <a href="../book/findAll?num=${booklist.pageNum+1}" aria-label="Next">
+                        <a href="" aria-label="Next" id="next">
                             <span aria-hidden="true">&raquo;</span>
                         </a>
                     </li>

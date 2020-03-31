@@ -46,6 +46,7 @@
     <script type="text/javascript" src="../js/bootstrap.min.js"></script>
     <script>
         setInterval(function (){
+            var tbid=$("#inputbid").val(),orddid=$("#inputorddid").val(),ordid=$("#inputordid").val(),mname=$("#inputmname").val()
             //alert("响应了");
             $.ajax({
                 url : "../orderdetail/findAll2",
@@ -53,7 +54,11 @@
                 type : "post",
                 data:{
                     num:$(".active").val(),
-                    status:$("#inputstatus").val()
+                    status:$("#inputstatus").val(),
+                    tbid:tbid,
+                    orddid:orddid,
+                    ordid:ordid,
+                    mname:mname
                 },
                 success : function(data) {
                     //清空表格数据
@@ -62,9 +67,9 @@
                     var html="";
                     for (var i = 0; i < data.list.length; i++) {
                         var content="<tr>"
-                            +"<td title='"+data.list[i].odid+"'onclick=\'changeImage(\""+data.list[i].menu.image+"\")'>"+data.list[i].odid+"</td>"
-                            +"<td title='"+data.list[i].orderid+"'onclick=\'changeImage(\""+data.list[i].menu.image+"\")'>"+data.list[i].orderid+"</td>"
-                            +"<td title='"+data.list[i].menu.menuname+"'onclick=\'changeImage(\""+data.list[i].menu.image+"\")'>"+data.list[i].menu.menuname+"</td>"
+                            +"<td title='"+data.list[i].odid+"'data-toggle=\"modal\" data-target=\".bs-example-modal-sm\" onclick=\'changeImage(\""+data.list[i].menu.image+"\",\""+data.list[i].menu.menuname+"\",\""+data.list[i].odid+"\",\""+data.list[i].order1.tableid+"\")'>"+data.list[i].odid+"</td>"
+                            +"<td title='"+data.list[i].orderid+"'>"+data.list[i].orderid+"</td>"
+                            +"<td title='"+data.list[i].menu.menuname+"'>"+data.list[i].menu.menuname+"</td>"
                             +"<td title='"+ data.list[i].menu_num +"'>"+ data.list[i].menu_num +"</td>"
                             +"<td title='"+ data.list[i].order1.tableid +"'>"+ data.list[i].order1.tableid +"</td>"
                             +"<td title='"+ data.list[i].createtime +"'>"+ data.list[i].createtime +"</td>"
@@ -84,9 +89,9 @@
                             "<li class=\"disabled\"><a href=\"#\" aria-label=\"Previous\"><span aria-hidden=\"true\">首</span></a></li>";
                     }
                     else if(!data.isFirstPage){
-                        var first="<li><a href=\"../orderdetail/findAll?num="+(data.pageNum-1)+"&&status="+ data.list[0].status +"\" aria-label=\"Previous\">\n" +
+                        var first="<li><a href=\"../orderdetail/findAll?num="+(data.pageNum-1)+"&&status="+ data.list[0].status +"&&tbid="+ tbid +"&&orddid="+ orddid +"&&ordid="+ ordid +"&&mname="+ mname +"\" aria-label=\"Previous\">\n" +
                             "                        <span aria-hidden=\"true\">&laquo;</span></a></li>" +
-                            "<li><a href=\"../orderdetail/findAll?num=1&&status="+ data.list[0].status +"\" aria-label=\"Previous\">\n" +
+                            "<li><a href=\"../orderdetail/findAll?num=1&&status="+ data.list[0].status +"&&tbid="+ tbid +"&&orddid="+ orddid +"&&ordid="+ ordid +"&&mname="+ mname +"\" aria-label=\"Previous\">\n" +
                             "                        <span aria-hidden=\"true\">首</span></a></li>";
                     }
                     var center="";
@@ -96,7 +101,7 @@
                                 "                        <span>"+data.navigatepageNums[i]+"</span>\n" +
                                 "                    </li>";
                         }else if(data.navigatepageNums[i]!=data.pageNum){
-                            var now="<li><a href=\"../orderdetail/findAll?num="+data.navigatepageNums[i]+"&&status="+ data.list[0].status +"\">"+data.navigatepageNums[i]+"</a></li>";
+                            var now="<li><a href=\"../orderdetail/findAll?num="+data.navigatepageNums[i]+"&&status="+ data.list[0].status +"&&tbid="+ tbid +"&&orddid="+ orddid +"&&ordid="+ ordid +"&&mname="+ mname +"\">"+data.navigatepageNums[i]+"</a></li>";
                         }
                         center=center+now;
                     }
@@ -105,38 +110,71 @@
                             "<li class=\"disabled\"><a href=\"#\" aria-label=\"Next\"><span aria-hidden=\"true\">&raquo;</span></a></li>";
                     }
                     else if(!data.isLastPage){
-                        var last="<li><a href=\"../orderdetail/findAll?num="+(data.pages)+"&&status="+ data.list[0].status +"\" aria-label=\"Previous\">\n" +
+                        var last="<li><a href=\"../orderdetail/findAll?num="+(data.pages)+"&&status="+ data.list[0].status +"&&tbid="+ tbid +"&&orddid="+ orddid +"&&ordid="+ ordid +"&&mname="+ mname +"\" aria-label=\"Previous\">\n" +
                             "                        <span aria-hidden=\"true\">尾</span></a></li>" +
-                            "<li><a href=\"../orderdetail/findAll?num="+(data.pageNum+1)+"&&status="+ data.list[0].status +"\" aria-label=\"Previous\">\n" +
+                            "<li><a href=\"../orderdetail/findAll?num="+(data.pageNum+1)+"&&status="+ data.list[0].status +"&&tbid="+ tbid +"&&orddid="+ orddid +"&&ordid="+ ordid +"&&mname="+ mname +"\" aria-label=\"Previous\">\n" +
                             "                        <span aria-hidden=\"true\">&raquo;</span></a></li>";
                     }
                     var all=first+center+last;
                     $(".pagination").append(all);
                 }
             });
-        },3000);
-        function changeImage(url) {
+        },2000);
+        function changeImage(url,mname,odid,tableid) {
+            $('#myModal').on('shown.bs.modal', function () {
+                $('#myInput').focus()
+            });
             $("#image").attr("src",url)
+            $("#modalmname").attr("value",mname)
+            $("#modalodid").attr("value",odid)
+            $("#modaltableid").attr("value",tableid)
         }
     </script>
 </head>
 <body class="inner-container">
-<div >
-    <img src="" id="image" class="img-responsive" style="max-width: 100px;max-height: 100px">
+<!-- Modal -->
+<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">上菜单详情</h4>
+            </div>
+            <div class="modal-body">
+                <table>
+                    <thead>
+                    <td><img src="" id="image" class="img-responsive" style="max-width: 100px;max-height: 100px"></td>
+                    <td><h5>上菜单号:<textarea id="modalodid"></textarea></h5><h5>桌号：<input  id="modaltableid"></h5><h5>菜名：<input id="modalmname"></h5></td>
+                    </thead>
+                </table>
+            </div>
+            </div>
+        </div>
+    </div>
 </div>
         <div class="table-responsive">
     <table class="table table-striped table-bordered table-hover">
-        <div style="display: none"><input id="inputstatus" value="${orderdetailstatus}"></div>
+        <div style="display: none"><input id="inputstatus" value="${status}"></div>
         <thead>
         <tr>
-            <td>上菜单id</td>
-            <td >订单id</td>
+            <td>上菜单号</td>
+            <td >订单号</td>
             <td>菜名</td>
             <td>数量</td>
             <td>桌号</td>
             <td>创建时间</td>
             <td>更新时间</td>
             <td>操作</td>
+        </tr>
+        <tr>
+            <td><input class="form-control" placeholder="输入上菜单号查询"  id="inputorddid" value="${orddid}"></td>
+            <td ><input class="form-control" placeholder="输入订单号查询"  id="inputordid" value="${ordid}"></td>
+            <td><input class="form-control" placeholder="输入菜名查询"  id="inputmname" value="${mname}"></td>
+            <td></td>
+            <td><input class="form-control" placeholder="输入上桌号查询"  id="inputbid" value="${tbid}"></td>
+            <td></td>
+            <td></td>
+            <td></td>
         </tr>
         </thead>
         <tbody>
@@ -221,6 +259,5 @@
     </ul>
 </nav>
 </div>
-
 </body>
 </html>

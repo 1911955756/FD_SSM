@@ -20,7 +20,7 @@ public class ITableServiceImpl implements ITableService {
     private ITableDao tableDao;
     @Override
     public PageInfo<Table1> findAll(Integer num,String taid,Integer penum,String tasta) {
-        PageHelper.startPage(num,10);
+        PageHelper.startPage(num,8);
         List<Table1> all = tableDao.findAll(taid,penum,tasta);
         PageInfo<Table1> table1PageInfo = new PageInfo<>(all);
         return table1PageInfo;

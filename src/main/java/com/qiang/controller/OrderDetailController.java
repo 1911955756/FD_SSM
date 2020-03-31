@@ -30,24 +30,36 @@ public class OrderDetailController {
     private IOrderDetailService orderDetailService;
     @RequestMapping("/findAll")
     public ModelAndView findAll(@RequestParam(required = false,defaultValue ="1") Integer num,
-                                @RequestParam(required = false) String status){
+                                @RequestParam(required = false) String status,
+                                @RequestParam(required = false) String tbid,
+                                @RequestParam(required = false) String mname,
+                                @RequestParam(required = false) String orddid,
+                                @RequestParam(required = false) String ordid){
         System.out.println("查询第"+num+"页,状态为："+status+"的上菜单");
         ModelMap modelMap=new ModelMap();
         //调用service的方法
-        PageInfo<OrderDetail> list = orderDetailService.findAll(num,status);
+        PageInfo<OrderDetail> list = orderDetailService.findAll(num,status,tbid,orddid,mname,ordid);
         modelMap.addAttribute("orderdetaillist",list);
-        modelMap.addAttribute("orderdetailstatus",status);
+        modelMap.addAttribute("status",status);
+        modelMap.addAttribute("tbid",tbid);
+        modelMap.addAttribute("mname",mname);
+        modelMap.addAttribute("orddid",orddid);
+        modelMap.addAttribute("ordid",ordid);
         ModelAndView mv=new ModelAndView("orderdetail",modelMap);
         mv.setViewName("orderdetaillist");
         return mv;
     }
     @RequestMapping("/findAll2")
     public @ResponseBody PageInfo findAll2(@RequestParam(required = false,defaultValue ="1") Integer num,
-                                           @RequestParam(required = false,defaultValue ="1") String status){
+                                           @RequestParam(required = false) String status,
+                                           @RequestParam(required = false) String tbid,
+                                           @RequestParam(required = false) String mname,
+                                           @RequestParam(required = false) String orddid,
+                                           @RequestParam(required = false) String ordid){
         System.out.println("查询第"+num+"页,状态为："+status+"的上菜单");
         System.out.println("===================我是分界线=====================");
         //调用service的方法
-        PageInfo<OrderDetail> list = orderDetailService.findAll(num,status);
+        PageInfo<OrderDetail> list = orderDetailService.findAll(num,status,tbid,orddid,mname,ordid);
         return list;
     }
     @RequestMapping("/cook")

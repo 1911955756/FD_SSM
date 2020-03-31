@@ -142,7 +142,22 @@
                     });
                 }
             });
+            $("#front").click(function () {
+                $("#front").attr("href","../table/findAll?num=${tablelist.pageNum-1}&&tasta="+$("#addtastatus").val()+"&&taid="+$("#addtaid").val()+"&&penum="+$("#addtanum").val()+"")
+            });
+            $("#first").click(function () {
+                $("#first").attr("href","../table/findAll?num=1&&tasta="+$("#addtastatus").val()+"&&taid="+$("#addtaid").val()+"&&penum="+$("#addtanum").val()+"")
+            });
+            $("#last").click(function () {
+                $("#last").attr("href","../table/findAll?num=${orderlist.pages}&&tasta="+$("#addtastatus").val()+"&&taid="+$("#addtaid").val()+"&&penum="+$("#addtanum").val()+"")
+            });
+            $("#next").click(function () {
+                $("#next").attr("href","../table/findAll?num=${orderlist.pageNum+1}&&tasta="+$("#addtastatus").val()+"&&taid="+$("#addtaid").val()+"&&penum="+$("#addtanum").val()+"")
+            });
         })
+        function gonum(num) {
+            $(".aurlcenter").attr("href","../table/findAll?num="+num+"&&tasta="+$("#addtastatus").val()+"&&taid="+$("#addtaid").val()+"&&penum="+$("#addtanum").val()+"")
+        }
     </script>
 </head>
 <body class="inner-container">
@@ -157,12 +172,12 @@
         </tr>
         <tr>
             <td>
-                <input type="text" name="tableid" id="addtaid" placeholder="请输入餐桌号" class="form-control"/>
+                <input type="text" name="tableid" id="addtaid" placeholder="请输入餐桌号" value="${taid}" class="form-control"/>
             </td>
             <td>
-                <input type="text" name="people_num" id="addtanum" placeholder="请输入人数" class="form-control"/>
+                <input type="text" name="people_num" id="addtanum" placeholder="请输入人数" value="${penum}" class="form-control"/>
             </td>
-            <td><input type="text" name="people_num" id="addtastatus" placeholder="请输入状态" class="form-control"/></td>
+            <td><input type="text" name="people_num" id="addtastatus" placeholder="请输入状态"  value="${tasta}"class="form-control"/></td>
             <td>
                 <button id="addtablebtn" type="button" class="btn btn-warning">添加</button>
             </td>
@@ -197,12 +212,12 @@
             </c:when>
             <c:otherwise>
                 <li>
-                    <a href="../table/findAll?num=${tablelist.pageNum-1}" aria-label="Previous">
+                    <a href="" aria-label="Previous" id="front">
                         <span aria-hidden="true">&laquo;</span>
                     </a>
                 </li>
                 <li>
-                    <a href="../table/findAll?num=1" aria-label="Previous">
+                    <a href="" aria-label="Previous" id="first">
                         <span aria-hidden="true">首</span>
                     </a>
                 </li>
@@ -212,11 +227,11 @@
             <c:choose>
                 <c:when test="${num==tablelist.pageNum}">
                     <li class="active" value="${num}">
-                        <span>${num}</span>
+                        <span>${num}<span class="sr-only">(current)</span></span>
                     </li>
                 </c:when>
                 <c:otherwise>
-                    <li><a href="../table/findAll?num=${num}">${num}</a></li>
+                    <li><a href="" class="aurlcenter" onclick='gonum("${num}")'>${num}</a></li>
                 </c:otherwise>
             </c:choose>
         </c:forEach>
@@ -227,12 +242,12 @@
             </c:when>
             <c:otherwise>
                 <li>
-                    <a href="../table/findAll?num=${tablelist.pages}" aria-label="Next">
+                    <a href="" aria-label="Next" id="last">
                         <span aria-hidden="true">尾</span>
                     </a>
                 </li>
                 <li>
-                    <a href="../table/findAll?num=${tablelist.pageNum+1}" aria-label="Next">
+                    <a href="" aria-label="Next" id="next">
                         <span aria-hidden="true">&raquo;</span>
                     </a>
                 </li>

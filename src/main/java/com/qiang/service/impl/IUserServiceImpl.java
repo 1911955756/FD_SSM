@@ -32,7 +32,7 @@ public class IUserServiceImpl implements IUserService {
 
     @Override
     public PageInfo<User1> findAll(Integer num,String uname,String ujob,Integer uphone) {
-        PageHelper.startPage(num,5);
+        PageHelper.startPage(num,3);
         List<User1> all = userDao.findAll(uname,ujob,uphone);
         PageInfo<User1> user1PageInfo = new PageInfo<>(all);
         return user1PageInfo;
