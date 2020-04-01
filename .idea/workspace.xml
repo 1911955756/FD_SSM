@@ -6,39 +6,34 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3b3cac37-047d-4494-a743-857062dcce53" name="Default Changelist" comment="nothing">
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/css/bootstrap-datetimepicker.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/js/bootstrap-datetimepicker.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/js/bootstrap-datetimepicker.zh-CN.js" afterDir="false" />
+    <list default="true" id="3b3cac37-047d-4494-a743-857062dcce53" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/qiang/controller/BookController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/qiang/controller/BookController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/qiang/controller/OrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/qiang/controller/OrderController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/qiang/domain/Book.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/qiang/domain/Book.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/qiang/service/impl/ITypeServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/qiang/service/impl/ITypeServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/qiang/dao/IBookDao.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/qiang/dao/IBookDao.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/qiang/dao/IMenuDao.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/qiang/dao/IMenuDao.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/qiang/dao/IOrderDao.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/qiang/dao/IOrderDao.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/log4j.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/log4j.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/booklist.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/booklist.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/coupon.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/coupon.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/couponlist.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/couponlist.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/menulist.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/menulist.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/message.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/message.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/qiang/controller/OrderDetailController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/qiang/controller/OrderDetailController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/qiang/dao/IOrderDetailDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/qiang/dao/IOrderDetailDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/qiang/service/IOrderDetailService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/qiang/service/IOrderDetailService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/qiang/service/impl/IOrderDetailServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/qiang/service/impl/IOrderDetailServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/qiang/dao/IOrderDetailDao.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/qiang/dao/IOrderDetailDao.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/orderdetaillist.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/orderdetaillist.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/orderlist.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/orderlist.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/picturelist.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/picturelist.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/rolelist.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/rolelist.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/tablelist.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/tablelist.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/typelist.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/typelist.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/typemenulist.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/typemenulist.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/userlist.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/userlist.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/userrolelist.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/userrolelist.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/FD_SSM.war" beforeDir="false" afterPath="$PROJECT_DIR$/target/FD_SSM.war" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/FD_SSM/WEB-INF/classes/log4j.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/FD_SSM/WEB-INF/classes/log4j.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/FD_SSM/WEB-INF/pages/coupon.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/FD_SSM/WEB-INF/pages/coupon.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/FD_SSM/WEB-INF/classes/com/qiang/controller/BookController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/FD_SSM/WEB-INF/classes/com/qiang/controller/BookController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/FD_SSM/WEB-INF/classes/com/qiang/controller/OrderController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/FD_SSM/WEB-INF/classes/com/qiang/controller/OrderController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/FD_SSM/WEB-INF/classes/com/qiang/controller/OrderDetailController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/FD_SSM/WEB-INF/classes/com/qiang/controller/OrderDetailController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/FD_SSM/WEB-INF/classes/com/qiang/dao/IBookDao.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/FD_SSM/WEB-INF/classes/com/qiang/dao/IBookDao.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/FD_SSM/WEB-INF/classes/com/qiang/dao/IOrderDao.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/FD_SSM/WEB-INF/classes/com/qiang/dao/IOrderDao.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/FD_SSM/WEB-INF/classes/com/qiang/dao/IOrderDetailDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/FD_SSM/WEB-INF/classes/com/qiang/dao/IOrderDetailDao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/FD_SSM/WEB-INF/classes/com/qiang/dao/IOrderDetailDao.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/FD_SSM/WEB-INF/classes/com/qiang/dao/IOrderDetailDao.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/FD_SSM/WEB-INF/classes/com/qiang/service/IOrderDetailService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/FD_SSM/WEB-INF/classes/com/qiang/service/IOrderDetailService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/FD_SSM/WEB-INF/classes/com/qiang/service/impl/IOrderDetailServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/FD_SSM/WEB-INF/classes/com/qiang/service/impl/IOrderDetailServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/FD_SSM/WEB-INF/pages/booklist.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/FD_SSM/WEB-INF/pages/booklist.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/FD_SSM/WEB-INF/pages/message.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/FD_SSM/WEB-INF/pages/message.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/FD_SSM/WEB-INF/pages/orderdetaillist.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/FD_SSM/WEB-INF/pages/orderdetaillist.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/log4j.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/log4j.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/FD_SSM/WEB-INF/pages/orderlist.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/FD_SSM/WEB-INF/pages/orderlist.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/FD_SSM/WEB-INF/pages/tablelist.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/FD_SSM/WEB-INF/pages/tablelist.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/qiang/controller/OrderDetailController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/qiang/controller/OrderDetailController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/qiang/dao/IOrderDetailDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/qiang/dao/IOrderDetailDao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/qiang/dao/IOrderDetailDao.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/qiang/dao/IOrderDetailDao.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/qiang/service/IOrderDetailService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/qiang/service/IOrderDetailService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/qiang/service/impl/IOrderDetailServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/qiang/service/impl/IOrderDetailServiceImpl.class" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -71,52 +66,10 @@
   <component name="FileEditorManager">
     <leaf>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/orderlist.jsp">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/qiang/controller/OrderDetailController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="190">
-              <caret line="123" column="72" selection-start-line="123" selection-start-column="67" selection-end-line="123" selection-end-column="72" />
-              <folding>
-                <element signature="e#88#95#1" expanded="true" />
-                <element signature="e#150#157#1" expanded="true" />
-                <element signature="e#185#192#1" expanded="true" />
-                <element signature="e#317#324#1" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/qiang/dao/IOrderDao.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret line="17" column="17" selection-start-line="17" selection-start-column="17" selection-end-line="17" selection-end-column="17" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/com/qiang/dao/IOrderDao.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="159">
-              <caret line="22" column="29" selection-start-line="22" selection-start-column="29" selection-end-line="22" selection-end-column="29" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/qiang/controller/OrderController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="211">
-              <caret line="47" column="94" selection-start-line="47" selection-start-column="94" selection-end-line="47" selection-end-column="94" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/qiang/controller/BookController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="37" column="35" lean-forward="true" selection-start-line="37" selection-start-column="35" selection-end-line="37" selection-end-column="35" />
+            <state relative-caret-position="532">
+              <caret line="48" column="47" selection-start-line="48" selection-start-column="47" selection-end-line="48" selection-end-column="47" />
             </state>
           </provider>
         </entry>
@@ -124,13 +77,31 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/booklist.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="173">
-              <caret line="137" selection-start-line="137" selection-end-line="141" selection-end-column="8" />
+            <state relative-caret-position="338">
+              <caret line="139" column="75" lean-forward="true" selection-start-line="139" selection-start-column="40" selection-end-line="139" selection-end-column="75" />
               <folding>
                 <element signature="e#88#95#1" expanded="true" />
                 <element signature="e#139#146#1" expanded="true" />
                 <element signature="e#185#192#1" expanded="true" />
                 <element signature="e#295#302#1" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/orderdetaillist.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="191">
+              <caret line="80" column="113" selection-start-line="80" selection-start-column="113" selection-end-line="80" selection-end-column="113" />
+              <folding>
+                <element signature="n#style#0;n#img#0;n#!!top" expanded="true" />
+                <element signature="e#88#95#1" expanded="true" />
+                <element signature="e#162#169#1" expanded="true" />
+                <element signature="e#185#192#1" expanded="true" />
+                <element signature="e#341#348#1" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#img#0;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -193,11 +164,6 @@
         <option value="$PROJECT_DIR$/src/main/java/com/qiang/dao/ITableDao.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/qiang/dao/ITypeDao.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/qiang/dao/IUserDao.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/qiang/service/IOrderDetailService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/qiang/service/impl/IOrderDetailServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/qiang/dao/IOrderDetailDao.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/com/qiang/dao/IOrderDetailDao.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/com/qiang/controller/OrderDetailController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/qiang/service/impl/IUserServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/qiang/service/impl/ITableServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/qiang/controller/TableController.java" />
@@ -219,13 +185,18 @@
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/menulist.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/message.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/tablelist.jsp" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/orderdetaillist.jsp" />
         <option value="$PROJECT_DIR$/src/main/resources/com/qiang/dao/IBookDao.xml" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/booklist.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/orderlist.jsp" />
         <option value="$PROJECT_DIR$/src/main/resources/com/qiang/dao/IOrderDao.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/qiang/controller/OrderController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/qiang/controller/BookController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/qiang/service/IOrderDetailService.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/com/qiang/dao/IOrderDetailDao.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/qiang/dao/IOrderDetailDao.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/qiang/service/impl/IOrderDetailServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/qiang/controller/OrderDetailController.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/orderdetaillist.jsp" />
       </list>
     </option>
   </component>
@@ -309,10 +280,7 @@
               <item name="FD_SSM" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="qiang" type="462c0819:PsiDirectoryNode" />
-              <item name="dao" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="FD_SSM" type="b2602c69:ProjectViewProjectNode" />
@@ -320,6 +288,7 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="webapp" type="462c0819:PsiDirectoryNode" />
+              <item name="images" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="FD_SSM" type="b2602c69:ProjectViewProjectNode" />
@@ -348,7 +317,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="MANAGE_IGNORE_FILES_PROPERTY" value="true" />
-    <property name="MyBatisLogPluginindexNum" value="2736" />
+    <property name="MyBatisLogPluginindexNum" value="3570" />
     <property name="MyBatisLogPluginparameters" value="Parameters:" />
     <property name="MyBatisLogPluginpreparing" value="Preparing:" />
     <property name="MyBatisLogPluginrunning" value="true" />
@@ -530,7 +499,7 @@
       <workItem from="1585619744559" duration="17932000" />
       <workItem from="1585641059092" duration="2081000" />
       <workItem from="1585643911203" duration="20059000" />
-      <workItem from="1585707719406" duration="7006000" />
+      <workItem from="1585707719406" duration="10473000" />
     </task>
     <task id="LOCAL-00001" summary="饭店点餐管理系统202003232227">
       <created>1584974247497</created>
@@ -623,14 +592,22 @@
       <option name="project" value="LOCAL" />
       <updated>1585642447791</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="nothing">
+      <created>1585715352982</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1585715352982</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="173531000" />
+    <option name="totallyTimeSpent" value="176998000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4955157" visible="true" weight="0.19772118" />
       <window_info id="Structure" order="1" sideWeight="0.5044843" side_tool="true" weight="0.19705094" />
@@ -648,7 +625,7 @@
       <window_info anchor="bottom" id="Debug" order="4" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
-      <window_info anchor="bottom" id="JRebel Executor" order="7" sideWeight="0.49932975" weight="0.4490085" />
+      <window_info active="true" anchor="bottom" id="JRebel Executor" order="7" sideWeight="0.49932975" visible="true" weight="0.30736545" />
       <window_info anchor="bottom" id="TODO" order="8" />
       <window_info anchor="bottom" id="Spring" order="9" />
       <window_info anchor="bottom" id="Terminal" order="10" />
@@ -660,8 +637,8 @@
       <window_info anchor="bottom" id="JProfiler" order="16" />
       <window_info anchor="bottom" id="Database Changes" order="17" />
       <window_info anchor="bottom" id="Version Control" order="18" weight="0.32577905" />
-      <window_info active="true" anchor="bottom" id="Messages" order="19" visible="true" weight="0.26487252" />
-      <window_info anchor="bottom" id="Problems" order="20" />
+      <window_info anchor="bottom" id="Messages" order="19" weight="0.26487252" />
+      <window_info anchor="bottom" id="Problems" order="20" weight="0.3286119" />
       <window_info anchor="bottom" id="JRebel Console" order="21" sideWeight="0.50067025" side_tool="true" weight="0.55807364" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -699,13 +676,6 @@
     <option name="LAST_COMMIT_MESSAGE" value="nothing" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/qiang/dao/IUserDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="298">
-          <caret line="60" column="20" selection-start-line="60" selection-start-column="20" selection-end-line="60" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/qiang/dao/IUserRoleDao.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-139">
@@ -727,20 +697,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/qiang/service/IOrderDetailService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="112">
-          <caret line="19" column="108" selection-start-line="19" selection-start-column="108" selection-end-line="19" selection-end-column="108" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/qiang/dao/IOrderDetailDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="73">
-          <caret line="19" column="13" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/qiang/service/impl/IUserServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="265">
@@ -752,13 +708,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="189">
           <caret line="19" column="31" lean-forward="true" selection-start-line="19" selection-start-column="31" selection-end-line="19" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/qiang/service/impl/IOrderDetailServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-136">
-          <caret line="25" column="82" selection-start-line="25" selection-start-column="82" selection-end-line="25" selection-end-column="82" />
         </state>
       </provider>
     </entry>
@@ -776,24 +725,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/qiang/controller/OrderDetailController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="38">
-          <caret line="31" column="31" selection-start-line="31" selection-start-column="24" selection-end-line="31" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/manager.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="228">
           <caret line="64" column="12" selection-start-line="64" selection-start-column="12" selection-end-line="66" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/com/qiang/dao/IOrderDetailDao.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="206">
-          <caret line="33" column="28" selection-start-line="33" selection-start-column="28" selection-end-line="33" selection-end-column="28" />
         </state>
       </provider>
     </entry>
@@ -977,19 +912,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/orderdetaillist.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1028">
-          <caret line="129" column="82" selection-start-line="129" selection-start-column="82" selection-end-line="129" selection-end-column="82" />
-          <folding>
-            <element signature="e#88#95#1" expanded="true" />
-            <element signature="e#162#169#1" expanded="true" />
-            <element signature="e#185#192#1" expanded="true" />
-            <element signature="e#341#348#1" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/com/qiang/dao/IBookDao.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="216">
@@ -1001,19 +923,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="745">
           <caret line="59" column="19" selection-start-line="59" selection-start-column="19" selection-end-line="59" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/booklist.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="173">
-          <caret line="137" selection-start-line="137" selection-end-line="141" selection-end-column="8" />
-          <folding>
-            <element signature="e#88#95#1" expanded="true" />
-            <element signature="e#139#146#1" expanded="true" />
-            <element signature="e#185#192#1" expanded="true" />
-            <element signature="e#295#302#1" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1053,8 +962,75 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/qiang/controller/BookController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
+        <state relative-caret-position="410">
           <caret line="37" column="35" lean-forward="true" selection-start-line="37" selection-start-column="35" selection-end-line="37" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/com/qiang/dao/IOrderDetailDao.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="427">
+          <caret line="46" column="17" selection-start-line="46" selection-start-column="17" selection-end-line="46" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/qiang/dao/IOrderDetailDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="218">
+          <caret line="22" column="220" selection-start-line="22" selection-start-column="220" selection-end-line="22" selection-end-column="220" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/qiang/service/IOrderDetailService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="169">
+          <caret line="22" column="30" lean-forward="true" selection-start-line="22" selection-start-column="30" selection-end-line="22" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/qiang/service/impl/IOrderDetailServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="224">
+          <caret line="27" column="35" lean-forward="true" selection-start-line="27" selection-start-column="35" selection-end-line="27" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/qiang/controller/OrderDetailController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="532">
+          <caret line="48" column="47" selection-start-line="48" selection-start-column="47" selection-end-line="48" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/booklist.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="338">
+          <caret line="139" column="75" lean-forward="true" selection-start-line="139" selection-start-column="40" selection-end-line="139" selection-end-column="75" />
+          <folding>
+            <element signature="e#88#95#1" expanded="true" />
+            <element signature="e#139#146#1" expanded="true" />
+            <element signature="e#185#192#1" expanded="true" />
+            <element signature="e#295#302#1" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/images/light.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/orderdetaillist.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="191">
+          <caret line="80" column="113" selection-start-line="80" selection-start-column="113" selection-end-line="80" selection-end-column="113" />
+          <folding>
+            <element signature="n#style#0;n#img#0;n#!!top" expanded="true" />
+            <element signature="e#88#95#1" expanded="true" />
+            <element signature="e#162#169#1" expanded="true" />
+            <element signature="e#185#192#1" expanded="true" />
+            <element signature="e#341#348#1" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

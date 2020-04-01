@@ -38,7 +38,6 @@
         }
         .right{
             float: right;
-            padding-top: -30px;
             padding-right: 50px;
         }
     </style>

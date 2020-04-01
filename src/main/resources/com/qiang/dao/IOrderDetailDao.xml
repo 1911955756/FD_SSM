@@ -44,8 +44,8 @@ AND ord.orderid = od.orderid
 <if test="orddid!=null and orddid!=''">
 	and od.odid like '%${orddid}%'
 </if>
-<if test="ordid!=null and ordid!=''">
-	and ord.orderid like '%${ordid}%'
+<if test="odcalls=='已催单'">
+	and od.called='已催单'
 </if>
 order by od.odid
     </select>

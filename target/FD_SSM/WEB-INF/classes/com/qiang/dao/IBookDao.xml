@@ -24,7 +24,7 @@
         <if test="plannum!=null and plannum!=''">
             and plan_num =#{plannum}
         </if>
-        <if test='now=="yes"'>
+        <if test='now=="今天未就餐"'>
         and status!='就餐'
         and createtime>DATE_FORMAT(CURDATE(),'%Y-%m-%d %H:%i:%s')
         </if>

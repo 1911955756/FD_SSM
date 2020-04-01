@@ -20,7 +20,7 @@ public interface IOrderDetailDao {
      * @param
      * @return
      */
-    List<OrderDetail> findAll(@Param("orddstatus") String orddstatus, @Param("tbid") String tbid, @Param("mname") String mname, @Param("orddid") String orddid, @Param("ordid")String ordid);
+    List<OrderDetail> findAll(@Param("orddstatus") String orddstatus, @Param("tbid") String tbid, @Param("mname") String mname, @Param("orddid") String orddid, @Param("ordid")String ordid,@Param("odcalls") String odcalls);
 
     /**
      * 根据odid更新上菜单状态

@@ -21,9 +21,9 @@ public class IOrderDetailServiceImpl implements IOrderDetailService {
     private IOrderDetailDao orderDetailDao;
 
     @Override
-    public PageInfo<OrderDetail> findAll(Integer num,String status,String tbid,String orddid,String mname,String ordid) {
+    public PageInfo<OrderDetail> findAll(Integer num,String status,String tbid,String orddid,String mname,String ordid,String odcalls) {
         PageHelper.startPage(num,3);
-        List<OrderDetail> all = orderDetailDao.findAll(status,tbid,mname,orddid,ordid);
+        List<OrderDetail> all = orderDetailDao.findAll(status,tbid,mname,orddid,ordid,odcalls);
         PageInfo<OrderDetail> orderDetailPageInfo = new PageInfo<>(all);
         return orderDetailPageInfo;
     }

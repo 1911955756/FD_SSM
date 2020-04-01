@@ -42,7 +42,7 @@
             margin-top: -30px;
         }
         .callclass{
-            font-size: 20px;
+            font-size: 15px;
             color: red;
         }
     </style>
@@ -50,7 +50,9 @@
     <script type="text/javascript" src="../js/bootstrap.min.js"></script>
     <script>
         setInterval(function (){
-            var tbid=$("#inputbid").val(),orddid=$("#inputorddid").val(),ordid=$("#inputordid").val(),mname=$("#inputmname").val();callnum=0;
+            var tbid=$("#inputbid").val(),orddid=$("#inputorddid").val(),
+                ordid=$("#inputordid").val(),mname=$("#inputmname").val(),
+                odcalls=$("#change").val(),callnum=0;
             //alert("响应了");
             $.ajax({
                 url : "../orderdetail/findAll2",
@@ -62,7 +64,8 @@
                     tbid:tbid,
                     orddid:orddid,
                     ordid:ordid,
-                    mname:mname
+                    mname:mname,
+                    odcalls:odcalls
                 },
                 success : function(data) {
                     //清空表格数据
@@ -70,8 +73,14 @@
                     //动态刷新表格
                     var html="";
                     for (var i = 0; i < data.list.length; i++) {
-                        var content="<tr>"
-                            +"<td title='"+data.list[i].odid+"'data-toggle=\"modal\" data-target=\".bs-example-modal-sm\" onclick=\'changeImage(\""+data.list[i].menu.image+"\",\""+data.list[i].menu.menuname+"\",\""+data.list[i].odid+"\",\""+data.list[i].order1.tableid+"\")'>"+data.list[i].odid+"</td>"
+                        var one="<tr>"
+                            +"<td title='"+data.list[i].odid+"'data-toggle=\"modal\" data-target=\".bs-example-modal-sm\" " +
+                            "onclick=\'changeImage(\""+data.list[i].menu.image+"\",\""+data.list[i].menu.menuname+"\"," +
+                            "\""+data.list[i].odid+"\",\""+data.list[i].order1.tableid+"\")'>";
+                        if(data.list[i].called=='已催单'){
+                            one=one+"<img src=\"../images/light.png\" style=\"max-width: 15px;max-height: 15px\">";
+                        }
+                        var content=""+data.list[i].odid+"</td>"
                             +"<td title='"+data.list[i].orderid+"'>"+data.list[i].orderid+"</td>"
                             +"<td title='"+data.list[i].menu.menuname+"'>"+data.list[i].menu.menuname+"</td>"
                             +"<td title='"+ data.list[i].menu_num +"'>"+ data.list[i].menu_num +"</td>"
@@ -87,7 +96,7 @@
                         else if (data.list[i].status=='待上菜'){
                             var a="<td><a href='../orderdetail/finish?odid="+data.list[i].odid+"' class=\"btn btn-warning\">已上菜</a></td></tr>";
                             if(data.list[i].called=='已催单'){callnum=callnum+1;}}
-                        html=content+a;
+                        html=one+content+a;
                         $("tbody").append(html);
                     }
                     $(".pagination").html("");
@@ -125,9 +134,9 @@
                     var all=first+center+last;
                     $(".pagination").append(all);
                     $(".hhh").html("");
-                    var hhh="第"+data.pageNum+"页，共"+data.pages+"页";
+                    var hhh="第"+data.pageNum+"页，共"+data.pages+"页<a href=\"#\" onclick=\"$('#change').val('未催单')\">正常显示</a>";
                     if(callnum>0){
-                        var call="<a href='#' class='callclass'>催单:"+callnum+"</a>";
+                        var call="<a href='#' class='callclass'onclick=\"$('#change').val('已催单')\">催单:"+callnum+"</a>";
                         var hhh=hhh+call;
                     }
                     $(".hhh").append(hhh);
@@ -146,6 +155,7 @@
     </script>
 </head>
 <body class="inner-container">
+<div style="display: none"><input id="change" value="${odcalls}" class="form-control"></div>
 <!-- Modal -->
 <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
     <div class="modal-dialog modal-sm" role="document">
@@ -194,9 +204,13 @@
         <tbody>
         <c:forEach items="${orderdetaillist.list}" var="orderdetail">
             <tr >
-                <td title="${orderdetail.odid}"onclick='changeImage("${orderdetail.menu.image}")'>${orderdetail.odid}</td>
-                <td title="${orderdetail.orderid}"onclick='changeImage("${orderdetail.menu.image}")'>${orderdetail.orderid}</td>
-                <td title="${orderdetail.menu.menuname}"onclick='changeImage("${orderdetail.menu.image}")'>${orderdetail.menu.menuname}</td>
+                <td title="${orderdetail.odid}"data-toggle="modal" data-target=".bs-example-modal-sm" onclick='changeImage("${orderdetail.menu.image}","${orderdetail.menu.menuname}","${orderdetail.odid}","${orderdetail.order1.tableid}")'>
+                    <c:if test="${orderdetail.called=='已催单'}">
+                        <img src="../images/light.png" style="max-width: 15px;max-height: 15px">
+                    </c:if>
+                        ${orderdetail.odid}</td>
+                <td title="${orderdetail.orderid}">${orderdetail.orderid}</td>
+                <td title="${orderdetail.menu.menuname}">${orderdetail.menu.menuname}</td>
                 <td title="${orderdetail.menu_num}">${orderdetail.menu_num}</td>
                 <td title="${orderdetail.order1.tableid}">${orderdetail.order1.tableid}</td>
                 <td title="${orderdetail.createtime}">${orderdetail.createtime}</td>
@@ -218,7 +232,7 @@
         </c:forEach>
         </tbody>
     </table>
-<div class="hhh">第${orderdetaillist.pageNum}页，共${orderdetaillist.pages}页</div>
+<div class="hhh">第${orderdetaillist.pageNum}页，共${orderdetaillist.pages}页<a href="#" onclick="$('#change').val('未催单')">正常显示</a></div>
 <%--    分页条--%>
 <nav aria-label="Page navigation" class="right">
     <ul class="pagination">

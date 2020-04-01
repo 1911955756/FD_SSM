@@ -34,17 +34,19 @@ public class OrderDetailController {
                                 @RequestParam(required = false) String tbid,
                                 @RequestParam(required = false) String mname,
                                 @RequestParam(required = false) String orddid,
-                                @RequestParam(required = false) String ordid){
+                                @RequestParam(required = false) String ordid,
+                                @RequestParam(required = false) String odcalls){
         System.out.println("查询第"+num+"页,状态为："+status+"的上菜单");
         ModelMap modelMap=new ModelMap();
         //调用service的方法
-        PageInfo<OrderDetail> list = orderDetailService.findAll(num,status,tbid,orddid,mname,ordid);
+        PageInfo<OrderDetail> list = orderDetailService.findAll(num,status,tbid,orddid,mname,ordid,odcalls);
         modelMap.addAttribute("orderdetaillist",list);
         modelMap.addAttribute("status",status);
         modelMap.addAttribute("tbid",tbid);
         modelMap.addAttribute("mname",mname);
         modelMap.addAttribute("orddid",orddid);
         modelMap.addAttribute("ordid",ordid);
+        modelMap.addAttribute("odcalls",odcalls);
         ModelAndView mv=new ModelAndView("orderdetail",modelMap);
         mv.setViewName("orderdetaillist");
         return mv;
@@ -55,11 +57,12 @@ public class OrderDetailController {
                                            @RequestParam(required = false) String tbid,
                                            @RequestParam(required = false) String mname,
                                            @RequestParam(required = false) String orddid,
-                                           @RequestParam(required = false) String ordid){
+                                           @RequestParam(required = false) String ordid,
+                                           @RequestParam(required = false) String odcalls){
         System.out.println("查询第"+num+"页,状态为："+status+"的上菜单");
         System.out.println("===================我是分界线=====================");
         //调用service的方法
-        PageInfo<OrderDetail> list = orderDetailService.findAll(num,status,tbid,orddid,mname,ordid);
+        PageInfo<OrderDetail> list = orderDetailService.findAll(num,status,tbid,orddid,mname,ordid,odcalls);
         return list;
     }
     @RequestMapping("/cook")
