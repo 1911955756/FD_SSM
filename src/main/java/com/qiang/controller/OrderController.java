@@ -27,7 +27,7 @@ public class OrderController {
     private IOrderService orderService;
     @RequestMapping("/findAll")
     public ModelAndView findAll(@RequestParam(required = false,defaultValue ="1") Integer num,
-                                @RequestParam(required = false,defaultValue ="yes") String now,
+                                @RequestParam(required = false,defaultValue ="今天未支付") String now,
                                 @RequestParam(required = false) String tableid,
                                 @RequestParam(required = false) String orderid,
                                 @RequestParam(required = false) String status){
@@ -45,7 +45,7 @@ public class OrderController {
     }
     @RequestMapping("/findAll2")
     public @ResponseBody PageInfo findAll2(@RequestParam(required = false,defaultValue ="1") Integer num,
-                                           @RequestParam(required = false,defaultValue ="yes") String now,
+                                           @RequestParam(required = false,defaultValue ="今天未支付") String now,
                                            @RequestParam(required = false) String tableid,
                                            @RequestParam(required = false) String orderid,
                                            @RequestParam(required = false) String status){

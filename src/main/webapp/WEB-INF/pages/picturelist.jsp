@@ -168,6 +168,7 @@
         </c:forEach>
         </tbody>
     </table>
+            第${picturelist.pageNum}页，共${picturelist.pages}页
             <%--    分页条--%>
             <nav aria-label="Page navigation" class="right">
                 <ul class="pagination">

@@ -158,7 +158,7 @@
         </c:forEach>
         </tbody>
     </table>
-
+    第${listmenu.pageNum}页，共${listmenu.pages}页
     <%--    分页条--%>
     <nav aria-label="Page navigation" class="right">
         <ul class="pagination">

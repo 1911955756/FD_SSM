@@ -38,6 +38,7 @@
         }
         .right{
             float: right;
+            padding-top: -30px;
             padding-right: 50px;
         }
     </style>
@@ -45,21 +46,24 @@
     <script type="text/javascript" src="../js/bootstrap.min.js"></script>
     <script>
         $(function () {
+            $("#touserfindAll2").click(function () {
+                    $("#touserfindAll2").attr("href","../user/findAll2?num=1&&ujob="+$("#ujob").val()+"&&uname="+$("#uname").val()+"&&uphone="+$("#uphone").val()+"")
+            });
             $("#front").click(function () {
-                $("#front").attr("href","../user/findAll2?num=${userlist.pageNum-1}")
+                $("#front").attr("href","../user/findAll2?num=${userlist.pageNum-1}&&ujob="+$("#ujob").val()+"&&uname="+$("#uname").val()+"&&uphone="+$("#uphone").val()+"")
             });
             $("#first").click(function () {
-                $("#first").attr("href","../user/findAll2?num=1")
+                $("#first").attr("href","../user/findAll2?num=1&&ujob="+$("#ujob").val()+"&&uname="+$("#uname").val()+"&&uphone="+$("#uphone").val()+"")
             });
             $("#last").click(function () {
-                $("#last").attr("href","../user/findAll2?num=${userlist.pages}")
+                $("#last").attr("href","../user/findAll2?num=${userlist.pages}&&ujob="+$("#ujob").val()+"&&uname="+$("#uname").val()+"&&uphone="+$("#uphone").val()+"")
             });
             $("#next").click(function () {
-                $("#next").attr("href","../user/findAll2?num=${userlist.pageNum+1}")
+                $("#next").attr("href","../user/findAll2?num=${userlist.pageNum+1}&&ujob="+$("#ujob").val()+"&&uname="+$("#uname").val()+"&&uphone="+$("#uphone").val()+"")
             });
         });
         function gonum(num) {
-            $(".aurlcenter").attr("href","../user/findAll2?num="+num+"")
+            $(".aurlcenter").attr("href","../user/findAll2?num="+num+"&&ujob="+$("#ujob").val()+"&&uname="+$("#uname").val()+"&&uphone="+$("#uphone").val()+"")
         }
     </script>
 
@@ -71,7 +75,12 @@
         <tr>
             <td>职务</td>
             <td>姓名</td>
-            <td>电话</td>
+            <td>电话<a href="" id="touserfindAll2" class="btn btn-success">搜索</a></td>
+        </tr>
+        <tr>
+            <td><input class="form-control" placeholder="输入职务查询"  id="ujob" value="${ujob}"></td>
+            <td><input class="form-control" placeholder="输入姓名查询"  id="uname" value="${uname}"></td>
+            <td><input class="form-control" placeholder="输入电话查询"  id="uphone" value="${uphone}"></td>
         </tr>
         </thead>
         <tbody>
@@ -85,6 +94,7 @@
         </tbody>
     </table>
     <%--    分页条--%>
+ 第${userlist.pageNum}页，共${userlist.pages}页
     <nav aria-label="Page navigation" class="right">
         <ul class="pagination">
             <c:choose>

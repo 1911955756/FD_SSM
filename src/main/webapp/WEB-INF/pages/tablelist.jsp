@@ -112,7 +112,9 @@
                     }
                     var all=first+center+last;
                     $(".pagination").append(all);
-
+                    $(".hhh").html("");
+                    var hhh="第"+data.pageNum+"页，共"+data.pages+"页";
+                    $(".hhh").append(hhh);
                 }
             });
         },2000);
@@ -202,6 +204,7 @@
         </tbody>
     </table>
 </div>
+<div class="hhh">第${tablelist.pageNum}页，共${tablelist.pages}页</div>
 <%--    分页条--%>
 <nav aria-label="Page navigation" class="right">
     <ul class="pagination">

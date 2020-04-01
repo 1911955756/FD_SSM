@@ -24,7 +24,7 @@ public class BookController {
     private IBookService bookService;
     @RequestMapping("/findAll")
     public ModelAndView findAll(@RequestParam(required = false,defaultValue ="1") Integer num,
-                                @RequestParam(required = false,defaultValue ="yes") String now,
+                                @RequestParam(required = false,defaultValue ="今天未就餐") String now,
                                 @RequestParam(required = false) String bookid,
                                 @RequestParam(required = false) Integer plannum){
         ModelMap modelMap=new ModelMap();
@@ -40,7 +40,7 @@ public class BookController {
     }
     @RequestMapping("/findAll2")
     public @ResponseBody PageInfo findAll2(@RequestParam(required = false,defaultValue ="1") Integer num,
-                                           @RequestParam(required = false,defaultValue ="yes") String now,
+                                           @RequestParam(required = false,defaultValue ="今天未就餐") String now,
                                            @RequestParam(required = false) String bookid,
                                            @RequestParam(required = false) Integer plannum){
         //调用service的方法

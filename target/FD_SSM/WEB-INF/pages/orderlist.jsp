@@ -154,6 +154,7 @@
         </c:forEach>
         </tbody>
     </table>
+    第${orderlist.pageNum}页，共${orderlist.pages}页
     <%--    分页条--%>
     <nav aria-label="Page navigation" class="right">
         <ul class="pagination">

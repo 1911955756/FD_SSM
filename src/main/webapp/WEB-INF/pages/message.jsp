@@ -93,6 +93,7 @@
         </tbody>
     </table>
     <%--    分页条--%>
+ 第${userlist.pageNum}页，共${userlist.pages}页
     <nav aria-label="Page navigation" class="right">
         <ul class="pagination">
             <c:choose>

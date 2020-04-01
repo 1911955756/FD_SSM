@@ -176,6 +176,7 @@
         </c:forEach>
         </tbody>
     </table>
+    第${typelist.pageNum}页，共${typelist.pages}页
     <%--    分页条--%>
     <nav aria-label="Page navigation" class="right">
         <ul class="pagination">

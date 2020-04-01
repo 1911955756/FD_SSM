@@ -5,7 +5,7 @@ import lombok.Data;
 import java.sql.Timestamp;
 
 /**
- * @author Mr.锵
+ * @author
  * date 2020-02-21
  */
 @Data
@@ -17,4 +17,6 @@ public class Book {
     private Timestamp createtime;
     private Timestamp updatetime;
     private Integer wait_num;
+
+
 }

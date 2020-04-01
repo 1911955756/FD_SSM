@@ -41,12 +41,16 @@
             padding-right: 50px;
             margin-top: -30px;
         }
+        .callclass{
+            font-size: 20px;
+            color: red;
+        }
     </style>
     <script type="text/javascript" src="../js/jquery.min.js"></script>
     <script type="text/javascript" src="../js/bootstrap.min.js"></script>
     <script>
         setInterval(function (){
-            var tbid=$("#inputbid").val(),orddid=$("#inputorddid").val(),ordid=$("#inputordid").val(),mname=$("#inputmname").val()
+            var tbid=$("#inputbid").val(),orddid=$("#inputorddid").val(),ordid=$("#inputordid").val(),mname=$("#inputmname").val();callnum=0;
             //alert("响应了");
             $.ajax({
                 url : "../orderdetail/findAll2",
@@ -75,11 +79,14 @@
                             +"<td title='"+ data.list[i].createtime +"'>"+ data.list[i].createtime +"</td>"
                             +"<td title='"+ data.list[i].updatetime +"'>"+ data.list[i].updatetime +"</td>";
                         if (data.list[i].status=='待烹饪'){
-                            var a="<td><a href='../orderdetail/cook?odid="+data.list[i].odid+"'class=\"btn btn-primary\">烹饪</a></td></tr>"}
+                            var a="<td><a href='../orderdetail/cook?odid="+data.list[i].odid+"'class=\"btn btn-primary\">烹饪</a></td></tr>";
+                        if(data.list[i].called=='已催单'){callnum=callnum+1;}}
                         else if (data.list[i].status=='烹饪中'){
-                            var a="<td><a href='../orderdetail/finishcook?odid="+data.list[i].odid+"' class=\"btn btn-success\">完成</a></td></tr>"}
+                            var a="<td><a href='../orderdetail/finishcook?odid="+data.list[i].odid+"' class=\"btn btn-success\">完成</a></td></tr>";
+                            if(data.list[i].called=='已催单'){callnum=callnum+1;}}
                         else if (data.list[i].status=='待上菜'){
-                            var a="<td><a href='../orderdetail/finish?odid="+data.list[i].odid+"' class=\"btn btn-warning\">已上菜</a></td></tr>"};
+                            var a="<td><a href='../orderdetail/finish?odid="+data.list[i].odid+"' class=\"btn btn-warning\">已上菜</a></td></tr>";
+                            if(data.list[i].called=='已催单'){callnum=callnum+1;}}
                         html=content+a;
                         $("tbody").append(html);
                     }
@@ -117,6 +124,13 @@
                     }
                     var all=first+center+last;
                     $(".pagination").append(all);
+                    $(".hhh").html("");
+                    var hhh="第"+data.pageNum+"页，共"+data.pages+"页";
+                    if(callnum>0){
+                        var call="<a href='#' class='callclass'>催单:"+callnum+"</a>";
+                        var hhh=hhh+call;
+                    }
+                    $(".hhh").append(hhh);
                 }
             });
         },2000);
@@ -204,7 +218,7 @@
         </c:forEach>
         </tbody>
     </table>
-
+<div class="hhh">第${orderdetaillist.pageNum}页，共${orderdetaillist.pages}页</div>
 <%--    分页条--%>
 <nav aria-label="Page navigation" class="right">
     <ul class="pagination">

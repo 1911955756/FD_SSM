@@ -15,6 +15,7 @@
     <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
     <title>coupon</title>
     <link rel="stylesheet" href="../css/bootstrap.css" type="text/css">
+    <link media="screen" rel="stylesheet" href="../css/bootstrap-datetimepicker.min.css" type="text/css">
     <style>
         body{
             background-color: whitesmoke;
@@ -36,16 +37,44 @@
         .inner-container::-webkit-scrollbar {
             display: none;
         }
-        .right{
-            float: right;
-            padding-right: 50px;
-            margin-top: -30px;
+        .timepicker{
+            z-index: 100000;
         }
     </style>
     <script type="text/javascript" src="../js/jquery.min.js"></script>
     <script type="text/javascript" src="../js/bootstrap.min.js"></script>
+
+
+    <script src="../js/bootstrap-datetimepicker.min.js" type="text/javascript"></script>
     <script>
         $(function () {
+            $.fn.datetimepicker.dates['zh-CN'] = {
+                days: ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六", "星期日"],
+                daysShort: ["周日", "周一", "周二", "周三", "周四", "周五", "周六", "周日"],
+                daysMin:  ["日", "一", "二", "三", "四", "五", "六", "日"],
+                months: ["一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十二月"],
+                monthsShort: ["一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十二月"],
+                today: "今天",
+                suffix: [],
+                meridiem: ["上午", "下午"]
+            };
+            $('#couend').datetimepicker({
+                language:'zh-CN',
+                format: 'yyyy-mm-dd hh:ii:ss',
+                todayBtn:'linked',
+                clearBtn: true,
+                minuteStep:5,
+                weekStart:1
+            });
+            $('#couend2').datetimepicker({
+                defaultDate:new Date(),
+                language:'zh-CN',
+                format: 'yyyy-mm-dd hh:ii:ss',
+                clearBtn: true,
+                todayBtn:'linked',
+                minuteStep:5,
+                weekStart:1
+            });
             var flag=false;
             $("#addbtn").click(function () {
                 if($("#couname").val()==""){
@@ -96,38 +125,40 @@
 </head>
 <body class="inner-container">
 <div class="table-responsive">
-    <table class="table table-striped table-bordered table-hover">
-        <thead>
-        <tr>
-            <td >标题</td>
-            <td>内容</td>
-        </tr>
-        </thead>
-        <tbody>
+ <table class="table table-striped table-bordered table-hover">
+    <thead>
+    <tr>
+        <td>标题</td>
+        <td>内容</td>
+    </tr>
+    </thead>
+    <tbody>
         <c:if test="${empty bycouponid.couponname}" var="result">
             <form action="../coupon/saveCoupon" class="form-inline" id="addform">
                 <tr><td>优惠券：</td><td><input type="text" name="couponname" class="form-control" id="couname"/></td></tr>
                 <tr><td>类型:</td><td><input type="text"  name="type" class="form-control" id="coutype"/></td></tr>
                 <tr><td>优惠价格:</td><td><input type="text"  name="price" class="form-control" id="couprice"/></td></tr>
-                <tr><td>结束时间:</td><td><input type="text"  name="endtime" placeholder="输入格式：年-月-日 时：分：秒" class="form-control" id="couend"/></td></tr>
-                <tr><td></td><td><input type="button"value="添加" class="btn btn-primary" id="addbtn"/>
+                <tr><td>结束时间:</td><td><input type="text" name="endtime" class="form-control" id="couend" placeholder="输入格式：年-月-日 时-分-秒"readonly></td></tr>
+                <tr><td></td><td>
+                <input type="button"value="添加" class="btn btn-primary" id="addbtn"/>
             </form>
             <a href="../coupon/findAll" class="btn btn-warning">取消</a></td></tr>
         </c:if>
         <c:if test="${!result}">
             <form action="../coupon/updateCoupon" class="form-inline">
-                <tr><td>菜单id:</td><td><input type="text" name="couponid" value="${bycouponid.couponid}" class="form-control" /></td></tr>
+                <tr><td>菜单id:</td><td><input type="text" name="couponid" value="${bycouponid.couponid}" class="form-control" readonly/></td></tr>
                 <tr><td>优惠券：</td><td><input type="text" name="couponname" class="form-control" value="${bycouponid.couponname}"/></td></tr>
                 <tr><td>类型:</td><td><input type="text"  name="type" class="form-control" value="${bycouponid.type}"/></td></tr>
                 <tr><td>状态:</td><td><input type="text"  name="status" class="form-control" value="${bycouponid.status}"/></td></tr>
                 <tr><td>优惠价格:</td><td><input type="text"  name="price" class="form-control" value="${bycouponid.price}" /></td></tr>
-                <tr><td>结束时间:</td><td><input type="text"  name="endtime"placeholder="输入格式：年-月-日 时：分：秒" class="form-control" value="${bycouponid.endtime}"/></td></tr>
-                <tr><td></td><td><input type="submit"value="更新" class="btn btn-success"/>
+                <tr><td>结束时间:</td><td><input type="text" name="endtime" class="form-control" value="${bycouponid.endtime}" id="couend2" placeholder="输入格式：年-月-日 时-分-秒"></td></tr>
+                <tr><td></td><td>
+                <input type="submit"value="更新" class="btn btn-success"/>
             </form>
             <a href="../coupon/findAll" class="btn btn-warning">取消</a></td></tr>
         </c:if>
-        </tbody>
-    </table>
+    </tbody>
+ </table>
 </div>
 </body>
 </html>

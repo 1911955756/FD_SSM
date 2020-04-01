@@ -109,6 +109,9 @@
                     }
                     var all=first+center+last;
                     $(".pagination").append(all);
+                    $(".hhh").html("");
+                    var hhh="第"+data.pageNum+"页，共"+data.pages+"页";
+                    $(".hhh").append(hhh);
                 }
             });
         },1000);
@@ -132,10 +135,12 @@
     </script>
 </head>
 <body class="inner-container">
+<table><thead><tr>
+    <td><button class="btn btn-primary" onclick="$('#change').val('全部')">显示全部</button></td>
+    <td><button class="btn btn-success" onclick="$('#change').val('今天未就餐')">显示今天</button></td>
+    <td><input id="change" value="${now}" class="form-control" readonly style="max-width: 120px"></td></tr></thead>
+</table>
 <div class="table-responsive">
-    <div style="display: none"><input id="change" value="${now}" ></div>
-    <button class="btn btn-primary" onclick="$('#change').val('no')">显示全部</button>
-    <button class="btn btn-success" onclick="$('#change').val('yes')">显示今天</button>
     <table class="table table-striped table-bordered table-hover">
         <thead>
         <tr>
@@ -168,6 +173,7 @@
         </c:forEach>
         </tbody>
     </table>
+    <div class="hhh">第${orderdetaillist.pageNum}页，共${orderdetaillist.pages}页</div>
     <%--    分页条--%>
     <nav aria-label="Page navigation" class="right">
         <ul class="pagination">

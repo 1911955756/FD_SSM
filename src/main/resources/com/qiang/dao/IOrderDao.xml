@@ -20,7 +20,7 @@
 		<if test="status!=null and status!=''">
 			and status like '%${status}%'
 		</if>
-        <if test='now=="yes"'>
+        <if test='now=="今天未支付"'>
             and status in('待点餐','待上菜')
             and createtime>DATE_FORMAT(CURDATE(),'%Y-%m-%d %H:%i:%s')
         </if>

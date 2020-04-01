@@ -37,8 +37,8 @@
 FROM
 	menu
 WHERE
-	YEAR (createTime) = YEAR (SYSDATE())
-AND MONTH (createTime) = MONTH (SYSDATE())
+	YEAR (updatetime) = YEAR (SYSDATE())
+AND MONTH (updatetime) = MONTH (SYSDATE())
 AND sell_num > 0
 AND status='上架'
     </select>

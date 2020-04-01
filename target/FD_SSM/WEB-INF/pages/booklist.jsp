@@ -168,6 +168,7 @@
         </c:forEach>
         </tbody>
     </table>
+    第${booklist.pageNum}页，共${booklist.pages}页
     <%--    分页条--%>
     <nav aria-label="Page navigation" class="right">
         <ul class="pagination">

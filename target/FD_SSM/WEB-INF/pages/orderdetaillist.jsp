@@ -144,7 +144,7 @@
                 <table>
                     <thead>
                     <td><img src="" id="image" class="img-responsive" style="max-width: 100px;max-height: 100px"></td>
-                    <td><h5>上菜单号:<textarea id="modalodid"></textarea></h5><h5>桌号：<input  id="modaltableid"></h5><h5>菜名：<input id="modalmname"></h5></td>
+                    <td><h5>上菜单号:<input id="modalodid" disabled style="max-width: 120px"></h5><h5>桌号：<input  id="modaltableid"disabled style="max-width: 120px"></h5><h5>菜名：<input id="modalmname"disabled style="max-width: 120px"></h5></td>
                     </thead>
                 </table>
             </div>
@@ -204,7 +204,7 @@
         </c:forEach>
         </tbody>
     </table>
-
+第${orderdetaillist.pageNum}页，共${orderdetaillist.pages}页
 <%--    分页条--%>
 <nav aria-label="Page navigation" class="right">
     <ul class="pagination">

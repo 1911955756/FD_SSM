@@ -92,6 +92,7 @@
     </c:forEach>
     </tbody>
 </table>
+第${tmlist.pageNum}页，共${tmlist.pages}页
 <%--    分页条--%>
 <nav aria-label="Page navigation" class="right">
     <ul class="pagination">

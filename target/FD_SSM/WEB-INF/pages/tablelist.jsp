@@ -202,6 +202,7 @@
         </tbody>
     </table>
 </div>
+第${tablelist.pageNum}页，共${tablelist.pages}页
 <%--    分页条--%>
 <nav aria-label="Page navigation" class="right">
     <ul class="pagination">

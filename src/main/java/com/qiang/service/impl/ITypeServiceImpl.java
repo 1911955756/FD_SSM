@@ -28,7 +28,7 @@ public class ITypeServiceImpl implements ITypeService {
 
     @Override
     public PageInfo<Type1> findAll(Integer num,String tyname,String tystatus) {
-        PageHelper.startPage(num,5);
+        PageHelper.startPage(num,4);
         List<Type1> all = typeDao.findAll(tyname,tystatus);
         PageInfo<Type1> type1PageInfo = new PageInfo<>(all);
         return type1PageInfo;
