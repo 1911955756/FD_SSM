@@ -53,15 +53,19 @@ public class EvaluationController {
 
     @RequestMapping("/uploadImage")
     public @ResponseBody String uploadImage(MultipartFile file)throws Exception{
-        MultipartFile file2=file;
+        MultipartFile windowsfile=file;
+        //MultipartFile linuxfile=file;
         System.out.println("uploadImage执行了");
-        String warurl="E:/MYLIFE/SSM框架学习/SSM整合/FD_SSM/src/main/webapp/images/";
-        String tomcaturl="E:/Tomcat/apache-tomcat-8.5.47-8090/webapps/FD_SSM_war/images/";
-        String filename=file.getOriginalFilename();
-        String warpath=warurl+filename;
-        String tomcatpath=tomcaturl+filename;
-        file.transferTo(new File(warpath));
-        file2.transferTo(new File(tomcatpath));
+        //String ideaurl="E:/MYLIFE/SSM框架学习/SSM整合/FD_SSM/src/main/webapp/images/";//IDEA
+        String wtomcaturl="E:/Tomcat/apache-tomcat-8.5.47-8090/webapps/FD_SSM_war/images/";//windowsTomcat
+        //String ltomcaturl="/usr/local/tomcat8.5/webapps/FD_SSM_war/images/";//linuxTomcat
+        String filename = file.getOriginalFilename().substring(file.getOriginalFilename().length()-8);
+        //String ideapath=ideaurl+filename;
+        String wtomcatpath=wtomcaturl+filename;
+        //String ltomcatpath=ltomcaturl+filename;
+        //file.transferTo(new File(ideapath));
+        windowsfile.transferTo(new File(wtomcatpath));
+        //linuxfile.transferTo(new File(ltomcatpath));
         return filename;
     }
 }

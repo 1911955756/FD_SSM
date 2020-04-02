@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author Mr.锵
@@ -19,6 +20,11 @@ import java.util.List;
 public class IOrderDetailServiceImpl implements IOrderDetailService {
     @Autowired
     private IOrderDetailDao orderDetailDao;
+
+    @Override
+    public List<Map> countcallnum(String odstatus) {
+        return orderDetailDao.countcallnum(odstatus);
+    }
 
     @Override
     public PageInfo<OrderDetail> findAll(Integer num,String status,String tbid,String orddid,String mname,String ordid,String odcalls) {

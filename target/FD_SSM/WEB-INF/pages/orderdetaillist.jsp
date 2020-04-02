@@ -52,7 +52,7 @@
         setInterval(function (){
             var tbid=$("#inputbid").val(),orddid=$("#inputorddid").val(),
                 ordid=$("#inputordid").val(),mname=$("#inputmname").val(),
-                odcalls=$("#change").val(),callnum=0;
+                odcalls=$("#change").val();
             //alert("响应了");
             $.ajax({
                 url : "../orderdetail/findAll2",
@@ -72,72 +72,84 @@
                     $("tbody").html("");
                     //动态刷新表格
                     var html="";
-                    for (var i = 0; i < data.list.length; i++) {
-                        var content="<tr>"
-                            +"<td title='"+data.list[i].odid+"'data-toggle=\"modal\" data-target=\".bs-example-modal-sm\" onclick=\'changeImage(\""+data.list[i].menu.image+"\",\""+data.list[i].menu.menuname+"\",\""+data.list[i].odid+"\",\""+data.list[i].order1.tableid+"\")'>"+data.list[i].odid+"</td>"
-                            +"<td title='"+data.list[i].orderid+"'>"+data.list[i].orderid+"</td>"
-                            +"<td title='"+data.list[i].menu.menuname+"'>"+data.list[i].menu.menuname+"</td>"
-                            +"<td title='"+ data.list[i].menu_num +"'>"+ data.list[i].menu_num +"</td>"
-                            +"<td title='"+ data.list[i].order1.tableid +"'>"+ data.list[i].order1.tableid +"</td>"
-                            +"<td title='"+ data.list[i].createtime +"'>"+ data.list[i].createtime +"</td>"
-                            +"<td title='"+ data.list[i].updatetime +"'>"+ data.list[i].updatetime +"</td>";
-                        if (data.list[i].status=='待烹饪'){
-                            var a="<td><a href='../orderdetail/cook?odid="+data.list[i].odid+"'class=\"btn btn-primary\">烹饪</a></td></tr>";
-                        if(data.list[i].called=='已催单'){callnum=callnum+1;}}
-                        else if (data.list[i].status=='烹饪中'){
-                            var a="<td><a href='../orderdetail/finishcook?odid="+data.list[i].odid+"' class=\"btn btn-success\">完成</a></td></tr>";
-                            if(data.list[i].called=='已催单'){callnum=callnum+1;}}
-                        else if (data.list[i].status=='待上菜'){
-                            var a="<td><a href='../orderdetail/finish?odid="+data.list[i].odid+"' class=\"btn btn-warning\">已上菜</a></td></tr>";
-                            if(data.list[i].called=='已催单'){callnum=callnum+1;}}
-                        html=content+a;
+                    for (var i = 0; i < data[0].list.length; i++) {
+                        var one="<tr>"
+                            +"<td title='"+data[0].list[i].odid+"'data-toggle=\"modal\" data-target=\".bs-example-modal-sm\" " +
+                            "onclick=\'changeImage(\""+data[0].list[i].menu.image+"\",\""+data[0].list[i].menu.menuname+"\"," +
+                            "\""+data[0].list[i].odid+"\",\""+data[0].list[i].order1.tableid+"\")'>";
+                        if(data[0].list[i].called=='已催单'){
+                            one=one+"<img src=\"../images/light.png\" style=\"max-width: 15px;max-height: 15px\">";
+                        }
+                        var content=""+data[0].list[i].odid+"</td>"
+                            +"<td title='"+data[0].list[i].orderid+"'>"+data[0].list[i].orderid+"</td>"
+                            +"<td title='"+data[0].list[i].menu.menuname+"'>"+data[0].list[i].menu.menuname+"</td>"
+                            +"<td title='"+ data[0].list[i].menu_num +"'>"+ data[0].list[i].menu_num +"</td>"
+                            +"<td title='"+ data[0].list[i].order1.tableid +"'>"+ data[0].list[i].order1.tableid +"</td>"
+                            +"<td title='"+ data[0].list[i].createtime +"'>"+ data[0].list[i].createtime +"</td>"
+                            +"<td title='"+ data[0].list[i].updatetime +"'>"+ data[0].list[i].updatetime +"</td>";
+                        if (data[0].list[i].status=='待烹饪'){
+                            var a="<td><a href='../orderdetail/cook?odid="+data[0].list[i].odid+"'class=\"btn btn-primary\">烹饪</a></td></tr>";}
+                        else if (data[0].list[i].status=='烹饪中'){
+                            var a="<td><a href='../orderdetail/finishcook?odid="+data[0].list[i].odid+"' class=\"btn btn-success\">完成</a></td></tr>";}
+                        else if (data[0].list[i].status=='待上菜'){
+                            var a="<td><a href='../orderdetail/finish?odid="+data[0].list[i].odid+"' class=\"btn btn-warning\">已上菜</a></td></tr>";}
+                        html=one+content+a;
                         $("tbody").append(html);
                     }
                     $(".pagination").html("");
-                    if(data.isFirstPage){
+                    if(data[0].isFirstPage){
                         var first="<li class=\"disabled\"><a href=\"#\" aria-label=\"Previous\"><span aria-hidden=\"true\">&laquo;</span></a></li>" +
                             "<li class=\"disabled\"><a href=\"#\" aria-label=\"Previous\"><span aria-hidden=\"true\">首</span></a></li>";
                     }
-                    else if(!data.isFirstPage){
-                        var first="<li><a href=\"../orderdetail/findAll?num="+(data.pageNum-1)+"&&status="+ data.list[0].status +"&&tbid="+ tbid +"&&orddid="+ orddid +"&&ordid="+ ordid +"&&mname="+ mname +"\" aria-label=\"Previous\">\n" +
+                    else if(!data[0].isFirstPage){
+                        var first="<li><a href=\"../orderdetail/findAll?num="+(data[0].pageNum-1)+"&&status="+
+                            data[0].list[0].status +"&&tbid="+ tbid +"&&orddid="+ orddid +"&&ordid="+
+                            ordid +"&&mname="+ mname +"&&odcalls="+odcalls+"\" aria-label=\"Previous\">\n" +
                             "                        <span aria-hidden=\"true\">&laquo;</span></a></li>" +
-                            "<li><a href=\"../orderdetail/findAll?num=1&&status="+ data.list[0].status +"&&tbid="+ tbid +"&&orddid="+ orddid +"&&ordid="+ ordid +"&&mname="+ mname +"\" aria-label=\"Previous\">\n" +
+                            "<li><a href=\"../orderdetail/findAll?num=1&&status="+ data[0].list[0].status +
+                            "&&tbid="+ tbid +"&&orddid="+ orddid +"&&ordid="+ ordid +
+                            "&&mname="+ mname +"&&odcalls="+odcalls+"\" aria-label=\"Previous\">\n" +
                             "                        <span aria-hidden=\"true\">首</span></a></li>";
                     }
                     var center="";
-                    for(var i=0;i<data.navigatepageNums.length;i++){
-                        if(data.navigatepageNums[i]==data.pageNum){
-                            var now="<li class=\"active\" value="+data.navigatepageNums[i]+">\n" +
-                                "                        <span>"+data.navigatepageNums[i]+"</span>\n" +
+                    for(var i=0;i<data[0].navigatepageNums.length;i++){
+                        if(data[0].navigatepageNums[i]==data[0].pageNum){
+                            var now="<li class=\"active\" value="+data[0].navigatepageNums[i]+">\n" +
+                                "                        <span>"+data[0].navigatepageNums[i]+"</span>\n" +
                                 "                    </li>";
-                        }else if(data.navigatepageNums[i]!=data.pageNum){
-                            var now="<li><a href=\"../orderdetail/findAll?num="+data.navigatepageNums[i]+"&&status="+ data.list[0].status +"&&tbid="+ tbid +"&&orddid="+ orddid +"&&ordid="+ ordid +"&&mname="+ mname +"\">"+data.navigatepageNums[i]+"</a></li>";
+                        }else if(data[0].navigatepageNums[i]!=data[0].pageNum){
+                            var now="<li><a href=\"../orderdetail/findAll?num="+data[0].navigatepageNums[i]+"&&status="+
+                                data[0].list[0].status +"&&tbid="+ tbid +"&&orddid="+ orddid +"&&ordid="+ ordid +"&&mname="+
+                                mname +"&&odcalls="+odcalls+"\">"+data[0].navigatepageNums[i]+"</a></li>";
                         }
                         center=center+now;
                     }
-                    if(data.isLastPage){
+                    if(data[0].isLastPage){
                         var last="<li class=\"disabled\"><a href=\"#\" aria-label=\"Next\"><span aria-hidden=\"true\">尾</span></a></li>" +
                             "<li class=\"disabled\"><a href=\"#\" aria-label=\"Next\"><span aria-hidden=\"true\">&raquo;</span></a></li>";
                     }
-                    else if(!data.isLastPage){
-                        var last="<li><a href=\"../orderdetail/findAll?num="+(data.pages)+"&&status="+ data.list[0].status +"&&tbid="+ tbid +"&&orddid="+ orddid +"&&ordid="+ ordid +"&&mname="+ mname +"\" aria-label=\"Previous\">\n" +
+                    else if(!data[0].isLastPage){
+                        var last="<li><a href=\"../orderdetail/findAll?num="+(data[0].pages)+"&&status="+
+                            data[0].list[0].status +"&&tbid="+ tbid +"&&orddid="+ orddid +"&&ordid="+
+                            ordid +"&&mname="+ mname +"&&odcalls="+odcalls+"\" aria-label=\"Previous\">\n" +
                             "                        <span aria-hidden=\"true\">尾</span></a></li>" +
-                            "<li><a href=\"../orderdetail/findAll?num="+(data.pageNum+1)+"&&status="+ data.list[0].status +"&&tbid="+ tbid +"&&orddid="+ orddid +"&&ordid="+ ordid +"&&mname="+ mname +"\" aria-label=\"Previous\">\n" +
+                            "<li><a href=\"../orderdetail/findAll?num="+(data[0].pageNum+1)+"&&status="+
+                            data[0].list[0].status +"&&tbid="+ tbid +"&&orddid="+ orddid +"&&ordid="+
+                            ordid +"&&mname="+ mname +"&&odcalls="+odcalls+"\" aria-label=\"Previous\">\n" +
                             "                        <span aria-hidden=\"true\">&raquo;</span></a></li>";
                     }
                     var all=first+center+last;
                     $(".pagination").append(all);
                     $(".hhh").html("");
-                    var hhh="第"+data.pageNum+"页，共"+data.pages+"页";
-                    if(callnum>0){
-                        var call="<a href='#' class='callclass'onclick=\"$('#change').val('已催单')\">催单:"+callnum+"</a>" +
-                            "<a href=\"#\" onclick=\"$('#change').val('未催单')\">正常显示</a>";
+                    var hhh="第"+data[0].pageNum+"页，共"+data[0].pages+"页<a href=\"#\" onclick=\"$('#change').val('未催单')\">正常显示</a>";
+                    if(data[1][0].callnum>0){
+                        var call="<a href='#' class='callclass'onclick=\"$('#change').val('已催单')\">催单:"+data[1][0].callnum+"</a>";
                         var hhh=hhh+call;
                     }
                     $(".hhh").append(hhh);
                 }
             });
-        },2000);
+        },1000);
         function changeImage(url,mname,odid,tableid) {
             $('#myModal').on('shown.bs.modal', function () {
                 $('#myInput').focus()
@@ -199,13 +211,13 @@
         <tbody>
         <c:forEach items="${orderdetaillist.list}" var="orderdetail">
             <tr >
-                <td title="${orderdetail.odid}"data-toggle="modal" data-target=".bs-example-modal-sm" onclick='changeImage("${orderdetail.menu.image}","${orderdetail.menu.menuname}","${orderdetail.odid}","${orderdetail.order1.tableid}")'>${orderdetail.odid}</td>
+                <td title="${orderdetail.odid}"data-toggle="modal" data-target=".bs-example-modal-sm" onclick='changeImage("${orderdetail.menu.image}","${orderdetail.menu.menuname}","${orderdetail.odid}","${orderdetail.order1.tableid}")'>
+                    <c:if test="${orderdetail.called=='已催单'}">
+                        <img src="../images/light.png" style="max-width: 15px;max-height: 15px">
+                    </c:if>
+                        ${orderdetail.odid}</td>
                 <td title="${orderdetail.orderid}">${orderdetail.orderid}</td>
-                <td title="${orderdetail.menu.menuname}">${orderdetail.menu.menuname}
-                <c:if test="${orderdetail.called=='已催单'}">
-                    <img src="../images/light.png" style="max-width: 15px;max-height: 15px">
-                </c:if>
-                </td>
+                <td title="${orderdetail.menu.menuname}">${orderdetail.menu.menuname}</td>
                 <td title="${orderdetail.menu_num}">${orderdetail.menu_num}</td>
                 <td title="${orderdetail.order1.tableid}">${orderdetail.order1.tableid}</td>
                 <td title="${orderdetail.createtime}">${orderdetail.createtime}</td>

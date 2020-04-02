@@ -17,7 +17,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author Mr.锵
@@ -37,6 +39,7 @@ public class OrderDetailController {
                                 @RequestParam(required = false) String ordid,
                                 @RequestParam(required = false) String odcalls){
         System.out.println("查询第"+num+"页,状态为："+status+"的上菜单");
+        System.out.println("findAll:"+tbid+","+mname+","+orddid+","+ordid+","+odcalls);
         ModelMap modelMap=new ModelMap();
         //调用service的方法
         PageInfo<OrderDetail> list = orderDetailService.findAll(num,status,tbid,orddid,mname,ordid,odcalls);
@@ -52,7 +55,7 @@ public class OrderDetailController {
         return mv;
     }
     @RequestMapping("/findAll2")
-    public @ResponseBody PageInfo findAll2(@RequestParam(required = false,defaultValue ="1") Integer num,
+    public @ResponseBody List findAll2(@RequestParam(required = false,defaultValue ="1") Integer num,
                                            @RequestParam(required = false) String status,
                                            @RequestParam(required = false) String tbid,
                                            @RequestParam(required = false) String mname,
@@ -63,7 +66,11 @@ public class OrderDetailController {
         System.out.println("===================我是分界线=====================");
         //调用service的方法
         PageInfo<OrderDetail> list = orderDetailService.findAll(num,status,tbid,orddid,mname,ordid,odcalls);
-        return list;
+        List<Map> countcallnum = orderDetailService.countcallnum(status);
+        List li = new ArrayList();
+        li.add(0,list);
+        li.add(1,countcallnum);
+        return li;
     }
     @RequestMapping("/cook")
     public void cook(String odid, HttpServletRequest request, HttpServletResponse response)throws Exception{
@@ -74,7 +81,7 @@ public class OrderDetailController {
         request.getRequestDispatcher("/orderdetail/findAll?status=待烹饪").forward(request,response);
     }
     @RequestMapping("/finishcook")
-    public void finishcook(String odid, HttpServletRequest request, HttpServletResponse response)throws Exception{
+    public void finishcook(String odid,HttpServletRequest request, HttpServletResponse response)throws Exception{
         OrderDetail orderDetail=new OrderDetail();
         orderDetail.setOdid(odid);
         orderDetail.setStatus("待上菜");
@@ -82,7 +89,7 @@ public class OrderDetailController {
         request.getRequestDispatcher("/orderdetail/findAll?status=烹饪中").forward(request,response);
     }
     @RequestMapping("/finish")
-    public void finish(String odid,HttpServletRequest request, HttpServletResponse response)throws Exception{
+    public void finish(String odid, HttpServletRequest request, HttpServletResponse response)throws Exception{
         OrderDetail orderDetail=new OrderDetail();
         orderDetail.setOdid(odid);
         orderDetail.setStatus("已上菜");

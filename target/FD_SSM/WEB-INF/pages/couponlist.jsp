@@ -111,7 +111,7 @@
         </c:forEach>
         </tbody>
     </table>
-    第${userlist.pageNum}页，共${userlist.pages}页
+    第${coulist.pageNum}页，共${coulist.pages}页
     <%--    分页条--%>
     <nav aria-label="Page navigation" class="right">
         <ul class="pagination">

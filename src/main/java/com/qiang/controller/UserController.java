@@ -27,6 +27,8 @@ public class UserController {
     private IUserService userService;
     @Autowired
     private IRoleService roleService;
+    @Autowired
+    private ILoginService loginService;
     @RequestMapping("/findByPhone")
     public @ResponseBody boolean findByPhone(@RequestBody User1 user) throws Exception {
         System.out.println("表现层：通过电话号码查询密码。。。");
@@ -41,17 +43,6 @@ public class UserController {
          }
 
     }
-    @RequestMapping("/findPhone")
-    public @ResponseBody boolean findPhone(@RequestParam Integer phone){
-        System.out.println("表现层：查询有无电话号码");
-        //调用service的方法
-        String passwordByphone = userService.findPasswordByphone(phone);
-        if(passwordByphone==null){
-            return true;}
-        else{
-            return false;
-        }
-    }
     @RequestMapping("/login")
         public ModelAndView  login(Integer phone) {
         System.out.println("表现层：密码正确，登录。。。");
@@ -60,6 +51,9 @@ public class UserController {
         //暂无
         if(phone!=null){
             List<User1> allByPhone = userService.findAllByPhone(phone);
+            for(User1 user1:allByPhone){
+                loginService.savelogin(user1.getUserid());
+            }
             mv.addObject("userrolelist",allByPhone);
             mv.setViewName("manager");
             return mv;}

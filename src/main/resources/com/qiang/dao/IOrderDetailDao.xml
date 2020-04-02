@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.qiang.dao.IOrderDetailDao">
+	<resultMap id="CCNMap" type="java.util.Map">
+		<result property="callnum" column="COUNT(1)"  jdbcType="VARCHAR"></result>
+	</resultMap>
     <resultMap id="ODMenuMap" type="com.qiang.domain.OrderDetail">
         <id property="odid" column="odid"></id>
         <result property="orderid" column="orderid"></result>
@@ -89,4 +92,8 @@ AND o.orderid = #{orderid}
 AND od. STATUS != '已取消'
 AND od.menuid = m.menuid
     </select>
+	<select id="countcallnum" resultMap="CCNMap" parameterType="string">
+		select count(1) from order_detail where status=#{odstatus} and called='已催单'
+		and createtime>DATE_FORMAT(CURDATE(),'%Y-%m-%d %H:%i:%s')
+	</select>
 </mapper>

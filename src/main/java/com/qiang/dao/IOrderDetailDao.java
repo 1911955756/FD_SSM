@@ -1,7 +1,7 @@
 package com.qiang.dao;
+import	java.util.Map;
 
 import com.qiang.domain.OrderDetail;
-import com.qiang.domain.Picture;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Update;
@@ -56,4 +56,11 @@ public interface IOrderDetailDao {
      * @return
      */
     List<OrderDetail> findMyorderdetail(String orderid);
+
+    /**
+     * 根据不同status统计当天催单数量
+     * @param odstatus
+     * @return
+     */
+    List<Map> countcallnum(@Param("odstatus") String odstatus);
 }

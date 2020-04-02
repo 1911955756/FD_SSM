@@ -3,9 +3,11 @@ package com.qiang.service;
 import com.github.pagehelper.PageInfo;
 import com.qiang.domain.OrderDetail;
 import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Update;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author Mr.锵
@@ -50,4 +52,10 @@ public interface IOrderDetailService {
      * @return
      */
     List<OrderDetail> findMyorderdetail(String orderid);
+    /**
+     * 根据不同status统计当天催单数量
+     * @param odstatus
+     * @return
+     */
+    List<Map> countcallnum(@Param("odstatus") String odstatus);
 }
