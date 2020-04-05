@@ -41,7 +41,6 @@
             padding-right: 50px;
             margin-top: -30px;
         }
-
     </style>
     <script type="text/javascript" src="../js/jquery.min.js"></script>
     <script type="text/javascript" src="../js/bootstrap.min.js"></script>
@@ -102,13 +101,12 @@
                 </c:forEach>
             </select></td>
             <td><button id="tmbtn" type="button" class="btn btn-warning">关联</button></td>
-            <td></td>
+            <td><a class="btn btn-primary downmodel" href="../file/饭店菜谱模板.xlsx">下载模板</a></td>
             <td><input class="form-control" id="fliename" disabled/></td>
-            <td><input class="btn btn-primary" type="button" onclick="$('#file_excel').click();" value="上传文件"/></td>
-            <td><input class="btn btn-success" type="button" onclick="$('#btn_excel').click();" value="提交"/></td>
+            <td><input class="btn btn-success" type="button" onclick="$('#file_excel').click();" value="上传文件"/></td>
+            <td><input class="btn btn-danger" type="button" onclick="$('#btn_excel').click();" value="提交"/></td>
         </tr>
     </table>
-
     <table class="table table-striped table-bordered table-hover">
         <thead>
         <tr>

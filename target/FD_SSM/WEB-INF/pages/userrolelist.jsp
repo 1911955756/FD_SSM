@@ -68,14 +68,14 @@
 <table class="table table-striped table-bordered table-hover">
     <thead>
     <tr>
-        <td>类名</td>
-        <td>菜名</td>
+        <td>角色</td>
+        <td>姓名</td>
         <td>操作</td>
     </tr>
     <tr>
         <form action="../role/findPageUR">
-        <td><input  class="form-control" placeholder="输入类名查询" name="rname" id="rname" value="${rname}"></td>
-        <td><input  class="form-control" placeholder="输入菜名查询" name="uname" id="uname" value="${uname}"></td>
+        <td><input  class="form-control" placeholder="输入角色查询" name="rname" id="rname" value="${rname}"></td>
+        <td><input  class="form-control" placeholder="输入姓名查询" name="uname" id="uname" value="${uname}"></td>
         <td><button type="submit" class="btn btn-success" id="pagebtn">查询</button></td>
         </form>
     </tr>

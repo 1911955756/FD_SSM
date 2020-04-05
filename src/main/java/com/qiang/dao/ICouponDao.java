@@ -47,7 +47,7 @@ public interface ICouponDao {
      * 保存优惠券
      * @param coupon
      */
-    @Insert("insert into coupon(couponname,endtime,type,price)values(#{couponname},#{endtime},#{type},#{price})")
+    @Insert("insert into coupon(couponname,endtime,type,price,`condition`)values(#{couponname},#{endtime},#{type},#{price},#{condition})")
     void savecoupon(Coupon  coupon);
 
     /**
@@ -61,6 +61,6 @@ public interface ICouponDao {
      * 根据couponid实现优惠券上下架
      * @param coupon
      */
-    @Update("update coupon set couponname=#{couponname},type=#{type},endtime=#{endtime},price=#{price},status=#{status} where couponid=#{couponid}")
+    @Update("update coupon set couponname=#{couponname},type=#{type},endtime=#{endtime},price=#{price},status=#{status},`condition`=#{condition} where couponid=#{couponid}")
     void updatecoupon(Coupon coupon);
 }

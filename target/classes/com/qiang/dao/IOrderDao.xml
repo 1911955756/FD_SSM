@@ -1,9 +1,13 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.qiang.dao.IOrderDao">
+	<resultMap id="CYPNMap" type="java.util.Map">
+		<result property="month" column="m"  jdbcType="VARCHAR"></result>
+		<result property="num" column="SUM(M.num)"  jdbcType="VARCHAR"></result>
+	</resultMap>
     <resultMap id="CPNMap" type="java.util.Map">
     <result property="time" column="t"  jdbcType="VARCHAR"></result>
-        <result property="num" column="COUNT(1)"  jdbcType="VARCHAR"></result>
+        <result property="num" column="SUM(T.num)"  jdbcType="VARCHAR"></result>
     </resultMap>
     <resultMap id="CMMap" type="java.util.Map">
         <result property="time" column="m"  jdbcType="VARCHAR"></result>
@@ -26,10 +30,26 @@
         </if>
         order by orderid desc
     </select>
+	<select id="countypeoplenum" resultMap="CYPNMap">
+		SELECT
+	M.m,
+	SUM(M.num)
+FROM
+	(SELECT
+			*,Month(createtime) m
+		FROM
+			order1
+		WHERE
+			YEAR(createTime) = YEAR(SYSDATE()))M
+GROUP BY
+	M.m
+ORDER BY
+	M.m
+	</select>
     <select id="countpeoplenum" resultMap="CPNMap">
    SELECT
 	T.t,
-	COUNT(1)
+	SUM(T.num)
 FROM
 	(
 		SELECT

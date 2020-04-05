@@ -37,6 +37,7 @@
     <mvc:resources mapping="/images/**" location="/images/"></mvc:resources><!--images-->
     <mvc:resources mapping="/fonts/**" location="/fonts/"></mvc:resources><!--fonts-->
     <mvc:resources mapping="/js/**" location="/js/"></mvc:resources><!--javascript-->
+    <mvc:resources mapping="/file/**" location="/file/"></mvc:resources><!--file-->
     <!--    开启springMVC框架注解的支持-->
     <mvc:annotation-driven >
 <!--        -->

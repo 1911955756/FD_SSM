@@ -20,4 +20,5 @@ public class Coupon {
     private Timestamp endtime;
     private Float price;
     private String type;
+    private String condition;
 }

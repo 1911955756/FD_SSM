@@ -14,6 +14,7 @@ public class Order1 {
     private String cs_id;
     private String tableid;
     private String status;
+    private Integer num;
     private Timestamp createtime;
     private Timestamp updatetime;
     private Float total;

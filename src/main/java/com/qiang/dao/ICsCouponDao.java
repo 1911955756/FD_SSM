@@ -33,7 +33,7 @@ public interface ICsCouponDao {
      * @param csCoupon
      * @return
      */
-    @Select("select couponid from cs_coupon where cs_id=#{cs_id} and couponid=#{couponid}")
+    @Select("select couponid from cs_coupon where cs_id=#{cs_id} and status='待使用' and couponid=#{couponid}")
     String  checkCoupon(CsCoupon csCoupon);
 
 }

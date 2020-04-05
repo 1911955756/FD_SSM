@@ -63,6 +63,21 @@ public class IOrderServiceImpl implements IOrderService {
     }
 
     @Override
+    public String findTodayOridByCsid(String cs_id) {
+        return orderDao.findTodayOridByCsid(cs_id);
+    }
+
+    @Override
+    public void updateordernum(Order1 order1) {
+        orderDao.updateordernum(order1);
+    }
+
+    @Override
+    public List<Map> countypeoplenum() {
+        return orderDao.countypeoplenum();
+    }
+
+    @Override
     public List<Map> countmoney() {
         return orderDao.countmoney();
     }

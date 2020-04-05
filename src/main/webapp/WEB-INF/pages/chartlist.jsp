@@ -16,10 +16,10 @@
     <link rel="stylesheet" href="../css/bootstrap.css" type="text/css">
     <script type="text/javascript" src="../js/jquery.min.js"></script>
     <script type="text/javascript" src="../js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="../js/echarts.min.js"></script>
+    <script type="text/javascript" src="../js/echarts.js"></script>
     <style>
         body{
-            background-color: whitesmoke;
+            background-color:whitesmoke;
         }
     </style>
 </head>
@@ -31,21 +31,31 @@
     <li role="presentation"><a href="#profile" role="tab" data-toggle="tab" id="peoplenum">日流量情况</a></li>
     <li role="presentation"><a href="#messages" role="tab" data-toggle="tab" id="money">销售额情况</a></li>
     <li role="presentation"><a href="#settings" role="tab" data-toggle="tab" id="newfood">新菜欢迎度</a></li>
+    <li role="presentation"><a href="#ypn" role="tab" data-toggle="tab" id="ypeoplenum">年客流量情况</a></li>
 </ul>
 
 <!-- 面板区 -->
 <div class="tab-content">
     <div role="tabpanel" class="tab-pane active" id="home" >
-        <div id="sell-main" style="width: 600px;height:400px;"></div>
+        <div id="sell-main" style="width: 800px;height:400px;"></div>
     </div>
     <div role="tabpanel" class="tab-pane" id="profile" >
-        <div id="people-main" style="width: 600px;height:400px;"></div>
+        <div id="people-main" style="width: 800px;height:400px;"></div>
     </div>
     <div role="tabpanel" class="tab-pane" id="messages" >
-        <div id="money-main" style="width: 600px;height:400px;"></div>
+        <div id="money-main" style="width: 800px;height:400px;"></div>
     </div>
     <div role="tabpanel" class="tab-pane" id="settings">
-        <div id="food-main" style="width: 600px;height:400px;"></div>
+        <div id="food-main" style="width: 800px;height:400px;"></div>
+    </div>
+    <div role="tabpanel" class="tab-pane" id="ypn">
+        <div id="ypn-main" style="width: 800px;height:400px;"></div>
+    </div>
+    <div role="tabpanel" class="tab-pane" id="toother">
+        <div id="other-main" style="width: 1159px;height:559px;"></div>
+    </div>
+    <div role="tabpanel" class="tab-pane" id="tomap">
+        <div id="map-main" style="width: 800px;height:400px;"></div>
     </div>
 </div>
 </body>
@@ -63,6 +73,9 @@
         })
         $("#newfood").click(function () {
             initnewfood();
+        });
+        $("#ypeoplenum").click(function () {
+            initypeoplenum();
         })
     });
 
@@ -155,7 +168,7 @@
             type : "post",
             async:false,//同步
             success : function(data) {
-                for(var i=0;i<23;i++){
+                for(var i=0;i<24;i++){
                     var have=false;
                     for(var y=0;y<data.length;y++){
                         if(data[y].time==i){
@@ -312,6 +325,155 @@
                     }
             }})
         // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option);
+    }
+    function initypeoplenum() {
+        var myChart = echarts.init(document.getElementById('ypn-main'));
+        var xData = function() {
+            var data = [];
+            for (var i = 1; i < 13; i++) {
+                data.push(i + "月份");
+            }
+            return data;
+        }();
+
+        var option = {
+            backgroundColor: '#f5f5f5',
+            "title": {
+                "text": "本年度客流量统计",
+                "subtext": "数据库统计",
+                x: "4%",
+
+                textStyle: {
+                    color: '#000',
+                    fontSize: '22'
+                },
+                subtextStyle: {
+                    color: '#777e83',
+                    fontSize: '16',
+
+                },
+            },
+            "grid": {
+                "borderWidth": 0,
+                "top": 110,
+                "bottom": 95,
+                textStyle: {
+                    color: "#fff"
+                }
+            },
+            "calculable": true,
+            "xAxis": [{
+                "type": "category",
+                "axisLine": {
+                    lineStyle: {
+                        color: '#1e3b54'
+                    }
+                },
+                "splitLine": {
+                    "show": false
+                },
+                "axisTick": {
+                    "show": false
+                },
+                "splitArea": {
+                    "show": false
+                },
+                "axisLabel": {
+                    "interval": 0,
+
+                },
+                "data": xData,
+            }],
+            "yAxis": [{
+                "type": "value",
+                "splitLine": {
+                    "show": false
+                },
+                "axisLine": {
+                    lineStyle: {
+                        color: '#0f202e'
+                    }
+                },
+                "axisTick": {
+                    "show": false
+                },
+                "axisLabel": {
+                    "interval": 0,
+
+                },
+                "splitArea": {
+                    "show": false
+                },
+
+            }],
+            "dataZoom": [{
+                "show": true,
+                "height": 30,
+                "xAxisIndex": [
+                    0
+                ],
+                bottom: 30,
+                "start": 10,
+                "end": 80,
+                handleIcon: 'path://M306.1,413c0,2.2-1.8,4-4,4h-59.8c-2.2,0-4-1.8-4-4V200.8c0-2.2,1.8-4,4-4h59.8c2.2,0,4,1.8,4,4V413z',
+                handleSize: '110%',
+                handleStyle:{
+                    color:"rgba(49,105,149,0.8)",
+
+                },
+                textStyle:{
+                    color:"#1e3b54"},
+                borderColor:"#90979c"
+
+
+            }, {
+                "type": "inside",
+                "show": true,
+                "height": 15,
+                "start": 1,
+                "end": 35
+            }],
+            "series": [{
+                "name": "总数",
+                "type": "line",
+                symbolSize:10,
+                symbol:'circle',
+                "itemStyle": {
+                    "normal": {
+                        "color": "rgb(49,105,149)",
+                        "barBorderRadius": 0,
+                        "label": {
+                            "show": true,
+                            "position": "top",
+                            formatter: function(p) {
+                                return p.value > 0 ? (p.value) : '';
+                            }
+                        }
+                    }
+                },
+                "data": []
+            },
+            ]
+        }
+        $.ajax({
+            url : "../order/countypeoplenum",
+            datatype : "json",
+            type : "post",
+            async:false,//同步
+            success : function(data) {
+                for(var i=1;i<13;i++){
+                    var have=false;
+                    for(var y=0;y<data.length;y++){
+                        if(data[y].month==i){
+                            option.series[0].data.push(data[y].num);
+                            have=true;
+                        }
+                    }if (have == false) {
+                        option.series[0].data.push(0)
+                    }
+                }
+            }})
         myChart.setOption(option);
     }
 </script>

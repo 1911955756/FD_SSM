@@ -15,6 +15,7 @@
             <result property="updatetime" column="updatetime"></result>
             <result property="endtime" column="endtime"></result>
             <result property="status" column="status"></result>
+            <result property="condition" column="condition"></result>
             <result property="price" column="price"></result>
         </collection>
     </resultMap>

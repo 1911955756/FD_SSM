@@ -75,6 +75,7 @@
             <td>类型</td>
             <td>状态</td>
             <td>优惠价格</td>
+            <td>使用条件</td>
             <td>创建时间</td>
             <td>结束时间</td>
             <td>更新时间</td>
@@ -89,6 +90,7 @@
             <td></td>
             <td></td>
             <td></td>
+            <td></td>
             <td><button class="btn btn-success" type="submit">搜索</button></td>
             </form>
         </tr>
@@ -100,6 +102,7 @@
                 <td title="${coupon.type}">${coupon.type}</td>
                 <td title="${coupon.status}">${coupon.status}</td>
                 <td title="${coupon.price}">${coupon.price}</td>
+                <td title="${coupon.condition}">${coupon.condition}</td>
                 <td title="${coupon.createtime}">${coupon.createtime}</td>
                 <td title="${coupon.endtime}">${coupon.endtime}</td>
                 <td title="${coupon.updatetime}">${coupon.updatetime}</td>

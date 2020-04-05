@@ -39,14 +39,21 @@ public interface IOrderDao {
      * @param cs_id
      * @return
      */
-    @Select("select orderid from order1 where cs_id=#{cs_id} and status='待上菜' or status='待点餐' order by createtime desc")
+    @Select("select orderid from order1 where cs_id=#{cs_id} and status IN('待上菜','待点餐') order by createtime desc")
     String findOridByCsid(String cs_id);
 
+    /**
+     * 根据cs_id查询今天已结账的orderid
+     * @param cs_id
+     * @return
+     */
+    @Select("select orderid from order1 where cs_id=#{cs_id} and status IN('待评价','已评价') and createtime>=DATE_FORMAT(CURDATE(),'%Y-%m-%d %H:%i:%s')")
+    String findTodayOridByCsid(String cs_id);
     /**
      * 保存订单
      * @param order1
      */
-    @Insert("insert into order1(cs_id,tableid)values(#{cs_id},#{tableid})")
+    @Insert("insert into order1(cs_id,tableid,num)values(#{cs_id},#{tableid},#{num})")
     void saveOrder(Order1 order1);
 
     /**
@@ -65,6 +72,13 @@ public interface IOrderDao {
     void updateorder(Order1  order1);
 
     /**
+     * 根据orderid更新订单信息
+     * @param order1
+     */
+    @Update("update order1 set num=#{num},tableid=#{tableid} where orderid=#{orderid}")
+    void updateordernum(Order1  order1);
+
+    /**
      * 更新实际支付金额
      * @param order1
      */
@@ -76,6 +90,12 @@ public interface IOrderDao {
      * @return
      */
     List<Map> countpeoplenum();
+
+    /**
+     * 统计每月人数
+     * @return
+     */
+    List<Map>countypeoplenum();
 
     /**
      * 统计销售额

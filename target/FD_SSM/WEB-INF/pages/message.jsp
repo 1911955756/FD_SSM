@@ -14,7 +14,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
     <title>message</title>
-    <link rel="stylesheet" href="../css/bootstrap.css" type="text/css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" type="text/css">
     <style>
         body{
             background-color: whitesmoke;
@@ -42,7 +42,7 @@
         }
     </style>
     <script type="text/javascript" src="../js/jquery.min.js"></script>
-    <script type="text/javascript" src="../js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
     <script>
         $(function () {
             $("#touserfindAll2").click(function () {

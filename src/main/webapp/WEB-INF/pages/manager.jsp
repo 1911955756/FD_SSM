@@ -15,6 +15,39 @@
     <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
     <title>饭店后台</title>
     <link rel="stylesheet" href="../css/bootstrap.css" type="text/css">
+    <%--    哀悼模式--%>
+    <%--    <!--[if IE]>
+    <style>
+        html { filter:progid:DXImageTransform.Microsoft.BasicImage(grayscale=1); }
+    </style>
+    <!<![endif]-->
+    <!--[if !IE]><-->
+    <style>
+
+        html{
+
+            filter:progid:DXImageTransform.Microsoft.BasicImage(grayscale=1);
+
+            filter: grayscale(100%);
+
+            -webkit-filter: grayscale(100%);
+
+            -moz-filter: grayscale(100%);
+
+            -o-filter: grayscale(100%);
+
+            filter: url("data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\"><filter ….3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\"/></filter></svg>#grayscale");
+
+            filter: progid:DXImageTransform.Microsoft.BasicImage(grayscale=1);
+
+            -webkit-filter: grayscale(1);
+
+        }
+
+    </style>
+    <!--<![endif]-->--%>
+
+
     <STYLE type="text/css">
         .outer-container {
             position: relative;
@@ -36,6 +69,10 @@
         }
         .right{
             background-color: whitesmoke;
+        }
+        .leftmore{
+            float: left;
+            margin-left: -14px;
         }
     </STYLE>
     <script type="text/javascript" src="../js/jquery.min.js"></script>
@@ -92,7 +129,7 @@
             </form>
         </div>
     </div>
-        </nav>
+</nav>
 
 <div class="container-fluid margintop" >
     <div class="row">
@@ -128,7 +165,7 @@
             </ul>
         </div>
 <%--        右侧内容--%>
-        <div class="col-sm-9 col-md-10 outer-container right"><iframe id="iframecontext" marginWidth=0 marginHeight=0 src=""  scrolling="auto" frameBorder=0 width="100%" height="91%"></iframe></div>
+        <div class="col-sm-9 col-md-10 outer-container right"><iframe class="leftmore" id="iframecontext" marginWidth=0 marginHeight=0 src=""  scrolling="auto" frameBorder=0 width="103%" height="92%"></iframe></div>
     </div>
 </div>
 </body>

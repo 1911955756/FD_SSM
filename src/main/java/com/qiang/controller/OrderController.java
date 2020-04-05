@@ -53,18 +53,31 @@ public class OrderController {
         PageInfo<Order1> list = orderService.findAll(num,now,tableid,orderid,status);
         return list;
     }
+    @RequestMapping("/findTodayOridByCsid")
+    public @ResponseBody boolean findTodayOridByCsid(String cs_id){
+        String todayOridByCsid = orderService.findTodayOridByCsid(cs_id);
+        if(todayOridByCsid!=null||todayOridByCsid!=""){
+            return true;
+        }else {
+            return false;
+        }
+    }
     @RequestMapping("/saveorder")
-    public @ResponseBody String saveorder(String cs_id,String tableid){
+    public @ResponseBody String saveorder(String cs_id,String tableid,Integer num){
         String orid="";
         String oridByCsid = orderService.findOridByCsid(cs_id);
+        Order1 order1=new Order1();
+        order1.setCs_id(cs_id);
+        order1.setTableid(tableid);
+        order1.setNum(num);
         if(oridByCsid==null){
-            Order1 order1=new Order1();
-            order1.setCs_id(cs_id);
-            order1.setTableid(tableid);
             orderService.saveOrder(order1);
             orid=orderService.findOridByCsid(cs_id);
         }
         else if(oridByCsid!=null){
+            System.out.println("执行了");
+            order1.setOrderid(oridByCsid);
+            orderService.updateordernum(order1);
             orid=oridByCsid;
         }
         return orid;
@@ -105,6 +118,11 @@ public class OrderController {
     public @ResponseBody List countpeoplenum(){
         List<Map> countpeoplenum = orderService.countpeoplenum();
         return countpeoplenum;
+    }
+    @RequestMapping("/countypeoplenum")
+    public @ResponseBody List countypeoplenum(){
+        List<Map> countypeoplenum = orderService.countypeoplenum();
+        return countypeoplenum;
     }
     @RequestMapping("/countmoney")
     public @ResponseBody List countmoney(){

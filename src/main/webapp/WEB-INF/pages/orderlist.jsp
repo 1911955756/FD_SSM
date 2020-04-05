@@ -71,6 +71,7 @@
                             +"<td title='"+data.list[i].orderid+"'>"+data.list[i].orderid+"</td>"
                             +"<td title='"+ data.list[i].tableid +"'>"+ data.list[i].tableid +"</td>"
                             +"<td title='"+ data.list[i].status +"'>"+ data.list[i].status +"</td>"
+                            +"<td title='"+ data.list[i].num +"'>"+ data.list[i].num +"</td>"
                             +"<td title='"+ data.list[i].createtime +"'>"+ data.list[i].createtime +"</td>"
                             +"<td title='"+ data.list[i].updatetime +"'>"+ data.list[i].updatetime +"</td>"
                             +"<td title='"+ data.list[i].total +"'>"+ data.list[i].total +"</td>"
@@ -133,6 +134,7 @@
             <td>订单id</td>
             <td>餐桌号</td>
             <td>状态</td>
+            <td>就餐人数</td>
             <td>创建时间</td>
             <td>更新时间</td>
             <td>应付</td>
@@ -144,6 +146,7 @@
             <td></td>
             <td></td>
             <td></td>
+            <td></td>
         </tr>
         </thead>
         <tbody>
@@ -152,6 +155,7 @@
                 <td title="${order.orderid}">${order.orderid}</td>
                 <td title="${order.tableid}">${order.tableid}</td>
                 <td title="${order.status}">${order.status}</td>
+                <td title="${order.num}">${order.num}</td>
                 <td title="${order.createtime}">${order.createtime}</td>
                 <td title="${order.updatetime}">${order.updatetime}</td>
                 <td title="${order.total}">${order.total}</td>

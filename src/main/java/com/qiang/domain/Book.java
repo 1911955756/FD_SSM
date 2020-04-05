@@ -17,6 +17,4 @@ public class Book {
     private Timestamp createtime;
     private Timestamp updatetime;
     private Integer wait_num;
-
-
 }

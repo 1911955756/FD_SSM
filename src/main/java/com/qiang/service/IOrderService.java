@@ -47,10 +47,23 @@ public interface IOrderService {
     List<Order1> findMyOrderByCsid(Order1 order1);
 
     /**
+     * 根据cs_id查询今天已结账的orderid
+     * @param cs_id
+     * @return
+     */
+    String findTodayOridByCsid(String cs_id);
+
+    /**
      * 根据orderid更新订单状态
      * @param order1
      */
     void updateorder(Order1 order1);
+
+    /**
+     * 根据orderid更新订单信息
+     * @param order1
+     */
+    void updateordernum(Order1  order1);
 
     /**
      * 更新实际支付金额
@@ -63,6 +76,12 @@ public interface IOrderService {
      * @return
      */
     List<Map> countpeoplenum();
+
+    /**
+     * 统计每月人数
+     * @return
+     */
+    List<Map>countypeoplenum();
 
     /**
      * 统计销售额图表
