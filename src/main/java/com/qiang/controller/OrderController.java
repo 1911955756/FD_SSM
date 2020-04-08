@@ -56,7 +56,7 @@ public class OrderController {
     @RequestMapping("/findTodayOridByCsid")
     public @ResponseBody boolean findTodayOridByCsid(String cs_id){
         String todayOridByCsid = orderService.findTodayOridByCsid(cs_id);
-        if(todayOridByCsid!=null||todayOridByCsid!=""){
+        if(todayOridByCsid!=null){
             return true;
         }else {
             return false;

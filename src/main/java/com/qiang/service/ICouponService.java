@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author Mr.锵
@@ -56,4 +57,9 @@ public interface ICouponService {
      * @param coupon
      */
     void updatecoupon(Coupon coupon);
+    /**
+     * 统计优惠券使用情况
+     * @return
+     */
+    List<Map> countCoupon();
 }

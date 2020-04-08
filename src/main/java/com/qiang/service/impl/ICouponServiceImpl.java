@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author Mr.锵
@@ -28,6 +29,11 @@ public class ICouponServiceImpl implements ICouponService {
     @Override
     public void updatecoupon(Coupon coupon) {
         couponDao.updatecoupon(coupon);
+    }
+
+    @Override
+    public List<Map> countCoupon() {
+        return couponDao.countCoupon();
     }
 
     @Override

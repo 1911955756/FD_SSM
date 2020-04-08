@@ -15,6 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author Mr.锵
@@ -82,5 +83,10 @@ public class CouponController {
     public @ResponseBody List findCoupon(@RequestParam String couponname){
         List<Coupon> coupon = couponService.findCoupon("%"+couponname+"%");
         return coupon;
+    }
+    @RequestMapping("/CountCoupon")
+    public @ResponseBody List CountCoupon(){
+        List<Map> maps = couponService.countCoupon();
+        return maps;
     }
 }

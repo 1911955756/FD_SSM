@@ -56,6 +56,9 @@
     <script type="text/javascript" src="../js/bootstrap.min.js"></script>
     <script>
         $(function () {
+            $("#back").click(function () {
+                window.history.back()
+            })
             $("#addrolebtn").click(function () {
                 var addrole=$("#addrole").val();
                 if(addrole==""){
@@ -128,6 +131,7 @@
     </script>
 </head>
 <body class="inner-container">
+<button class="btn btn-info" id="back">&laquo;返回</button>
 <div class="container-fluid margintop">
     <div class="row">
 <div class="table-responsive col-sm-12 col-md-7">

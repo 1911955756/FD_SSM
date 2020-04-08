@@ -162,4 +162,11 @@ public class TestMyBatis {
             System.out.println(order1);
         }
     }
+    @Test
+    public void testCountCoupon(){
+        List<Map> maps = couponDao.countCoupon();
+        for(Map map:maps){
+            System.out.println(map);
+        }
+    }
 }

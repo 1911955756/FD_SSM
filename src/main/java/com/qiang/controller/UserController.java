@@ -6,10 +6,8 @@ import com.qiang.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
@@ -22,6 +20,7 @@ import java.util.List;
  */
 @Controller
 @RequestMapping("/user")
+@SessionAttributes("logined")
 public class UserController {
     @Autowired
     private IUserService userService;
@@ -30,7 +29,7 @@ public class UserController {
     @Autowired
     private ILoginService loginService;
     @RequestMapping("/findByPhone")
-    public @ResponseBody boolean findByPhone(@RequestBody User1 user) throws Exception {
+    public @ResponseBody boolean findByPhone(@RequestBody User1 user) {
         System.out.println("表现层：通过电话号码查询密码。。。");
         //调用service的方法
         String passwordByphone = userService.findPasswordByphone(user.getPhone());
@@ -44,7 +43,7 @@ public class UserController {
 
     }
     @RequestMapping("/login")
-        public ModelAndView  login(Integer phone) {
+        public ModelAndView  login(ModelMap modelMap,Integer phone) {
         System.out.println("表现层：密码正确，登录。。。");
         ModelAndView mv=new ModelAndView();
         //调用service的方法
@@ -54,19 +53,13 @@ public class UserController {
             for(User1 user1:allByPhone){
                 loginService.savelogin(user1.getUserid());
             }
+            modelMap.addAttribute("logined",phone);
             mv.addObject("userrolelist",allByPhone);
             mv.setViewName("manager");
             return mv;}
         else {
             mv.setViewName("error");
             return mv;}
-    }
-    @RequestMapping("/exit")
-    public String exit() {
-        System.out.println("exit执行");
-        //调用service的方法
-        //暂无
-        return "redirect:/index.jsp";
     }
     @RequestMapping("/userlist")
     public void userlist(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -133,5 +126,18 @@ public class UserController {
         userService.updateUserDeleteflag(userid);
         request.getRequestDispatcher("/user/findAll").forward(request,response);
     }
-
+    @RequestMapping("/checksession")
+    public @ResponseBody boolean checksession(ModelMap modelmap){
+        Integer logined = (Integer) modelmap.get("logined");
+        if (logined==null){
+            return false;
+        }else {
+            return true;
+        }
+    }
+    @RequestMapping("/deletesession")
+    public @ResponseBody void deletesession(SessionStatus status){
+        System.out.println("deletesession执行了");
+        status.setComplete();
+    }
 }

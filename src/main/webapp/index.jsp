@@ -12,13 +12,7 @@
     <link rel="stylesheet" href="css/login.css" type="text/css">
     <script type="text/javascript" src="js/jquery.min.js"></script>
     <%--    哀悼模式--%>
-    <%--    <!--[if IE]>
-    <style>
-        html { filter:progid:DXImageTransform.Microsoft.BasicImage(grayscale=1); }
-    </style>
-    <!<![endif]-->
-    <!--[if !IE]><-->
-    <style>
+<%--    <style>
 
         html{
 
@@ -32,17 +26,11 @@
 
             -o-filter: grayscale(100%);
 
-            filter: url("data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\"><filter ….3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\"/></filter></svg>#grayscale");
-
-            filter: progid:DXImageTransform.Microsoft.BasicImage(grayscale=1);
-
             -webkit-filter: grayscale(1);
 
         }
 
-    </style>
-    <!--<![endif]-->--%>
-
+    </style>--%>
     <script >
         //页面加载，绑定单击事件
         $(function () {
@@ -83,6 +71,7 @@
                 });
             });
         });
+
     </script>
 
 </head>

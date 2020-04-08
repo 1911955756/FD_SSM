@@ -76,6 +76,9 @@
             $("#next").click(function () {
                 $("#next").attr("href","../menu/findAll?num=${listmenu.pageNum+1}&&msta="+$("#msta").val()+"&&mname="+$("#mname").val()+"")
             });
+            $(".downmodel").click(function () {
+                $(".downmodel").attr("href","../file/饭店菜谱模板.xlsx")
+            })
         });
         function gonum(num) {
             $(".aurlcenter").attr("href","../menu/findAll?num="+num+"&&msta="+$("#msta").val()+"&&mname="+$("#mname").val()+"")
@@ -101,10 +104,10 @@
                 </c:forEach>
             </select></td>
             <td><button id="tmbtn" type="button" class="btn btn-warning">关联</button></td>
-            <td><a class="btn btn-primary downmodel" href="../file/饭店菜谱模板.xlsx">下载模板</a></td>
+            <td><a class="btn btn-info downmodel" href="">下载模板</a></td>
             <td><input class="form-control" id="fliename" disabled/></td>
-            <td><input class="btn btn-success" type="button" onclick="$('#file_excel').click();" value="上传文件"/></td>
-            <td><input class="btn btn-danger" type="button" onclick="$('#btn_excel').click();" value="提交"/></td>
+            <td><input class="btn btn-primary" type="button" onclick="$('#file_excel').click();" value="上传文件"/></td>
+            <td><input class="btn btn-success" type="button" onclick="$('#btn_excel').click();" value="提交"/></td>
         </tr>
     </table>
     <table class="table table-striped table-bordered table-hover">

@@ -32,6 +32,7 @@
     <li role="presentation"><a href="#messages" role="tab" data-toggle="tab" id="money">销售额情况</a></li>
     <li role="presentation"><a href="#settings" role="tab" data-toggle="tab" id="newfood">新菜欢迎度</a></li>
     <li role="presentation"><a href="#ypn" role="tab" data-toggle="tab" id="ypeoplenum">年客流量情况</a></li>
+    <li role="presentation"><a href="#tocouponnum" role="tab" data-toggle="tab" id="couponnum">优惠券使用情况</a></li>
 </ul>
 
 <!-- 面板区 -->
@@ -51,11 +52,8 @@
     <div role="tabpanel" class="tab-pane" id="ypn">
         <div id="ypn-main" style="width: 800px;height:400px;"></div>
     </div>
-    <div role="tabpanel" class="tab-pane" id="toother">
-        <div id="other-main" style="width: 1159px;height:559px;"></div>
-    </div>
-    <div role="tabpanel" class="tab-pane" id="tomap">
-        <div id="map-main" style="width: 800px;height:400px;"></div>
+    <div role="tabpanel" class="tab-pane" id="tocouponnum">
+        <div id="couponnum-main" style="width: 800px;height:400px;"></div>
     </div>
 </div>
 </body>
@@ -76,6 +74,9 @@
         });
         $("#ypeoplenum").click(function () {
             initypeoplenum();
+        })
+        $("#couponnum").click(function () {
+            initcouponnum();
         })
     });
 
@@ -222,7 +223,18 @@
                     name: '销售额',
                     type: 'bar',
                     barWidth: '60%',
-                    data: []
+                    data: [],
+                    markPoint : {
+                        data : [
+                            {type : 'max', name: '最大值'},
+                            {type : 'min', name: '最小值'}
+                        ]
+                    },
+                    markLine : {
+                        data : [
+                            {type : 'average', name : '平均值'}
+                        ]
+                    }
                 }
             ]
         };
@@ -452,7 +464,18 @@
                         }
                     }
                 },
-                "data": []
+                "data": [],
+                markPoint : {
+                    data : [
+                        {type : 'max', name: '最大值'},
+                        {type : 'min', name: '最小值'}
+                    ]
+                },
+                markLine : {
+                    data : [
+                        {type : 'average', name : '平均值'}
+                    ]
+                }
             },
             ]
         }
@@ -474,6 +497,238 @@
                     }
                 }
             }})
+        myChart.setOption(option);
+    }
+    function initcouponnum() {
+        var myChart = echarts.init(document.getElementById('couponnum-main'));
+        var option = {
+            backgroundColor: "#f5f5f5",
+            "title": {
+                "text": "优惠券派发情况统计",
+                "subtext": "数据库统计",
+                x: "4%",
+
+                textStyle: {
+                    color: '#000000',
+                    fontSize: '22'
+                },
+                subtextStyle: {
+                    color: '#90979c',
+                    fontSize: '16',
+
+                },
+            },
+            "tooltip": {
+                "trigger": "axis",
+                "axisPointer": {
+                    "type": "shadow",
+                    textStyle: {
+                        color: "#fff"
+                    }
+
+                },
+            },
+            "grid": {
+                "borderWidth": 0,
+                "top": 110,
+                "bottom": 95,
+                textStyle: {
+                    color: "#fff"
+                }
+            },
+            "legend": {
+                x: '4%',
+                top: '14%',
+                textStyle: {
+                    color: '#90979c',
+                },
+                "data": ['已使用', '待使用', '失效','派发']
+            },
+
+
+            "calculable": true,
+            "xAxis": [{
+                "type": "category",
+                "axisLine": {
+                    lineStyle: {
+                        color: '#0f202e'
+                    }
+                },
+                "splitLine": {
+                    "show": false
+                },
+                "axisTick": {
+                    "show": false
+                },
+                "splitArea": {
+                    "show": false
+                },
+                "axisLabel": {
+                    "interval": 0,
+
+                },
+                "data": [],
+            }],
+            "yAxis": [{
+                "type": "value",
+                "splitLine": {
+                    "show": false
+                },
+                "axisLine": {
+                    lineStyle: {
+                        color: '#0f202e'
+                    }
+                },
+                "axisTick": {
+                    "show": false
+                },
+                "axisLabel": {
+                    "interval": 0,
+
+                },
+                "splitArea": {
+                    "show": false
+                },
+
+            }],
+            "dataZoom": [{
+                "show": true,
+                "height": 30,
+                "xAxisIndex": [
+                    0
+                ],
+                bottom: 30,
+                "start": 10,
+                "end": 80,
+                handleIcon: 'path://M306.1,413c0,2.2-1.8,4-4,4h-59.8c-2.2,0-4-1.8-4-4V200.8c0-2.2,1.8-4,4-4h59.8c2.2,0,4,1.8,4,4V413z',
+                handleSize: '110%',
+                handleStyle:{
+                    color:"#b0adb3",
+
+                },
+                textStyle:{
+                    color:"#316995"},
+                borderColor:"#c7c2f4"
+
+
+            }, {
+                "type": "inside",
+                "show": true,
+                "height": 15,
+                "start": 1,
+                "end": 35
+            }],
+            "series": [
+                {
+                "name": "已使用",
+                "type": "bar",
+                "stack": "总量",
+                "barMaxWidth": 35,
+                "barGap": "10%",
+                "itemStyle": {
+                    "normal": {
+                        "color": "rgba(255,144,128,1)",
+                        "label": {
+                            "show": true,
+                            "textStyle": {
+                                "color": "#fff"
+                            },
+                            "position": "inside",
+                            formatter: function(p) {
+                                return p.value > 0 ? (p.value) : '';
+                            }
+                        }
+                    }
+                },
+                "data": [],
+                markPoint : {
+                    data : [
+                        {type : 'max', name: '最大值'},
+                    ]
+                },
+            },
+                {
+                    "name": "待使用",
+                    "type": "bar",
+                    "stack": "总量",
+                    "itemStyle": {
+                        "normal": {
+                            "color": "rgba(0,191,183,1)",
+                            "barBorderRadius": 0,
+                            "label": {
+                                "show": true,
+                                "position": "inside",
+                                formatter: function(p) {
+                                    return p.value > 0 ? (p.value) : '';
+                                }
+                            }
+                        }
+                    },
+                    "data": []
+                },
+                {
+                    "name": "失效",
+                    "type": "bar",
+                    "stack": "总量",
+                    "itemStyle": {
+                        "normal": {
+                            "color": "rgb(98,98,98)",
+                            "barBorderRadius": 0,
+                            "label": {
+                                "show": true,
+                                "position": "inside",
+                                formatter: function(p) {
+                                    return p.value > 0 ? (p.value) : '';
+                                }
+                            }
+                        }
+                    },
+                    "data": [],
+
+                },
+                {
+                    "name": "派发",
+                    "type": "line",
+                    symbolSize:10,
+                    symbol:'circle',
+                    "itemStyle": {
+                        "normal": {
+                            "color": "rgb(156,14,7)",
+                            "barBorderRadius": 0,
+                            "label": {
+                                "show": true,
+                                "position": "top",
+                                formatter: function(p) {
+                                    return p.value > 0 ? (p.value) : '';
+                                }
+                            }
+                        }
+                    },
+                    "data": [],
+                    markPoint : {
+                        data : [
+                            {type : 'max', name: '最大值'},
+                        ]
+                    },
+                },
+            ]
+        }
+        $.ajax({
+            url : "../coupon/CountCoupon",
+            datatype : "json",
+            type : "post",
+            async:false,//同步
+            success : function(data) {
+                for (var i = 0; i < data.length;i++){
+                    option.xAxis[0].data.push(data[i].name)
+                    option.series[0].data.push(data[i].used);
+                    option.series[1].data.push(data[i].beuse);
+                    option.series[2].data.push(data[i].over);
+                    option.series[3].data.push(data[i].total);
+                }
+                console.log(data)
+            }
+        })
         myChart.setOption(option);
     }
 </script>

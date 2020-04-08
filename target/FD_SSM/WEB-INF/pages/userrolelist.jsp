@@ -98,7 +98,7 @@
     <ul class="pagination">
         <c:choose>
             <c:when test="${urlist.isFirstPage}">
-                <li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
+                <li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">&laquo; </span></a></li>
                 <li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">首</span></a></li>
             </c:when>
             <c:otherwise>

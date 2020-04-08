@@ -8,6 +8,7 @@ import org.apache.ibatis.annotations.Update;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author Mr.锵
@@ -63,4 +64,10 @@ public interface ICouponDao {
      */
     @Update("update coupon set couponname=#{couponname},type=#{type},endtime=#{endtime},price=#{price},status=#{status},`condition`=#{condition} where couponid=#{couponid}")
     void updatecoupon(Coupon coupon);
+
+    /**
+     * 统计优惠券使用情况
+     * @return
+     */
+    List<Map> countCoupon();
 }

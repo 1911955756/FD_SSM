@@ -1,6 +1,14 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.qiang.dao.ICouponDao">
+    <resultMap id="CCNMap" type="java.util.Map">
+        <result property="couid" column="couid"  jdbcType="VARCHAR"></result>
+        <result property="name" column="name"  jdbcType="VARCHAR"></result>
+        <result property="over" column="over"  jdbcType="VARCHAR"></result>
+        <result property="beuse" column="beuse"  jdbcType="VARCHAR"></result>
+        <result property="used" column="used"  jdbcType="VARCHAR"></result>
+        <result property="total" column="total"  jdbcType="VARCHAR"></result>
+    </resultMap>
     <select id="findAll" parameterType="string" resultType="com.qiang.domain.Coupon">
         select * from coupon where status not in('默认')
         <if test="couname!=null and couname!=''">
@@ -16,5 +24,92 @@
             and price like '%${couprice}%'
         </if>
         order by createtime desc
+    </select>
+    <select id="countCoupon" resultMap="CCNMap">
+SELECT
+	coupon.couponid as couid,
+	coupon.couponname as name,
+	IFNULL(A.num,0) AS over,
+	IFNULL(B.num,0) AS beuse,
+	IFNULL(C.num,0) AS used,
+    IFNULL(D.num,0) as total
+FROM
+	coupon
+LEFT JOIN (
+	SELECT
+		couponid,
+		COUNT(1) AS num
+	FROM
+		cs_coupon
+	WHERE
+		couponid IN (
+			SELECT
+				couponid
+			FROM
+				coupon
+			WHERE
+				`status` = '上架'
+		)
+	AND `status` = '失效'
+	GROUP BY
+		couponid
+) A ON A.couponid = coupon.couponid
+LEFT JOIN (
+	SELECT
+		couponid,
+		COUNT(1) AS num
+	FROM
+		cs_coupon
+	WHERE
+		couponid IN (
+			SELECT
+				couponid
+			FROM
+				coupon
+			WHERE
+				`status` = '上架'
+		)
+	AND `status` = '待使用'
+	GROUP BY
+		couponid
+) B ON B.couponid = coupon.couponid
+LEFT JOIN (
+	SELECT
+		couponid,
+		COUNT(1) AS num
+	FROM
+		cs_coupon
+	WHERE
+		couponid IN (
+			SELECT
+				couponid
+			FROM
+				coupon
+			WHERE
+				`status` = '上架'
+		)
+	AND `status` = '已使用'
+	GROUP BY
+		couponid
+) C ON coupon.couponid = C.couponid
+LEFT JOIN (
+	SELECT
+		couponid,
+		COUNT(1) AS num
+	FROM
+		cs_coupon
+	WHERE
+		couponid IN (
+			SELECT
+				couponid
+			FROM
+				coupon
+			WHERE
+				`status` = '上架'
+		)
+	GROUP BY
+		couponid
+) D ON D.couponid = coupon.couponid
+where coupon.`status`='上架'
     </select>
 </mapper>

@@ -40,6 +40,11 @@
             float: right;
             padding-right: 50px;
         }
+        .btnright{
+            float: right;
+            margin-top: 20px;
+            margin-left:40px;
+        }
     </style>
     <script type="text/javascript" src="../js/jquery.min.js"></script>
     <script type="text/javascript" src="../js/bootstrap.min.js"></script>
@@ -74,7 +79,7 @@
         <tr>
             <td>职务</td>
             <td>姓名</td>
-            <td>电话<a href="" id="touserfindAll2" class="btn btn-success">搜索</a></td>
+            <td>电话</td>
         </tr>
         <tr>
             <td><input class="form-control" placeholder="输入职务查询"  id="ujob" value="${ujob}"></td>
@@ -145,6 +150,7 @@
                 </c:otherwise>
             </c:choose>
         </ul>
+        <a href="" id="touserfindAll2" class="btn btn-info btnright">搜索</a>
     </nav>
 </div>
 </body>

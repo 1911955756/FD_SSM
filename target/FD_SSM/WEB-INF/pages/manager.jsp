@@ -16,13 +16,7 @@
     <title>饭店后台</title>
     <link rel="stylesheet" href="../css/bootstrap.css" type="text/css">
     <%--    哀悼模式--%>
-    <%--    <!--[if IE]>
-    <style>
-        html { filter:progid:DXImageTransform.Microsoft.BasicImage(grayscale=1); }
-    </style>
-    <!<![endif]-->
-    <!--[if !IE]><-->
-    <style>
+<%--<style>
 
         html{
 
@@ -36,17 +30,9 @@
 
             -o-filter: grayscale(100%);
 
-            filter: url("data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\"><filter ….3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\"/></filter></svg>#grayscale");
-
-            filter: progid:DXImageTransform.Microsoft.BasicImage(grayscale=1);
-
-            -webkit-filter: grayscale(1);
-
         }
 
-    </style>
-    <!--<![endif]-->--%>
-
+    </style>--%>
 
     <STYLE type="text/css">
         .outer-container {
@@ -78,7 +64,28 @@
     <script type="text/javascript" src="../js/jquery.min.js"></script>
     <script type="text/javascript" src="../js/bootstrap.min.js"></script>
     <script>
+        var lastTime = new Date().getTime();
+        var currentTime = new Date().getTime();
+        var timeOut =1 * 20 * 1000; //设置超时时间： 30分
+        var outted=false;
         $(function(){
+            $(document).click(function(){
+                $.ajax({
+                    url:'../user/checksession',
+                    datatype : "json",
+                    type : "post",
+                    success:function (res) {
+                        if(res==false){
+                            alert("登录超时，请重新登录！");
+                            window.location.href ='../index.jsp';
+                        }
+                    }
+                })
+            });
+            /* 鼠标移动事件 */
+            $(document).mousemove(function(){
+                lastTime = new Date().getTime(); //更新操作时间
+            });
             $(".sidebar li").on("click",function(){
                 var address =$(this).attr("data-src");
                 $("#iframecontext").attr("src",address);
@@ -87,7 +94,28 @@
             $('#myModal').on('shown.bs.modal', function () {
                 $('#myInput').focus()
             });
+            $("#exitlink").click(function () {
+                window.location.href ='../index.jsp';
+            })
         });
+        function testTime(){
+            currentTime = new Date().getTime(); //更新当前时间
+            if(currentTime - lastTime > timeOut&&outted==false){ //判断是否超时
+                outted=true;
+                $.ajax({
+                    url:'../user/deletesession',
+                    datatype : "json",
+                    type : "post",
+                    success:function (res) {
+
+                    }
+                })
+            }
+        }
+
+        /* 定时器  间隔1秒检测是否长时间未操作页面  */
+        window.setInterval(testTime, 1000);
+
     </script>
 </head>
 <body>
@@ -122,14 +150,14 @@
         <div id="navbar" class="navbar-collapse collapse">
             <c:forEach items="${userrolelist}" var="ur"><a class="name">您好：${ur.username}${ur.roles[0].rolename}</a></c:forEach>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="exit" >退出</a></li>
+                <li><img src="../images/switch.png"  id="exitlink"  style="margin-top:10px;width: 30px;height: 30px"/></li>
             </ul>
             <form class="navbar-form navbar-right">
                 <input type="text" class="form-control" placeholder="暂未开通">
             </form>
         </div>
     </div>
-        </nav>
+</nav>
 
 <div class="container-fluid margintop" >
     <div class="row">

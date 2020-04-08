@@ -14,7 +14,7 @@
 <center>
     <h3>操作异常统一跳转页面</h3>
     ${errorMsg}
-    <a href="http://localhost:8090/FD_SSM_war/">重新登录</a>
+    <a href="../index.jsp">重新登录</a>
 </center>
 </body>
 </html>
