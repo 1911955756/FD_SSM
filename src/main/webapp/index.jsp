@@ -11,6 +11,7 @@
     <title>饭店后台管理系统</title>
     <link rel="stylesheet" href="css/login.css" type="text/css">
     <script type="text/javascript" src="js/jquery.min.js"></script>
+    <link rel="icon" href="images/timg.jpg" type="image/x-icon">
     <%--    哀悼模式--%>
 <%--    <style>
 
@@ -64,8 +65,22 @@
                     success:function(result){
                         // data服务器端响应的json的数据，进行解析
                         if(result==true)
-                        {$("#form1").submit();return true;}
-                        else if(result==flag)
+                        {$.ajax({
+                            url:'user/checkapplication',
+                            datatype : "json",
+                            type : "post",
+                            data:{
+                                phone:$("#phone").val()
+                            },
+                            success:function(res){
+                                if(res==false){
+                                    $("#form1").submit();return true;
+                                }else{
+                                    alert("该账号已登录");return false;
+                                }
+                            }
+                        })
+                        } else if(result==flag)
                         {alert("账号或密码不正确");return false;}
                     }
                 });

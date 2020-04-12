@@ -21,13 +21,13 @@ public interface IUserDao {
      * @return
      */
     @Select("select password from user1 where phone=#{phone} and deleteflag=0")
-    String findPasswordByphone(Integer phone);
+    String findPasswordByphone(String phone);
 
     /**
      * 查询删除标志不为1的所有用户
      * @return
      */
-    List<User1>findAll(@Param("uname") String uname,@Param("ujob") String ujob,@Param("uphone") Integer uphone);
+    List<User1>findAll(@Param("uname") String uname,@Param("ujob") String ujob,@Param("uphone") String uphone);
 
     /**
      * 根据userid查询用户信息
@@ -62,5 +62,5 @@ public interface IUserDao {
      * @param phone
      * @return
      */
-     List<User1> findAllByPhone(Integer phone);
+     List<User1> findAllByPhone(String phone);
 }

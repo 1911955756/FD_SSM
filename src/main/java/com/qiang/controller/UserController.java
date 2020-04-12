@@ -12,6 +12,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -20,8 +22,7 @@ import java.util.List;
  */
 @Controller
 @RequestMapping("/user")
-@SessionAttributes("logined")
-public class UserController {
+public class UserController{
     @Autowired
     private IUserService userService;
     @Autowired
@@ -30,22 +31,21 @@ public class UserController {
     private ILoginService loginService;
     @RequestMapping("/findByPhone")
     public @ResponseBody boolean findByPhone(@RequestBody User1 user) {
-        System.out.println("表现层：通过电话号码查询密码。。。");
-        //调用service的方法
         String passwordByphone = userService.findPasswordByphone(user.getPhone());
-        if(passwordByphone.equals(user.getPassword())){
-            System.out.println("成功");
+        System.out.println(passwordByphone);
+        if(user.getPassword().equals(passwordByphone)){
+            System.out.println("查找成功");
         return true;}
         else{
-            System.out.println("失败");
+            System.out.println("查找失败");
             return false;
          }
 
     }
     @RequestMapping("/login")
-        public ModelAndView  login(ModelMap modelMap,Integer phone) {
+        public ModelAndView  login(String phone, HttpSession httpSession) {
         System.out.println("表现层：密码正确，登录。。。");
-        ModelAndView mv=new ModelAndView();
+        ModelMap modelMap=new ModelMap();
         //调用service的方法
         //暂无
         if(phone!=null){
@@ -53,22 +53,26 @@ public class UserController {
             for(User1 user1:allByPhone){
                 loginService.savelogin(user1.getUserid());
             }
-            modelMap.addAttribute("logined",phone);
-            mv.addObject("userrolelist",allByPhone);
-            mv.setViewName("manager");
+            ArrayList<String> list = new ArrayList<String>();
+            if(httpSession.getServletContext().getAttribute("Count")!=null){
+            list=(ArrayList<String>)httpSession.getServletContext().getAttribute("Count");}
+            list.add(list.size(),phone);
+            httpSession.getServletContext().setAttribute("Count",list);
+            modelMap.addAttribute("uphone",phone);
+            modelMap.addAttribute("userrolelist",allByPhone);
+            ModelAndView mv=new ModelAndView("manager",modelMap);
             return mv;}
         else {
-            mv.setViewName("error");
+            ModelAndView mv=new ModelAndView("error",modelMap);
             return mv;}
     }
     @RequestMapping("/userlist")
     public void userlist(HttpServletRequest request, HttpServletResponse response) throws Exception {
-        System.out.println("userlist执行");
         request.getRequestDispatcher("/user/findAll").forward(request,response);
     }
     @RequestMapping("/findAll")
     public ModelAndView findAll(@RequestParam(required = false,defaultValue ="1") Integer num,
-                                @RequestParam(required = false) Integer uphone,
+                                @RequestParam(required = false) String uphone,
                                 @RequestParam(required = false) String  uname,
                                 @RequestParam(required = false) String ujob){
         ModelMap modelMap=new ModelMap();
@@ -80,13 +84,12 @@ public class UserController {
         modelMap.addAttribute("uname",uname);
         modelMap.addAttribute("ujob",ujob);
         ModelAndView mv=new ModelAndView("list",modelMap);
-        System.out.println("加入成功");
         mv.setViewName("userlist");
         return mv;
     }
     @RequestMapping("/findAll2")
     public @ResponseBody ModelAndView findAll2(@RequestParam(required = false,defaultValue ="1") Integer num,
-                                               @RequestParam(required = false) Integer uphone,
+                                               @RequestParam(required = false) String uphone,
                                                @RequestParam(required = false) String  uname,
                                                @RequestParam(required = false) String  ujob){
         ModelMap modelMap=new ModelMap();
@@ -126,18 +129,29 @@ public class UserController {
         userService.updateUserDeleteflag(userid);
         request.getRequestDispatcher("/user/findAll").forward(request,response);
     }
-    @RequestMapping("/checksession")
-    public @ResponseBody boolean checksession(ModelMap modelmap){
-        Integer logined = (Integer) modelmap.get("logined");
-        if (logined==null){
-            return false;
-        }else {
-            return true;
-        }
+    @RequestMapping("/checkapplication")
+    public @ResponseBody boolean checkapplication(HttpSession httpSession,@RequestParam String phone){
+        ArrayList<String> list = new ArrayList<String>();
+        if(httpSession.getServletContext().getAttribute("Count")!=null){
+        list=(ArrayList<String>)httpSession.getServletContext().getAttribute("Count");}
+        boolean equals = list.contains(phone);
+        return equals;
     }
-    @RequestMapping("/deletesession")
-    public @ResponseBody void deletesession(SessionStatus status){
+    @RequestMapping("/deleteapplication")
+    public @ResponseBody void deleteapplication(HttpSession httpSession,@RequestParam String phone){
+        ArrayList<String> list = new ArrayList<String>();
+        if(httpSession.getServletContext().getAttribute("Count")!=null){
+            list=(ArrayList<String>)httpSession.getServletContext().getAttribute("Count");}
+        list.remove(phone);
+        httpSession.getServletContext().setAttribute("Count",list);
         System.out.println("deletesession执行了");
-        status.setComplete();
+    }
+    @RequestMapping("/findcountnum")
+    public @ResponseBody int findcountnum(HttpSession httpSession){
+        ArrayList<String> list = new ArrayList<String>();
+        if(httpSession.getServletContext().getAttribute("Count")!=null){
+            list=(ArrayList<String>)httpSession.getServletContext().getAttribute("Count");}
+        int size = list.size();
+        return size;
     }
 }

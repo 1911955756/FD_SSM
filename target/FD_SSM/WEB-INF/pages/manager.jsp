@@ -7,14 +7,16 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
+
 <html lang="zh-CN">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
-    <title>饭店后台</title>
+    <title>饭店后台-努力工作 (ง •̀o•́)ง </title>
     <link rel="stylesheet" href="../css/bootstrap.css" type="text/css">
+    <link rel="icon" href="../images/timg.jpg" type="image/x-icon">
     <%--    哀悼模式--%>
 <%--<style>
 
@@ -64,20 +66,34 @@
     <script type="text/javascript" src="../js/jquery.min.js"></script>
     <script type="text/javascript" src="../js/bootstrap.min.js"></script>
     <script>
+        //pushHistory();//改变url，使浏览器无法返回
+        document.addEventListener('visibilitychange', function() {//监听隐藏事件
+            var isHidden = document.hidden;
+            console.log(document.visibilityState)
+            if (isHidden) {
+                document.title = '饭店后台-休息一下⁄(⁄ ⁄ ⁄ω⁄ ⁄ ⁄)⁄';
+            } else {
+                document.title = '饭店后台-努力工作 (ง •̀o•́)ง ';
+            }
+        });
         var lastTime = new Date().getTime();
         var currentTime = new Date().getTime();
-        var timeOut =1 * 20 * 1000; //设置超时时间： 30分
+        var timeOut =15 * 60 * 1000; //设置超时时间： 15分
         var outted=false;
         $(function(){
             $(document).click(function(){
                 $.ajax({
-                    url:'../user/checksession',
+                    url:'../user/checkapplication',
                     datatype : "json",
                     type : "post",
+                    data:{
+                        phone:${uphone}
+                    },
                     success:function (res) {
                         if(res==false){
                             alert("登录超时，请重新登录！");
-                            window.location.href ='../index.jsp';
+                            pushHistory()
+                            window.location.href ='/FD_SSM_war/';
                         }
                     }
                 })
@@ -95,27 +111,58 @@
                 $('#myInput').focus()
             });
             $("#exitlink").click(function () {
-                window.location.href ='../index.jsp';
+                        clean()
+                        pushHistory()
+                        window.location.href ='/FD_SSM_war/';
             })
         });
+        window.onbeforeunload= function (e) {
+            var flag=true;
+            while(flag==true){
+                    this.clean()
+                    flag=false
+                    return flag;
+}
+        };
+        function clean() {
+            $.ajax({
+                url:'../user/deleteapplication',
+                datatype : "json",
+                type : "post",
+                data:{
+                    phone:${uphone}
+                },
+                success:function (res) {}
+            })
+        }
         function testTime(){
             currentTime = new Date().getTime(); //更新当前时间
             if(currentTime - lastTime > timeOut&&outted==false){ //判断是否超时
                 outted=true;
+                this.clean()
+            }
+            if(outted==false){
                 $.ajax({
-                    url:'../user/deletesession',
+                    url:'../user/findcountnum',
                     datatype : "json",
                     type : "post",
                     success:function (res) {
-
+                        $("#countnum").html("")
+                        $("#countnum").append("在线人数："+res)
                     }
                 })
             }
         }
-
         /* 定时器  间隔1秒检测是否长时间未操作页面  */
         window.setInterval(testTime, 1000);
 
+        function pushHistory() {
+            var state = {
+                title: "title",
+                url: "../"
+            };
+            window.history.pushState(state, "title", "../");
+        }
     </script>
 </head>
 <body>
@@ -149,6 +196,7 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <c:forEach items="${userrolelist}" var="ur"><a class="name">您好：${ur.username}${ur.roles[0].rolename}</a></c:forEach>
+            <a id="countnum">在线人数：${Count.size()}</a>
             <ul class="nav navbar-nav navbar-right">
                 <li><img src="../images/switch.png"  id="exitlink"  style="margin-top:10px;width: 30px;height: 30px"/></li>
             </ul>
@@ -189,6 +237,7 @@
                             <li data-src="../menu/findAll"><a href="#">菜单列表</a></li>
                         </c:otherwise>
                     </c:choose>
+                    <li>
                 </c:forEach>
             </ul>
         </div>

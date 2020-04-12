@@ -7,7 +7,6 @@ import com.qiang.domain.User1;
 import com.qiang.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 
 /**
@@ -16,12 +15,12 @@ import java.util.List;
  * user1表业务层
  */
 @Service("userService")
-public class IUserServiceImpl implements IUserService {
+public class IUserServiceImpl implements IUserService{
     @Autowired
     private IUserDao userDao;
 
     @Override
-    public String findPasswordByphone(Integer phone) {
+    public String findPasswordByphone(String phone) {
         return userDao.findPasswordByphone(phone);
     }
 
@@ -31,7 +30,7 @@ public class IUserServiceImpl implements IUserService {
     }
 
     @Override
-    public PageInfo<User1> findAll(Integer num,String uname,String ujob,Integer uphone) {
+    public PageInfo<User1> findAll(Integer num,String uname,String ujob,String uphone) {
         PageHelper.startPage(num,3);
         List<User1> all = userDao.findAll(uname,ujob,uphone);
         PageInfo<User1> user1PageInfo = new PageInfo<>(all);
@@ -54,7 +53,8 @@ public class IUserServiceImpl implements IUserService {
     }
 
     @Override
-    public List<User1> findAllByPhone(Integer phone) {
+    public List<User1> findAllByPhone(String phone) {
         return userDao.findAllByPhone(phone);
     }
+
 }

@@ -12,7 +12,7 @@ import java.util.List;
 public class User1 {
     private String userid;
     private String username;
-    private Integer phone;
+    private String phone;
     private String password;
     private String job;
     private Integer deleteflag;

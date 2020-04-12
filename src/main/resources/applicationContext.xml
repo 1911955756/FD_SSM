@@ -43,7 +43,7 @@
         </property>
     </bean>
 
-<!--    配置AccountDao接口所在包-->
+<!--    配置Dao接口所在包-->
     <bean id="mapperScannerConfigurer" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
         <property name="basePackage" value="com.qiang.dao"/>
     </bean>

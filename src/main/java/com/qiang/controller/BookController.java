@@ -19,7 +19,7 @@ import java.util.List;
  */
 @Controller
 @RequestMapping("/book")
-public class BookController {
+public class BookController{
     @Autowired
     private IBookService bookService;
     @RequestMapping("/findAll")

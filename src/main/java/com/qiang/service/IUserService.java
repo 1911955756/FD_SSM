@@ -18,7 +18,7 @@ public interface IUserService {
      * @param phone
      * @return
      */
-    String findPasswordByphone(Integer phone);
+    String findPasswordByphone(String phone);
 
     /**
      * 根据userid查询用户信息
@@ -30,7 +30,7 @@ public interface IUserService {
      * 查询删除标志不为1的所有用户
      * @return
      */
-    PageInfo<User1> findAll(Integer num,String uname,String ujob,Integer uphone);
+    PageInfo<User1> findAll(Integer num,String uname,String ujob,String uphone);
 
     /**
      * 把用户的删除标志改为1
@@ -55,6 +55,6 @@ public interface IUserService {
      * @param phone
      * @return
      */
-    List<User1> findAllByPhone(Integer phone);
+    List<User1> findAllByPhone(String phone);
 
 }

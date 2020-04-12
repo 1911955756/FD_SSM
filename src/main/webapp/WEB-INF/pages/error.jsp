@@ -9,12 +9,13 @@
 <html>
 <head>
     <title>ERROR</title>
+    <link rel="icon" href="../images/timg.jpg" type="image/x-icon">
 </head>
 <body>
 <center>
     <h3>操作异常统一跳转页面</h3>
     ${errorMsg}
-    <a href="../index.jsp">重新登录</a>
+    <a href="../">重新登录</a>
 </center>
 </body>
 </html>

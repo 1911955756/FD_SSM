@@ -27,89 +27,53 @@
     </select>
     <select id="countCoupon" resultMap="CCNMap">
 SELECT
-	coupon.couponid as couid,
-	coupon.couponname as name,
-	IFNULL(A.num,0) AS over,
-	IFNULL(B.num,0) AS beuse,
-	IFNULL(C.num,0) AS used,
-    IFNULL(D.num,0) as total
+	cou.couponid as couid,
+	cou.couponname as name,
+	IFNULL(c.over, 0) AS over,
+	IFNULL(c.beuse, 0) AS beuse,
+	IFNULL(c.used, 0) AS used,
+	IFNULL((c.over + c.beuse + c.used), 0) AS total
 FROM
-	coupon
+	(
+		SELECT
+			couponid,
+			couponname
+		FROM
+			coupon
+		WHERE
+			STATUS = '上架'
+	) cou
 LEFT JOIN (
 	SELECT
 		couponid,
-		COUNT(1) AS num
+		sum(
+			CASE
+			WHEN STATUS = '失效' THEN
+				1
+			ELSE
+				0
+			END
+		) AS over,
+		sum(
+			CASE
+			WHEN STATUS = '待使用' THEN
+				1
+			ELSE
+				0
+			END
+		) AS beuse,
+		sum(
+			CASE
+			WHEN STATUS = '已使用' THEN
+				1
+			ELSE
+				0
+			END
+		) AS used
 	FROM
 		cs_coupon
-	WHERE
-		couponid IN (
-			SELECT
-				couponid
-			FROM
-				coupon
-			WHERE
-				`status` = '上架'
-		)
-	AND `status` = '失效'
 	GROUP BY
 		couponid
-) A ON A.couponid = coupon.couponid
-LEFT JOIN (
-	SELECT
-		couponid,
-		COUNT(1) AS num
-	FROM
-		cs_coupon
-	WHERE
-		couponid IN (
-			SELECT
-				couponid
-			FROM
-				coupon
-			WHERE
-				`status` = '上架'
-		)
-	AND `status` = '待使用'
-	GROUP BY
-		couponid
-) B ON B.couponid = coupon.couponid
-LEFT JOIN (
-	SELECT
-		couponid,
-		COUNT(1) AS num
-	FROM
-		cs_coupon
-	WHERE
-		couponid IN (
-			SELECT
-				couponid
-			FROM
-				coupon
-			WHERE
-				`status` = '上架'
-		)
-	AND `status` = '已使用'
-	GROUP BY
-		couponid
-) C ON coupon.couponid = C.couponid
-LEFT JOIN (
-	SELECT
-		couponid,
-		COUNT(1) AS num
-	FROM
-		cs_coupon
-	WHERE
-		couponid IN (
-			SELECT
-				couponid
-			FROM
-				coupon
-			WHERE
-				`status` = '上架'
-		)
-	GROUP BY
-		couponid
-) D ON D.couponid = coupon.couponid
-where coupon.`status`='上架'
+) c ON cou.couponid = c.couponid
     </select>
 </mapper>
