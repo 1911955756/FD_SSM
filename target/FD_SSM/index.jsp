@@ -85,6 +85,9 @@
                     }
                 });
             });
+            $(".btn-link").click(function () {
+                window.open("modify.jsp")
+            })
         });
 
     </script>
@@ -101,6 +104,7 @@
     <input type="password" name="password" id="password" class="login-input" placeholder="请输入密码"/><br/>
     <button id="btn1" class="login-button" type="button">登录</button><br/>
 </form>
+            <a href="#" class="btn-link">忘记密码？</a>
         </fieldset>
     </div>
 </div>

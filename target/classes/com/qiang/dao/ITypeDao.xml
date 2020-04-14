@@ -41,7 +41,7 @@ AND m. STATUS = '上架'
     and t.name like '%${tyname}%'
 </if>
 <if test="mname!=null and mname!=''">
-    and m.menuname like '%${mname}%'
+    and (m.menuname like '%${mname}%' or m.description like '%${mname}%')
 </if>
 AND m.kucun > 0
     </select>

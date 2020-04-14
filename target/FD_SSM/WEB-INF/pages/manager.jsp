@@ -66,10 +66,8 @@
     <script type="text/javascript" src="../js/jquery.min.js"></script>
     <script type="text/javascript" src="../js/bootstrap.min.js"></script>
     <script>
-        //pushHistory();//改变url，使浏览器无法返回
         document.addEventListener('visibilitychange', function() {//监听隐藏事件
             var isHidden = document.hidden;
-            console.log(document.visibilityState)
             if (isHidden) {
                 document.title = '饭店后台-休息一下⁄(⁄ ⁄ ⁄ω⁄ ⁄ ⁄)⁄';
             } else {
@@ -139,7 +137,8 @@
             currentTime = new Date().getTime(); //更新当前时间
             if(currentTime - lastTime > timeOut&&outted==false){ //判断是否超时
                 outted=true;
-                this.clean()
+                this.clean();
+                clearInterval(interval)
             }
             if(outted==false){
                 $.ajax({
@@ -154,7 +153,7 @@
             }
         }
         /* 定时器  间隔1秒检测是否长时间未操作页面  */
-        window.setInterval(testTime, 1000);
+        var interval = window.setInterval(testTime, 1000);
 
         function pushHistory() {
             var state = {

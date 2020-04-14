@@ -726,7 +726,6 @@
                     option.series[2].data.push(data[i].over);
                     option.series[3].data.push(data[i].total);
                 }
-                console.log(data)
             }
         })
         myChart.setOption(option);

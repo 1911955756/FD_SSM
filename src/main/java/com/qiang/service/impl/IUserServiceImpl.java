@@ -53,6 +53,16 @@ public class IUserServiceImpl implements IUserService{
     }
 
     @Override
+    public List<User1> checkemail(String email) {
+        return userDao.checkemail(email);
+    }
+
+    @Override
+    public void updatepassword(User1 user1) {
+        userDao.updatepassword(user1);
+    }
+
+    @Override
     public List<User1> findAllByPhone(String phone) {
         return userDao.findAllByPhone(phone);
     }

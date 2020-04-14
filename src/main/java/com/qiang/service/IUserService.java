@@ -51,10 +51,24 @@ public interface IUserService {
     void updateUser(User1 user1);
 
     /**
+     * 根据phone更新登录密码
+     * @param user1
+     */
+    void updatepassword(User1 user1);
+
+    /**
      * 根据phone查询用户信息
      * @param phone
      * @return
      */
     List<User1> findAllByPhone(String phone);
+
+    /**
+     * 核对邮箱
+     * @param email
+     * @return
+     */
+    @Select("select * from user1 where email=#{email}")
+    List<User1> checkemail(String email);
 
 }

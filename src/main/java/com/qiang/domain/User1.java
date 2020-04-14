@@ -18,6 +18,7 @@ public class User1 {
     private Integer deleteflag;
     private Timestamp createtime;
     private Timestamp updatetime;
+    private String email;
     private List<Role> roles;
 
 }

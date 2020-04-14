@@ -47,15 +47,22 @@ public interface IUserDao {
      * 保存用户信息
      * @param user1
      */
-    @Insert("insert into user1(username,phone,password,job)values(#{username},#{phone},#{password},#{job})")
+    @Insert("insert into user1(username,phone,password,job,email)values(#{username},#{phone},#{password},#{job},#{email})")
     void saveUser(User1 user1);
 
     /**
      * 根据userid更新用户信息
      * @param user1
      */
-    @Update("update user1 set username=#{username},phone=#{phone},job=#{job},password=#{password} where userid=#{userid}")
+    @Update("update user1 set username=#{username},phone=#{phone},job=#{job},password=#{password},email=#{email} where userid=#{userid}")
     void updateUser(User1 user1);
+
+    /**
+     * 根据phone更新登录密码
+     * @param user1
+     */
+    @Update("update user1 set password=#{password} where phone=#{phone}")
+     void updatepassword(User1 user1);
 
     /**
      * 根据phone查询用户信息
@@ -63,4 +70,12 @@ public interface IUserDao {
      * @return
      */
      List<User1> findAllByPhone(String phone);
+
+    /**
+     * 核对邮箱
+     * @param email
+     * @return
+     */
+     @Select("select * from user1 where email=#{email}")
+     List<User1> checkemail(String email);
 }

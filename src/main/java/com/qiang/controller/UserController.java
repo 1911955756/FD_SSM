@@ -1,4 +1,5 @@
 package com.qiang.controller;
+import	java.lang.annotation.Retention;
 
 import com.github.pagehelper.PageInfo;
 import com.qiang.domain.*;
@@ -32,7 +33,6 @@ public class UserController{
     @RequestMapping("/findByPhone")
     public @ResponseBody boolean findByPhone(@RequestBody User1 user) {
         String passwordByphone = userService.findPasswordByphone(user.getPhone());
-        System.out.println(passwordByphone);
         if(user.getPassword().equals(passwordByphone)){
             System.out.println("查找成功");
         return true;}
@@ -40,6 +40,16 @@ public class UserController{
             System.out.println("查找失败");
             return false;
          }
+
+    }
+    @RequestMapping("/findPhone")
+    public @ResponseBody boolean findPhone(@RequestParam String phone){
+        String passwordByphone = userService.findPasswordByphone(phone);
+        if(passwordByphone==null){
+            return true;
+        }else{
+            return false;
+        }
 
     }
     @RequestMapping("/login")
@@ -118,9 +128,16 @@ public class UserController{
     }
     @RequestMapping("/updateUser")
     public void updateUser(User1 user1,HttpServletRequest request, HttpServletResponse response) throws Exception{
-        System.out.println(user1);
         userService.updateUser(user1);
         request.getRequestDispatcher("/user/findAll").forward(request,response);
+    }
+    @RequestMapping("/updatepassword")
+    public @ResponseBody String  updatepassword(String account,String pwd){
+        User1 user1=new User1();
+        user1.setPhone(account);
+        user1.setPassword(pwd);
+        userService.updatepassword(user1);
+        return "redirect:/index.jsp";
     }
     @RequestMapping("/deleteUser")
     public void deleteUser(String userid,HttpServletRequest request, HttpServletResponse response) throws Exception{
@@ -153,5 +170,27 @@ public class UserController{
             list=(ArrayList<String>)httpSession.getServletContext().getAttribute("Count");}
         int size = list.size();
         return size;
+    }
+    @RequestMapping("/checkemail")
+    public @ResponseBody boolean checkemail(String email){
+        List<User1> checkemail = userService.checkemail(email);
+        if(checkemail.size()!=0){
+            return true;
+        }else{
+            return false;
+        }
+    }
+    @RequestMapping("/checkcaptcha")
+    public @ResponseBody boolean checkcaptcha(HttpSession httpSession,@RequestParam String captcha){
+        String captcha1 = (String)httpSession.getAttribute("Captcha");
+        if(captcha.equals(captcha1)){
+            return true;
+        }else {
+            return false;
+        }
+    }
+    @RequestMapping("/deletecaptcha")
+    public @ResponseBody void deletecaptcha(HttpSession httpSession){
+        httpSession.removeAttribute("Captcha");
     }
 }

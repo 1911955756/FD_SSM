@@ -62,7 +62,6 @@
                     status:status
                 },
                 success : function(data) {
-                    console.log(data.list.length)
                     //清空表格数据
                     $("tbody").html("");
                     //动态刷新表格
