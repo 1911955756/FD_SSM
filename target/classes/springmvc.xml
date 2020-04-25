@@ -15,7 +15,6 @@
 <!--        配置哪些注解扫描-->
         <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
     </context:component-scan>
-    <!--读取属性文件-->
     <context:property-placeholder location="classpath:mail.properties" ignore-unresolvable="true"/>
 
     <!--配置邮件接口-->
@@ -31,7 +30,6 @@
             </props>
         </property>
     </bean>
-
 <!--    配置视图解析器对象-->
     <bean id="InternalResourceViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/WEB-INF/pages/"/>

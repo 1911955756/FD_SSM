@@ -1,5 +1,4 @@
 package com.qiang.controller;
-import	java.lang.annotation.Retention;
 
 import com.github.pagehelper.PageInfo;
 import com.qiang.domain.*;
@@ -8,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
@@ -52,13 +50,12 @@ public class UserController{
         }
 
     }
-    @RequestMapping("/login")
+    @RequestMapping(value = {"/login"},method = RequestMethod.POST)
         public ModelAndView  login(String phone, HttpSession httpSession) {
         System.out.println("表现层：密码正确，登录。。。");
         ModelMap modelMap=new ModelMap();
         //调用service的方法
         //暂无
-        if(phone!=null){
             List<User1> allByPhone = userService.findAllByPhone(phone);
             for(User1 user1:allByPhone){
                 loginService.savelogin(user1.getUserid());
@@ -71,10 +68,7 @@ public class UserController{
             modelMap.addAttribute("uphone",phone);
             modelMap.addAttribute("userrolelist",allByPhone);
             ModelAndView mv=new ModelAndView("manager",modelMap);
-            return mv;}
-        else {
-            ModelAndView mv=new ModelAndView("error",modelMap);
-            return mv;}
+            return mv;
     }
     @RequestMapping("/userlist")
     public void userlist(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -131,13 +125,13 @@ public class UserController{
         userService.updateUser(user1);
         request.getRequestDispatcher("/user/findAll").forward(request,response);
     }
-    @RequestMapping("/updatepassword")
-    public @ResponseBody String  updatepassword(String account,String pwd){
+    @RequestMapping(value = "/updatepassword",method = RequestMethod.POST)
+    public String  updatepassword(String account,String pwd){
         User1 user1=new User1();
         user1.setPhone(account);
         user1.setPassword(pwd);
         userService.updatepassword(user1);
-        return "redirect:/index.jsp";
+        return "redirect:/";
     }
     @RequestMapping("/deleteUser")
     public void deleteUser(String userid,HttpServletRequest request, HttpServletResponse response) throws Exception{

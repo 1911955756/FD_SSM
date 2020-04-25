@@ -62,7 +62,7 @@
                 }
             });
             $("#front").click(function () {
-                $("#front").attr("href","../picture/findAll?num=${picturelist.pageNum-1}")
+                $("#front").attr("href","../picture/findAll?num=${picturelist.prePage}")
             });
             $("#first").click(function () {
                 $("#first").attr("href","../picture/findAll?num=1")
@@ -71,7 +71,7 @@
                 $("#last").attr("href","../picture/findAll?num=${picturelist.pages}")
             });
             $("#next").click(function () {
-                $("#next").attr("href","../picture/findAll?num=${picturelist.pageNum+1}")
+                $("#next").attr("href","../picture/findAll?num=${picturelist.nextPage}")
             });
         });
         function gonum(num) {
@@ -168,7 +168,7 @@
         </c:forEach>
         </tbody>
     </table>
-            第${picturelist.pageNum}页，共${picturelist.pages}页
+            第${picturelist.pageNum}页，共${picturelist.pages}页/${picturelist.total}条
             <%--    分页条--%>
             <nav aria-label="Page navigation" class="right">
                 <ul class="pagination">

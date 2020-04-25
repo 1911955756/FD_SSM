@@ -54,7 +54,7 @@
                     $("#touserfindAll2").attr("href","../user/findAll2?num=1&&ujob="+$("#ujob").val()+"&&uname="+$("#uname").val()+"&&uphone="+$("#uphone").val()+"")
             });
             $("#front").click(function () {
-                $("#front").attr("href","../user/findAll2?num=${userlist.pageNum-1}&&ujob="+$("#ujob").val()+"&&uname="+$("#uname").val()+"&&uphone="+$("#uphone").val()+"")
+                $("#front").attr("href","../user/findAll2?num=${userlist.prePage}&&ujob="+$("#ujob").val()+"&&uname="+$("#uname").val()+"&&uphone="+$("#uphone").val()+"")
             });
             $("#first").click(function () {
                 $("#first").attr("href","../user/findAll2?num=1&&ujob="+$("#ujob").val()+"&&uname="+$("#uname").val()+"&&uphone="+$("#uphone").val()+"")
@@ -63,7 +63,7 @@
                 $("#last").attr("href","../user/findAll2?num=${userlist.pages}&&ujob="+$("#ujob").val()+"&&uname="+$("#uname").val()+"&&uphone="+$("#uphone").val()+"")
             });
             $("#next").click(function () {
-                $("#next").attr("href","../user/findAll2?num=${userlist.pageNum+1}&&ujob="+$("#ujob").val()+"&&uname="+$("#uname").val()+"&&uphone="+$("#uphone").val()+"")
+                $("#next").attr("href","../user/findAll2?num=${userlist.nextPage}&&ujob="+$("#ujob").val()+"&&uname="+$("#uname").val()+"&&uphone="+$("#uphone").val()+"")
             });
         });
         function gonum(num) {
@@ -98,7 +98,7 @@
         </tbody>
     </table>
     <%--    分页条--%>
- 第${userlist.pageNum}页，共${userlist.pages}页
+ 第${userlist.pageNum}页，共${userlist.pages}页/${userlist.total}条
     <nav aria-label="Page navigation" class="right">
         <ul class="pagination">
             <c:choose>

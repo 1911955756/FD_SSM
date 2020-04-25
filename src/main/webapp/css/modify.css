@@ -4,3 +4,7 @@
     background-size:100% 100%;
     -moz-background-size:100% 100%;
 }
+.div-background{
+    margin-top: 100px;
+    background-color: rgba(119, 126, 131, 0.47);
+}

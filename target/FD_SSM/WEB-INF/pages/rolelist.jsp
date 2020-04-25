@@ -235,7 +235,7 @@
 </div>
         <div class="table-responsive col-sm-12 col-md-5  outer-container">
             <div class="bottom">已关联用户:</div>
-            <iframe marginWidth=0 marginHeight=0 src="../role/findPageUR"  scrolling="auto" frameBorder=0 width="100%" height="80%"></iframe>
+            <iframe marginWidth=0 marginHeight=0 src="../role/findPageUR"  scrolling="auto" frameBorder=0 width="100%" height="500px"></iframe>
         </div>
 </div>
 </div>

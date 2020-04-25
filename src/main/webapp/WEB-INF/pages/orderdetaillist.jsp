@@ -102,7 +102,7 @@
                             "<li class=\"disabled\"><a href=\"#\" aria-label=\"Previous\"><span aria-hidden=\"true\">首</span></a></li>";
                     }
                     else if(!data[0].isFirstPage){
-                        var first="<li><a href=\"../orderdetail/findAll?num="+(data[0].pageNum-1)+"&&status="+
+                        var first="<li><a href=\"../orderdetail/findAll?num="+(data[0].prePage)+"&&status="+
                             data[0].list[0].status +"&&tbid="+ tbid +"&&orddid="+ orddid +"&&ordid="+
                             ordid +"&&mname="+ mname +"&&odcalls="+odcalls+"\" aria-label=\"Previous\">\n" +
                             "                        <span aria-hidden=\"true\">&laquo;</span></a></li>" +
@@ -133,7 +133,7 @@
                             data[0].list[0].status +"&&tbid="+ tbid +"&&orddid="+ orddid +"&&ordid="+
                             ordid +"&&mname="+ mname +"&&odcalls="+odcalls+"\" aria-label=\"Previous\">\n" +
                             "                        <span aria-hidden=\"true\">尾</span></a></li>" +
-                            "<li><a href=\"../orderdetail/findAll?num="+(data[0].pageNum+1)+"&&status="+
+                            "<li><a href=\"../orderdetail/findAll?num="+(data[0].nextPage)+"&&status="+
                             data[0].list[0].status +"&&tbid="+ tbid +"&&orddid="+ orddid +"&&ordid="+
                             ordid +"&&mname="+ mname +"&&odcalls="+odcalls+"\" aria-label=\"Previous\">\n" +
                             "                        <span aria-hidden=\"true\">&raquo;</span></a></li>";
@@ -141,7 +141,7 @@
                     var all=first+center+last;
                     $(".pagination").append(all);
                     $(".hhh").html("");
-                    var hhh="第"+data[0].pageNum+"页，共"+data[0].pages+"页<a href=\"#\" onclick=\"$('#change').val('未催单')\">正常显示</a>";
+                    var hhh="第"+data[0].pageNum+"页，共"+data[0].pages+"页/"+data[0].total+"条<a href=\"#\" onclick=\"$('#change').val('未催单')\">正常显示</a>";
                     if(data[1][0].callnum>0){
                         var call="<a href='#' class='callclass'onclick=\"$('#change').val('已催单')\">催单:"+data[1][0].callnum+"</a>";
                         var hhh=hhh+call;
@@ -239,7 +239,7 @@
         </c:forEach>
         </tbody>
     </table>
-<div class="hhh">第${orderdetaillist.pageNum}页，共${orderdetaillist.pages}页<a href="#" onclick="$('#change').val('未催单')">正常显示</a></div>
+<div class="hhh">第${orderdetaillist.pageNum}页，共${orderdetaillist.pages}页/${orderdetaillist.prePage}条<a href="#" onclick="$('#change').val('未催单')">正常显示</a></div>
 <%--    分页条--%>
 <nav aria-label="Page navigation" class="right">
     <ul class="pagination">
@@ -250,7 +250,7 @@
             </c:when>
             <c:otherwise>
                 <li>
-                    <a href="../orderdetail/findAll?num=${orderdetaillist.pageNum-1}&&status=${orderdetaillist.list.get(0).status}" aria-label="Previous">
+                    <a href="../orderdetail/findAll?num=${orderdetaillist.prePage}&&status=${orderdetaillist.list.get(0).status}" aria-label="Previous">
                         <span aria-hidden="true">&laquo;</span>
                     </a>
                 </li>
@@ -285,7 +285,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="../orderdetail/findAll?num=${orderdetaillist.pageNum+1}&&status=${orderdetaillist.list.get(0).status}" aria-label="Next">
+                    <a href="../orderdetail/findAll?num=${orderdetaillist.nextPage}&&status=${orderdetaillist.list.get(0).status}" aria-label="Next">
                         <span aria-hidden="true">&raquo;</span>
                     </a>
                 </li>

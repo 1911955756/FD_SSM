@@ -82,7 +82,7 @@
                             "<li class=\"disabled\"><a href=\"#\" aria-label=\"Previous\"><span aria-hidden=\"true\">首</span></a></li>";
                     }
                     else if(!data.isFirstPage){
-                        var first="<li><a href=\"../order/findAll?num="+(data.pageNum-1)+"&&now="+change+"&&orderid="+orderid+"&&tableid="+tableid+"&&status="+status+"\" aria-label=\"Previous\">\n" +
+                        var first="<li><a href=\"../order/findAll?num="+(data.prePage)+"&&now="+change+"&&orderid="+orderid+"&&tableid="+tableid+"&&status="+status+"\" aria-label=\"Previous\">\n" +
                             "                        <span aria-hidden=\"true\">&laquo;</span></a></li>" +
                             "<li><a href=\"../order/findAll?num=1&&now="+change+"&&orderid="+orderid+"&&tableid="+tableid+"&&status="+status+"\" aria-label=\"Previous\">\n" +
                             "                        <span aria-hidden=\"true\">首</span></a></li>";
@@ -105,13 +105,13 @@
                     else if(!data.isLastPage){
                         var last="<li><a href=\"../order/findAll?num="+(data.pages)+"&&now="+change+"&&orderid="+orderid+"&&tableid="+tableid+"&&status="+status+"\" aria-label=\"Previous\">\n" +
                             "                        <span aria-hidden=\"true\">尾</span></a></li>" +
-                            "<li><a href=\"../order/findAll?num="+(data.pageNum+1)+"&&now="+change+"&&orderid="+orderid+"&&tableid="+tableid+"&&status="+status+"\" aria-label=\"Previous\">\n" +
+                            "<li><a href=\"../order/findAll?num="+(data.nextPage)+"&&now="+change+"&&orderid="+orderid+"&&tableid="+tableid+"&&status="+status+"\" aria-label=\"Previous\">\n" +
                             "                        <span aria-hidden=\"true\">&raquo;</span></a></li>";
                     }
                     var all=first+center+last;
                     $(".pagination").append(all);
                     $(".hhh").html("");
-                    var hhh="第"+data.pageNum+"页，共"+data.pages+"页";
+                    var hhh="第"+data.pageNum+"页，共"+data.pages+"页/"+data.total+"条";
                     $(".hhh").append(hhh);
                 }
             });
@@ -162,7 +162,7 @@
         </c:forEach>
         </tbody>
     </table>
-    <div class="hhh">第${orderlist.pageNum}页，共${orderlist.pages}页</div>
+    <div class="hhh">第${orderlist.pageNum}页，共${orderlist.pages}页/${orderlist.total}条</div>
     <%--    分页条--%>
     <nav aria-label="Page navigation" class="right">
         <ul class="pagination">
@@ -173,7 +173,7 @@
                 </c:when>
                 <c:otherwise>
                     <li>
-                        <a href="../order/findAll?num=${orderlist.pageNum-1}" aria-label="Previous">
+                        <a href="../order/findAll?num=${orderlist.prePage}" aria-label="Previous">
                             <span aria-hidden="true">&laquo;</span>
                         </a>
                     </li>
@@ -208,7 +208,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="../order/findAll?num=${orderlist.pageNum+1}" aria-label="Next">
+                        <a href="../order/findAll?num=${orderlist.nextPage}" aria-label="Next">
                             <span aria-hidden="true">&raquo;</span>
                         </a>
                     </li>

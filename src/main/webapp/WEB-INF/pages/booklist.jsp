@@ -80,7 +80,7 @@
                             "<li class=\"disabled\"><a href=\"#\" aria-label=\"Previous\"><span aria-hidden=\"true\">首</span></a></li>";
                     }
                     else if(!data.isFirstPage){
-                        var first="<li><a href=\"../book/findAll?num="+(data.pageNum-1)+"&&now="+change+"&&bookid="+bookid+"&&plannum="+plannum+"\" aria-label=\"Previous\">\n" +
+                        var first="<li><a href=\"../book/findAll?num="+(data.prePage)+"&&now="+change+"&&bookid="+bookid+"&&plannum="+plannum+"\" aria-label=\"Previous\">\n" +
                             "                        <span aria-hidden=\"true\">&laquo;</span></a></li>" +
                             "<li><a href=\"../book/findAll?num=1&&now="+change+"&&bookid="+bookid+"&&plannum="+plannum+"\" aria-label=\"Previous\">\n" +
                             "                        <span aria-hidden=\"true\">首</span></a></li>";
@@ -103,20 +103,20 @@
                     else if(!data.isLastPage){
                         var last="<li><a href=\"../book/findAll?num="+(data.pages)+"&&now="+change+"&&bookid="+bookid+"&&plannum="+plannum+"\" aria-label=\"Previous\">\n" +
                             "                        <span aria-hidden=\"true\">尾</span></a></li>" +
-                            "<li><a href=\"../book/findAll?num="+(data.pageNum+1)+"&&now="+change+"&&bookid="+bookid+"&&plannum="+plannum+"\" aria-label=\"Previous\">\n" +
+                            "<li><a href=\"../book/findAll?num="+(data.nextPage)+"&&now="+change+"&&bookid="+bookid+"&&plannum="+plannum+"\" aria-label=\"Previous\">\n" +
                             "                        <span aria-hidden=\"true\">&raquo;</span></a></li>";
                     }
                     var all=first+center+last;
                     $(".pagination").append(all);
                     $(".hhh").html("");
-                    var hhh="第"+data.pageNum+"页，共"+data.pages+"页";
+                    var hhh="第"+data.pageNum+"页，共"+data.pages+"页/"+data.total+"条";
                     $(".hhh").append(hhh);
                 }
             });
         },1000);
         $(function () {
             $("#front").click(function () {
-                $("#front").attr("href","../book/findAll?num=${booklist.pageNum-1}&&bookid="+$("#inputbookid").val()+"&&plannum="+$("#inputplannum").val()+"&&now="+$("#change").val()+"")
+                $("#front").attr("href","../book/findAll?num=${booklist.prePage}&&bookid="+$("#inputbookid").val()+"&&plannum="+$("#inputplannum").val()+"&&now="+$("#change").val()+"")
             });
             $("#first").click(function () {
                 $("#first").attr("href","../book/findAll?num=1&&bookid="+$("#inputbookid").val()+"&&plannum="+$("#inputplannum").val()+"&&now="+$("#change").val()+"")
@@ -125,7 +125,7 @@
                 $("#last").attr("href","../book/findAll?num=${booklist.pages}&&bookid="+$("#inputbookid").val()+"&&plannum="+$("#inputplannum").val()+"&&now="+$("#change").val()+"")
             });
             $("#next").click(function () {
-                $("#next").attr("href","../book/findAll?num=${booklist.pageNum+1}&&bookid="+$("#inputbookid").val()+"&&plannum="+$("#inputplannum").val()+"&&now="+$("#change").val()+"")
+                $("#next").attr("href","../book/findAll?num=${booklist.nextPage}&&bookid="+$("#inputbookid").val()+"&&plannum="+$("#inputplannum").val()+"&&now="+$("#change").val()+"")
             });
         })
         function gonum(num) {
@@ -172,7 +172,7 @@
         </c:forEach>
         </tbody>
     </table>
-    <div class="hhh">第${orderdetaillist.pageNum}页，共${orderdetaillist.pages}页</div>
+    <div class="hhh">第${booklist.pageNum}页，共${booklist.pages}页/${booklist.total}条</div>
     <%--    分页条--%>
     <nav aria-label="Page navigation" class="right">
         <ul class="pagination">

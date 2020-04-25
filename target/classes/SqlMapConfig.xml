@@ -5,20 +5,13 @@
 <configuration>
     <!--    配置properties -->
     <properties resource="jdbcConfig.properties"></properties>
-<!--    配置log4j打印mybatis日志-->
-    <settings>
-        <setting name="logImpl" value="LOG4J" />
-    </settings>
     <!--    使用typeAliases配置别名，他只能配置domain中类的别名-->
     <typeAliases >
         <!--        package指定类的包路径-->
-        <package name="com.qiang.domain"></package>
+        <package name="com.qiang.domain"/>
     </typeAliases>
-    <!--配置插件-->
     <plugins>
-        <plugin interceptor="com.github.pagehelper.PageInterceptor">
-
-        </plugin>
+        <plugin interceptor="com.github.pagehelper.PageInterceptor"></plugin>
     </plugins>
 <!--    配置环境-->
     <environments default="mysql">
@@ -37,5 +30,4 @@
     <mappers>
         <package name="com.qiang.dao"/>
     </mappers>
-
 </configuration>

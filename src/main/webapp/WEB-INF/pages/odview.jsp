@@ -61,7 +61,7 @@
         </div>
         <div class="table-responsive col-sm-10 col-md-9 col-md-offset-1 outer-container">
             <div class="bottom">正在烹饪......</div>
-            <iframe marginWidth=0 marginHeight=0 src="../orderdetail/findAll?status=烹饪中"  scrolling="auto" frameBorder=0 width="100%" height="50%"></iframe>
+            <iframe marginWidth=0 marginHeight=0 src="../orderdetail/findAll?status=烹饪中"  scrolling="auto" frameBorder=0 width="100%" height="300px"></iframe>
         </div>
     </div>
     <div class="row">
@@ -71,7 +71,7 @@
         </div>
         <div class="table-responsive col-sm-10 col-md-9 col-md-offset-1 outer-container">
             <div class="bottom">尽快处理:</div>
-            <iframe marginWidth=0 marginHeight=0 src="../orderdetail/findAll?status=${status}"  scrolling="auto" frameBorder=0 width="100%" height="50%"></iframe>
+            <iframe marginWidth=0 marginHeight=0 src="../orderdetail/findAll?status=${status}"  scrolling="auto" frameBorder=0 width="100%" height="300px"></iframe>
         </div>
     </div>
 </div>

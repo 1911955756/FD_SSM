@@ -237,7 +237,7 @@
 </div>
         <div class="table-responsive col-sm-12 col-md-5  outer-container">
             <div class="bottom">已关联类目:</div>
-            <iframe marginWidth=0 marginHeight=0 src="../type/findPageTM"  scrolling="auto" frameBorder=0 width="100%" height="80%"></iframe>
+            <iframe marginWidth=0 marginHeight=0 src="../type/findPageTM"  scrolling="auto" frameBorder=0 width="100%" height="500px"></iframe>
         </div>
 </div>
 </div>

@@ -28,7 +28,7 @@ public class SenEmailController {
     @RequestMapping("/send")
     public @ResponseBody  Boolean  senMsg(HttpSession httpSession, @RequestParam String email){
         //生成六位数验证码
-        String Captcha = String.valueOf(new Random().nextInt(899999) + 100000);
+        String Captcha = String.valueOf(new Random().nextInt(899999) + 100000);//0~899999之间+100000
         httpSession.setAttribute("Captcha",Captcha);
         SimpleMailMessage message = new SimpleMailMessage();
         //发件人的邮箱地址
@@ -38,7 +38,7 @@ public class SenEmailController {
         //邮件主题
         message.setSubject("饭店后台管理系统");
         //邮件内容
-        message.setText("找回密码-验证码："+Captcha);
+        message.setText("找回密码-验证码："+Captcha+"\n"+"有效期：1分钟");
         //发送邮件
         javaMailSender.send(message);
         return true;

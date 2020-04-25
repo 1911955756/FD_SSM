@@ -89,7 +89,7 @@
                 $("#check").attr("href","../role/findAll?rname="+$("#addrole").val()+"&&rstatus="+$("#rolestatus").val()+"")
             });
             $("#front").click(function () {
-                $("#front").attr("href","../role/findAll?num=${rolelist.pageNum-1}&&rname="+$("#addrole").val()+"&&rstatus="+$("#rolestatus").val()+"")
+                $("#front").attr("href","../role/findAll?num=${rolelist.prePage}&&rname="+$("#addrole").val()+"&&rstatus="+$("#rolestatus").val()+"")
             });
             $("#first").click(function () {
                 $("#first").attr("href","../role/findAll?num=1&&rname="+$("#addrole").val()+"&&rstatus="+$("#rolestatus").val()+"")
@@ -98,7 +98,7 @@
                 $("#last").attr("href","../role/findAll?num=${rolelist.pages}&&rname="+$("#addrole").val()+"&&rstatus="+$("#rolestatus").val()+"")
             });
             $("#next").click(function () {
-                $("#next").attr("href","../role/findAll?num=${rolelist.pageNum+1}&&rname="+$("#addrole").val()+"&&rstatus="+$("#rolestatus").val()+"")
+                $("#next").attr("href","../role/findAll?num=${rolelist.nextPage}&&rname="+$("#addrole").val()+"&&rstatus="+$("#rolestatus").val()+"")
             });
         });
         function gonum(num) {
@@ -178,7 +178,7 @@
         </c:forEach>
         </tbody>
     </table>
-    第${rolelist.pageNum}页，共${rolelist.pages}页
+    第${rolelist.pageNum}页，共${rolelist.pages}页/${rolelist.total}条
     <%--    分页条--%>
     <nav aria-label="Page navigation" class="right">
         <ul class="pagination">
@@ -235,7 +235,7 @@
 </div>
         <div class="table-responsive col-sm-12 col-md-5  outer-container">
             <div class="bottom">已关联用户:</div>
-            <iframe marginWidth=0 marginHeight=0 src="../role/findPageUR"  scrolling="auto" frameBorder=0 width="100%" height="80%"></iframe>
+            <iframe marginWidth=0 marginHeight=0 src="../role/findPageUR"  scrolling="auto" frameBorder=0 width="100%" height="500px"></iframe>
         </div>
 </div>
 </div>

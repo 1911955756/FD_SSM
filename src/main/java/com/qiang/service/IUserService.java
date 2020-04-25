@@ -2,9 +2,7 @@ package com.qiang.service;
 
 import com.github.pagehelper.PageInfo;
 import com.qiang.domain.User1;
-import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
 
 import java.util.List;
 

@@ -197,11 +197,8 @@
             <c:forEach items="${userrolelist}" var="ur"><a class="name">您好：${ur.username}${ur.roles[0].rolename}</a></c:forEach>
             <a id="countnum">在线人数：${Count.size()}</a>
             <ul class="nav navbar-nav navbar-right">
-                <li><img src="../images/switch.png"  id="exitlink"  style="margin-top:10px;width: 30px;height: 30px"/></li>
+                <li><img src="../images/switch.png"  id="exitlink"  style="margin-top:10px;margin-right:20px;width: 30px;height: 30px"/></li>
             </ul>
-            <form class="navbar-form navbar-right">
-                <input type="text" class="form-control" placeholder="暂未开通">
-            </form>
         </div>
     </div>
 </nav>

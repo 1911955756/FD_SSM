@@ -20,17 +20,18 @@
 <!--        配置哪些注解不扫描-->
         <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
     </context:component-scan>
-
-<!--    Spring整合MyBatis框架-->
-
+    <!--    Spring整合MyBatis框架-->
+    <!--读取属性文件-->
+    <context:property-placeholder location="classpath:jdbcConfig.properties" ignore-unresolvable="true"/>
+    <context:property-placeholder location="classpath:log4j.properties" ignore-unresolvable="true"/>
 
 <!--    配置连接池-->
     <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
         <!--配置连接数据库的4个基本信息-->
-        <property name="driverClass" value="com.mysql.jdbc.Driver"/>
-        <property name="jdbcUrl" value="jdbc:mysql://localhost:3306/hotel1"/>
-        <property name="user" value="root"/>
-        <property name="password" value="123456"/>
+        <property name="driverClass" value="${jdbc.driver}"/>
+        <property name="jdbcUrl" value="${jdbc.url}"/>
+        <property name="user" value="${jdbc.username}"/>
+        <property name="password" value="${jdbc.password}"/>
     </bean>
 <!--    SqlSessionFatory工厂-->
     <bean id="sqlSessionFactoryBean" class="org.mybatis.spring.SqlSessionFactoryBean">

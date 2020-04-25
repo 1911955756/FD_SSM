@@ -65,7 +65,7 @@
 
             });
             $("#front").click(function () {
-                $("#front").attr("href","../menu/findAll?num=${listmenu.pageNum-1}&&msta="+$("#msta").val()+"&&mname="+$("#mname").val()+"")
+                $("#front").attr("href","../menu/findAll?num=${listmenu.prePage}&&msta="+$("#msta").val()+"&&mname="+$("#mname").val()+"")
             });
             $("#first").click(function () {
                 $("#first").attr("href","../menu/findAll?num=1&&msta="+$("#msta").val()+"&&mname="+$("#mname").val()+"")
@@ -74,7 +74,7 @@
                 $("#last").attr("href","../menu/findAll?num=${listmenu.pages}&&msta="+$("#msta").val()+"&&mname="+$("#mname").val()+"")
             });
             $("#next").click(function () {
-                $("#next").attr("href","../menu/findAll?num=${listmenu.pageNum+1}&&msta="+$("#msta").val()+"&&mname="+$("#mname").val()+"")
+                $("#next").attr("href","../menu/findAll?num=${listmenu.nextPage}&&msta="+$("#msta").val()+"&&mname="+$("#mname").val()+"")
             });
             $(".downmodel").click(function () {
                 $(".downmodel").attr("href","../file/饭店菜谱模板.xlsx")
@@ -159,7 +159,7 @@
         </c:forEach>
         </tbody>
     </table>
-    第${listmenu.pageNum}页，共${listmenu.pages}页
+    第${listmenu.pageNum}页，共${listmenu.pages}页/${listmenu.total}条
     <%--    分页条--%>
     <nav aria-label="Page navigation" class="right">
         <ul class="pagination">

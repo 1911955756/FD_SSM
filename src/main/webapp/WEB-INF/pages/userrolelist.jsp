@@ -46,7 +46,7 @@
     <script>
         $(function () {
             $("#front").click(function () {
-                $("#front").attr("href","../role/findPageUR?num=${urlist.pageNum-1}&&rname="+$("#rname").val()+"&&uname="+$("#uname").val()+"")
+                $("#front").attr("href","../role/findPageUR?num=${urlist.prePage}&&rname="+$("#rname").val()+"&&uname="+$("#uname").val()+"")
             });
             $("#first").click(function () {
                 $("#first").attr("href","../role/findPageUR?num=1&&rname="+$("#rname").val()+"&&uname="+$("#uname").val()+"")
@@ -55,7 +55,7 @@
                 $("#last").attr("href","../role/findPageUR?num=${urlist.pages}&&rname="+$("#rname").val()+"&&uname="+$("#uname").val()+"")
             });
             $("#next").click(function () {
-                $("#next").attr("href","../role/findPageUR?num=${urlist.pageNum+1}&&rname="+$("#rname").val()+"&&uname="+$("#uname").val()+"")
+                $("#next").attr("href","../role/findPageUR?num=${urlist.nextPage}&&rname="+$("#rname").val()+"&&uname="+$("#uname").val()+"")
             });
         })
         function gonum(num) {
@@ -92,7 +92,7 @@
     </c:forEach>
     </tbody>
 </table>
-第${urlist.pageNum}页，共${urlist.pages}页
+第${urlist.pageNum}页，共${urlist.pages}页/${urlist.total}条
 <%--    分页条--%>
 <nav aria-label="Page navigation" class="right">
     <ul class="pagination">
