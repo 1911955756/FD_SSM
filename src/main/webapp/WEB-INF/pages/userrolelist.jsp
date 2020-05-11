@@ -57,7 +57,10 @@
             $("#next").click(function () {
                 $("#next").attr("href","../role/findPageUR?num=${urlist.nextPage}&&rname="+$("#rname").val()+"&&uname="+$("#uname").val()+"")
             });
-        })
+            $(".btn-danger").click(function () {
+                alert("解绑成功")
+            })
+        });
         function gonum(num) {
             $(".aurlcenter").attr("href","../role/findPageUR?num="+num+"&&rname="+$("#rname").val()+"&&uname="+$("#uname").val()+"")
         }

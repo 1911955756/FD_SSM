@@ -1,4 +1,5 @@
 package com.qiang.dao;
+import	java.lang.reflect.Parameter;
 
 import com.qiang.domain.Type1;
 import org.apache.ibatis.annotations.*;
@@ -60,5 +61,5 @@ public interface ITypeDao {
      * @param mname
      * @return
      */
-    List<Type1> findTM(@Param("tyname") String tyname,@Param("mname") String mname);
+    List<Type1> findTM(@Param("tyname") String tyname,@Param("mname") String mname,@Param("mdesc") String mdesc);
 }

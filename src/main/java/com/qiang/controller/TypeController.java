@@ -55,7 +55,6 @@ public class TypeController {
     @RequestMapping("/savetype")
     public void savetype(String name, HttpServletRequest request, HttpServletResponse response)throws Exception{
         typeService.saveType(name);
-        System.out.println("添加成功");
         request.getRequestDispatcher("/type/findAll").forward(request,response);
     }
 
@@ -73,10 +72,10 @@ public class TypeController {
         request.getRequestDispatcher("/type/findAll").forward(request,response);
     }
     @RequestMapping("/findTM")
-    public @ResponseBody List findTM(@RequestParam(required = false) String mname){
-        System.out.println("表现层：findTM方法执行了。。。");
+    public @ResponseBody List findTM(@RequestParam(required = false) String mname,
+                                     @RequestParam(required = false,defaultValue = "false") String mdesc){
         //调用service的方法
-        List<Type1> list = typeService.findTM(mname);
+        List<Type1> list = typeService.findTM(mname,mdesc);
         return list;
     }
     @RequestMapping("/findIdByname")

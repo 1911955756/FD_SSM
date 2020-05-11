@@ -55,14 +55,14 @@ public class ITypeServiceImpl implements ITypeService {
     }
 
     @Override
-    public List<Type1> findTM(String mname) {
-        return typeDao.findTM(null,mname);
+    public List<Type1> findTM(String mname,String mdesc) {
+        return typeDao.findTM(null,mname,mdesc);
     }
 
     @Override
     public PageInfo<Type1> findPageTM(Integer num,String tyname,String mname) {
         PageHelper.startPage(num,5);
-        List<Type1> all = typeDao.findTM(tyname,mname);
+        List<Type1> all = typeDao.findTM(tyname,mname,"false");
         PageInfo<Type1> tmPageInfo = new PageInfo<>(all);
         return tmPageInfo;
     }

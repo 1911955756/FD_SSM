@@ -44,17 +44,15 @@ public class MenuController {
         mv.setViewName("menulist");
         return mv;
     }
-    @RequestMapping("/saveMenu")
+    @RequestMapping(value = "/saveMenu",method = RequestMethod.POST )
     public  void saveMenu(Menu menu, HttpServletRequest request, HttpServletResponse response) throws Exception{
         menuService.saveMenu(menu);
-        System.out.println("添加成功");
         request.getRequestDispatcher("/menu/findAll").forward(request,response);
     }
 
-    @RequestMapping("/updateMenu")
+    @RequestMapping(value = "/updateMenu",method = RequestMethod.POST)
     public  void updateMenu(Menu menu,HttpServletRequest request, HttpServletResponse response) throws Exception{
         menuService.updateMenu(menu);
-        System.out.println("更新成功");
         request.getRequestDispatcher("/menu/findAll").forward(request,response);
     }
     @RequestMapping("/deleteMenu")
@@ -66,7 +64,6 @@ public class MenuController {
             e.printStackTrace();
             throw new Exception("被占用，无法删除");
         }
-        System.out.println("删除成功");
         request.getRequestDispatcher("/menu/findAll").forward(request,response);
     }
     @RequestMapping("/toupdateMenu")

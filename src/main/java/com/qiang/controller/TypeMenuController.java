@@ -48,7 +48,6 @@ public class TypeMenuController {
     @RequestMapping("/findtypeid")
     public @ResponseBody Boolean findtypeid(String typeid){
         List<TypeMenu> findtypeid = typeMenuService.findtypeid(typeid,null);
-        System.out.println(findtypeid.size());
         boolean have=false;
         if(findtypeid.size()!=0){
             have=true;

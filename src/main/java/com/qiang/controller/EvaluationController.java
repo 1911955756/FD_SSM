@@ -25,7 +25,6 @@ public class EvaluationController {
     @RequestMapping("/saveEvaluation")
     public @ResponseBody void saveEvaluation(String orderid,String e_content,String cs_id,Integer tuijian_num,
                                              @RequestParam(required = false) List photolist){
-        System.out.println("saveEvaluation执行了");
         Evaluation evaluation=new Evaluation();
         evaluation.setOrderid(orderid);
         evaluation.setCs_id(cs_id);
@@ -36,7 +35,6 @@ public class EvaluationController {
             photoname=photoname+photolist.get(i);
         }
         evaluation.setPhotourl(photoname);
-        System.out.println(evaluation);
         evaluationService.saveEvaluation(evaluation);
     }
 
@@ -55,7 +53,6 @@ public class EvaluationController {
     public @ResponseBody String uploadImage(MultipartFile file)throws Exception{
         MultipartFile windowsfile=file;
         //MultipartFile linuxfile=file;
-        System.out.println("uploadImage执行了");
         //String ideaurl="E:/MYLIFE/SSM框架学习/SSM整合/FD_SSM/src/main/webapp/images/";//IDEA
         String wtomcaturl="E:/Tomcat/apache-tomcat-8.5.47-8090/webapps/FD_SSM_war/images/";//windowsTomcat
         //String ltomcaturl="/usr/local/tomcat8.5/webapps/FD_SSM_war/images/";//linuxTomcat

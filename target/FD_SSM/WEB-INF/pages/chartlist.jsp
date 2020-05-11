@@ -5,7 +5,7 @@
   Time: 18:09
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
 <html lang="zh-CN">
 <head>
     <meta charset="utf-8">
@@ -44,7 +44,7 @@
         <div id="people-main" style="width: 800px;height:400px;"></div>
     </div>
     <div role="tabpanel" class="tab-pane" id="messages" >
-        <div id="money-main" style="width: 800px;height:400px;"></div>
+        <div id="money-main" style="width: 900px;height:400px;"></div>
     </div>
     <div role="tabpanel" class="tab-pane" id="settings">
         <div id="food-main" style="width: 800px;height:400px;"></div>

@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
@@ -58,24 +59,21 @@ public class CouponController {
         return mv;
     }
 
-    @RequestMapping("/saveCoupon")
+    @RequestMapping(value = "/saveCoupon",method= {RequestMethod.POST})
     public  void saveCoupon(Coupon coupon ,HttpServletRequest request, HttpServletResponse response) throws Exception{
         couponService.savecoupon(coupon);
-        System.out.println("添加成功");
         request.getRequestDispatcher("/coupon/findAll").forward(request,response);
     }
 
-    @RequestMapping("/updateCoupon")
+    @RequestMapping(value = "/updateCoupon",method= {RequestMethod.POST})
     public  void updateCoupon(Coupon coupon,HttpServletRequest request, HttpServletResponse response) throws Exception{
         couponService.updatecoupon(coupon);
-        System.out.println("更新成功");
         request.getRequestDispatcher("/coupon/findAll").forward(request,response);
     }
 
     @RequestMapping("/deleteCoupon")
     public  void deleteCoupon(Coupon coupon,HttpServletRequest request, HttpServletResponse response) throws Exception{
         couponService.updatecouponstatus(coupon);
-        System.out.println("删除成功");
         request.getRequestDispatcher("/coupon/findAll").forward(request,response);
     }
 

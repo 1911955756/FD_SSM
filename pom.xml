@@ -221,6 +221,12 @@
       <artifactId>javax.mail</artifactId>
       <version>1.6.1</version>
     </dependency>
+<!--    mongodb-->
+    <dependency>
+      <groupId>org.springframework.data</groupId>
+      <artifactId>spring-data-mongodb</artifactId>
+      <version>1.8.2.RELEASE</version>
+    </dependency>
   </dependencies>
 
   <build>

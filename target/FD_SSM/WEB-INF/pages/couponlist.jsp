@@ -48,7 +48,7 @@
     <script>
         $(function () {
             $("#front").click(function () {
-                $("#front").attr("href","../coupon/findAll?num=${coulist.pageNum-1}&&couname="+$("#couname").val()+"&&coutype="+$("#coutype").val()+"&&coustatus="+$("#coustatus").val()+"&&couprice="+$("#couprice").val()+"")
+                $("#front").attr("href","../coupon/findAll?num=${coulist.prePage}&&couname="+$("#couname").val()+"&&coutype="+$("#coutype").val()+"&&coustatus="+$("#coustatus").val()+"&&couprice="+$("#couprice").val()+"")
             });
             $("#first").click(function () {
                 $("#first").attr("href","../coupon/findAll?num=1&&couname="+$("#couname").val()+"&&coutype="+$("#coutype").val()+"&&coustatus="+$("#coustatus").val()+"&&couprice="+$("#couprice").val()+"")
@@ -57,7 +57,7 @@
                 $("#last").attr("href","../coupon/findAll?num=${coulist.pages}&&couname="+$("#couname").val()+"&&coutype="+$("#coutype").val()+"&&coustatus="+$("#coustatus").val()+"&&couprice="+$("#couprice").val()+"")
             });
             $("#next").click(function () {
-                $("#next").attr("href","../coupon/findAll?num=${coulist.pageNum+1}&&couname="+$("#couname").val()+"&&coutype="+$("#coutype").val()+"&&coustatus="+$("#coustatus").val()+"&&couprice="+$("#couprice").val()+"")
+                $("#next").attr("href","../coupon/findAll?num=${coulist.nextPage}&&couname="+$("#couname").val()+"&&coutype="+$("#coutype").val()+"&&coustatus="+$("#coustatus").val()+"&&couprice="+$("#couprice").val()+"")
             });
         });
         function gonum(num) {
@@ -114,7 +114,7 @@
         </c:forEach>
         </tbody>
     </table>
-    第${coulist.pageNum}页，共${coulist.pages}页
+    第${coulist.pageNum}页，共${coulist.pages}页/${coulist.total}条
     <%--    分页条--%>
     <nav aria-label="Page navigation" class="right">
         <ul class="pagination">

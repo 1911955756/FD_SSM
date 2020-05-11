@@ -105,7 +105,7 @@
         </thead>
         <tbody>
         <c:if test="${empty bymenuid.menuname}" var="result">
-            <form action="../menu/saveMenu" class="form-inline" id="addform">
+            <form action="../menu/saveMenu" class="form-inline" id="addform" method="post">
                 <tr><td>菜名：</td><td><input type="text" name="menuname" class="form-control" id="mname"/></td></tr>
                 <tr><td>图片路径:</td><td><input type="text"  name="image" class="form-control" id="mimage"/></td></tr>
                 <tr><td>单价:</td><td><input type="text"  name="price" class="form-control" id="mprice"/></td></tr>
@@ -116,8 +116,8 @@
             <a href="../menu/findAll" class="btn btn-warning">取消</a></td></tr>
         </c:if>
         <c:if test="${!result}">
-            <form action="../menu/updateMenu" class="form-inline">
-                <tr><td>菜单id:</td><td><input type="text" name="menuid" value="${bymenuid.menuid}"class="form-control" /></td></tr>
+            <form action="../menu/updateMenu" class="form-inline" method="post">
+                <tr><td>菜单id:</td><td><input type="text" name="menuid" value="${bymenuid.menuid}"class="form-control" readonly/></td></tr>
                 <tr><td>菜名:</td><td><input type="text" name="menuname" value="${bymenuid.menuname}"class="form-control"/></td></tr>
                 <tr><td>图片路径:</td><td><input type="text"name="image" value="${bymenuid.image}"class="form-control"/></td></tr>
                 <tr><td>单价:</td><td><input type="text"  name="price" value="${bymenuid.price}"class="form-control"/></td></tr>

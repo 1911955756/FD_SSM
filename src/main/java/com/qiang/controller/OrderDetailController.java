@@ -38,8 +38,6 @@ public class OrderDetailController {
                                 @RequestParam(required = false) String orddid,
                                 @RequestParam(required = false) String ordid,
                                 @RequestParam(required = false) String odcalls){
-        System.out.println("查询第"+num+"页,状态为："+status+"的上菜单");
-        System.out.println("findAll:"+tbid+","+mname+","+orddid+","+ordid+","+odcalls);
         ModelMap modelMap=new ModelMap();
         //调用service的方法
         PageInfo<OrderDetail> list = orderDetailService.findAll(num,status,tbid,orddid,mname,ordid,odcalls);
@@ -62,8 +60,6 @@ public class OrderDetailController {
                                            @RequestParam(required = false) String orddid,
                                            @RequestParam(required = false) String ordid,
                                            @RequestParam(required = false) String odcalls){
-        System.out.println("查询第"+num+"页,状态为："+status+"的上菜单");
-        System.out.println("===================我是分界线=====================");
         //调用service的方法
         PageInfo<OrderDetail> list = orderDetailService.findAll(num,status,tbid,orddid,mname,ordid,odcalls);
         List<Map> countcallnum = orderDetailService.countcallnum(status);
@@ -99,9 +95,6 @@ public class OrderDetailController {
 
     @RequestMapping("/saveorderdetail")
     public @ResponseBody boolean saveorderdetail(String menuid,String orderid,Integer menu_num){
-        System.out.println(menuid);
-        System.out.println(orderid);
-        System.out.println(menu_num);
         OrderDetail orderDetail=new OrderDetail();
         orderDetail.setMenuid(menuid);
         orderDetail.setMenu_num(menu_num);
@@ -119,7 +112,6 @@ public class OrderDetailController {
     public @ResponseBody void cancelOD(String odid){
         OrderDetail orderDetail=new OrderDetail();
         orderDetail.setOdid(odid);
-        orderDetail.setStatus("已取消");
         orderDetailService.updateorderDetail(orderDetail);
     }
     @RequestMapping("/findMyorderdetail")

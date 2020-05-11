@@ -100,23 +100,23 @@
         <tbody>
         <c:if test="${empty byuserid.phone}" var="result">
         <form action="../user/saveUser" class="form-inline" method="post" id="addform">
-            <tr><td>用户名：</td><td><input type="text" name="username" class="form-control" id="username"/></td></tr>
-            <tr><td>联系方式:</td><td><input type="text"  name="phone" class="form-control" id="phone"/></td></tr>
-            <tr><td>邮箱:</td><td><input type="text"  name="email" class="form-control" id="email"/></td></tr>
-            <tr><td>密码:</td><td><input type="text"  name="password" class="form-control" id="password"/></td></tr>
-            <tr><td>职位:</td><td><input type="text"  name="job" class="form-control" /></td></tr>
+            <tr><td>用户名：</td><td><input type="text" name="username" class="form-control" id="username" placeholder="请输入用户名"/></td></tr>
+            <tr><td>联系方式:</td><td><input type="text"  name="phone" class="form-control" id="phone" placeholder="联系方式用于登录系统"/></td></tr>
+            <tr><td>邮箱:</td><td><input type="text"  name="email" class="form-control" id="email" placeholder="邮箱用于找回密码"/></td></tr>
+            <tr><td>密码:</td><td><input type="text"  name="password" class="form-control" id="password" value="123456" placeholder="默认密码：123456"/></td></tr>
+            <tr><td>职位:</td><td><input type="text"  name="job" class="form-control" placeholder="请输入当前职位"/></td></tr>
             <tr><td></td><td><input type="button"value="添加" class="btn btn-primary" id="addbtn" />
         </form>
         <a href="../user/findAll" class="btn btn-warning">取消</a></td></tr>
         </c:if>
         <c:if test="${!result}">
             <form action="../user/updateUser" class="form-inline" method="post">
-                <tr><td>用户id：</td><td><input type="text" name="userid" class="form-control" value="${byuserid.userid}" /></td></tr>
-                <tr><td>用户名：</td><td><input type="text" name="username" class="form-control" value="${byuserid.username}"/></td></tr>
-                <tr><td>联系方式:</td><td><input type="text"  name="phone" class="form-control" value="${byuserid.phone}"/></td></tr>
-                <tr><td>邮箱:</td><td><input type="text"  name="email" class="form-control" value="${byuserid.email}"/></td></tr>
-                <tr><td>密码:</td><td><input type="text"  name="password" class="form-control" value="${byuserid.password}"/></td></tr>
-                <tr><td>职位:</td><td><input type="text"  name="job" class="form-control" value="${byuserid.job}"/></td></tr>
+                <tr><td>用户id：</td><td><input type="text" name="userid" class="form-control" value="${byuserid.userid}" readonly/></td></tr>
+                <tr><td>用户名：</td><td><input type="text" name="username" class="form-control" value="${byuserid.username}" placeholder="请输入用户名"/></td></tr>
+                <tr><td>联系方式:</td><td><input type="text"  name="phone" class="form-control" value="${byuserid.phone}" placeholder="联系方式用于登录系统"/></td></tr>
+                <tr><td>邮箱:</td><td><input type="text"  name="email" class="form-control" value="${byuserid.email}" placeholder="邮箱用于找回密码"/></td></tr>
+                <tr><td>密码:</td><td><input type="password"  name="password" class="form-control" value="${byuserid.password}" placeholder="默认密码：123456"/></td></tr>
+                <tr><td>职位:</td><td><input type="text"  name="job" class="form-control" value="${byuserid.job}" placeholder="请输入当前职位"/></td></tr>
                 <tr><td></td><td><input type="submit"value="更新" class="btn btn-success"/>
             </form>
             <a href="../user/findAll" class="btn btn-warning">取消</a></td></tr>

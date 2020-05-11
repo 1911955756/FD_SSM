@@ -6,6 +6,7 @@ import com.qiang.service.IUserRoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
@@ -44,8 +45,9 @@ public class UserRoleController {
     }
 
     @RequestMapping("/findroleid")
-    public @ResponseBody Boolean findtypeid(String roleid){
-        List<UserRole> findroleid = userRoleService.findroleid(roleid, null);
+    public @ResponseBody Boolean findtypeid(@RequestParam(required = false) String roleid,
+                                            @RequestParam(required = false) String userid){
+        List<UserRole> findroleid = userRoleService.findroleid(roleid, userid);
         boolean have=false;
         if(findroleid.size()!=0){
             have=true;

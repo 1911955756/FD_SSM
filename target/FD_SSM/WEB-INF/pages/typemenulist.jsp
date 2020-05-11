@@ -46,7 +46,7 @@
     <script>
         $(function () {
             $("#front").click(function () {
-                $("#front").attr("href","../type/findPageTM?num=${tmlist.pageNum-1}&&tyname="+$("#tyname").val()+"&&mname="+$("#mname").val()+"")
+                $("#front").attr("href","../type/findPageTM?num=${tmlist.prePage}&&tyname="+$("#tyname").val()+"&&mname="+$("#mname").val()+"")
             });
             $("#first").click(function () {
                 $("#first").attr("href","../type/findPageTM?num=1&&tyname="+$("#tyname").val()+"&&mname="+$("#mname").val()+"")
@@ -55,7 +55,7 @@
                 $("#last").attr("href","../type/findPageTM?num=${tmlist.pages}&&tyname="+$("#tyname").val()+"&&mname="+$("#mname").val()+"")
             });
             $("#next").click(function () {
-                $("#next").attr("href","../type/findPageTM?num=${tmlist.pageNum+1}&&tyname="+$("#tyname").val()+"&&mname="+$("#mname").val()+"")
+                $("#next").attr("href","../type/findPageTM?num=${tmlist.nextPage}&&tyname="+$("#tyname").val()+"&&mname="+$("#mname").val()+"")
             });
         })
         function gonum(num) {
@@ -92,7 +92,7 @@
     </c:forEach>
     </tbody>
 </table>
-第${tmlist.pageNum}页，共${tmlist.pages}页
+第${tmlist.pageNum}页，共${tmlist.pages}页/${tmlist.total}条
 <%--    分页条--%>
 <nav aria-label="Page navigation" class="right">
     <ul class="pagination">

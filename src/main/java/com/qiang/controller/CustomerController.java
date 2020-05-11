@@ -19,7 +19,6 @@ public class CustomerController {
     private ICustomerService customerService;
     @RequestMapping("/saveCustomer")
     public @ResponseBody String saveCustomer(String openid, String cs_name,String image){
-        System.out.println(openid+cs_name+image);
         Customer customer=new Customer();
         customer.setOpenid(openid);
         customer.setCs_name(cs_name);

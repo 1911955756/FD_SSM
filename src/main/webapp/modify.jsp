@@ -24,7 +24,7 @@
 <div class="container">
     <div class="row ">
         <div class="col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 div-background">
-            <form action="user/updatepassword" title="找回密码" class="form-group">
+            <form action="user/updatepassword" title="找回密码" class="form-group" method="post">
                 <p>
                     <label for="account">登录账号：</label>
                     <input class="form-control" id="account" placeholder="请输入账号" name="account" oninput="checkinput('account')">

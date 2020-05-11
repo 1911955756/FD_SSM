@@ -25,7 +25,7 @@ public interface IUserRoleService {
      * @param userid
      * @return
      */
-    List<UserRole> findroleid(@Param("roleid") String roleid, @Param("userid") String userid);
+    List<UserRole> findroleid(String roleid,String userid);
 
     /**
      * 删除用户角色信息

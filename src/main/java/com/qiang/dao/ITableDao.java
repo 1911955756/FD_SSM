@@ -21,6 +21,10 @@ public interface ITableDao {
      */
     List<Table1> findAll(@Param("taid") String taid,@Param("penum") Integer penum,@Param("tasta") String tasta);
 
+    /**
+     * 更新餐桌状态
+     * @param table1
+     */
     @Update("update table1 set status=#{status} where tableid=#{tableid}")
     void updatetablestatus(Table1 table1);
 

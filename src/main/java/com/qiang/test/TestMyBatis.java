@@ -4,6 +4,7 @@ package com.qiang.test;
 
 import com.qiang.dao.*;
 import com.qiang.domain.*;
+import com.qiang.utils.Encryption;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -18,6 +19,8 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.Map;
+
+import static com.qiang.utils.Encryption.*;
 
 
 /**
@@ -169,4 +172,13 @@ public class TestMyBatis {
             System.out.println(map);
         }
     }
+    @Test
+    public void md5(){
+        Encryption encryption=new Encryption();
+        String s="123456";
+        System.out.println("原始：" + s);
+        System.out.println("加密后："+encryption.KL(s));
+//        System.out.println("解密后："+encryption.JM("WTURSPf"));
+    }
+
 }

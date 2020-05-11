@@ -89,7 +89,7 @@
                 $("#check").attr("href","../type/findAll?tyname="+$("#addtype").val()+"&&tystatus="+$("#typestatus").val()+"")
             });
             $("#front").click(function () {
-                $("#front").attr("href","../type/findAll?num=${typelist.pageNum-1}&&tyname="+$("#addtype").val()+"&&tystatus="+$("#typestatus").val()+"")
+                $("#front").attr("href","../type/findAll?num=${typelist.prePage}&&tyname="+$("#addtype").val()+"&&tystatus="+$("#typestatus").val()+"")
             });
             $("#first").click(function () {
                 $("#first").attr("href","../type/findAll?num=1&&tyname="+$("#addtype").val()+"&&tystatus="+$("#typestatus").val()+"")
@@ -98,7 +98,7 @@
                 $("#last").attr("href","../type/findAll?num=${typelist.pages}&&tyname="+$("#addtype").val()+"&&tystatus="+$("#typestatus").val()+"")
             });
             $("#next").click(function () {
-                $("#next").attr("href","../type/findAll?num=${typelist.pageNum+1}&&tyname="+$("#addtype").val()+"&&tystatus="+$("#typestatus").val()+"")
+                $("#next").attr("href","../type/findAll?num=${typelist.nextPage}&&tyname="+$("#addtype").val()+"&&tystatus="+$("#typestatus").val()+"")
             });
         });
         function gonum(num) {
@@ -180,7 +180,7 @@
         </c:forEach>
         </tbody>
     </table>
-    第${typelist.pageNum}页，共${typelist.pages}页
+    第${typelist.pageNum}页，共${typelist.pages}页/${typelist.total}条
     <%--    分页条--%>
     <nav aria-label="Page navigation" class="right">
         <ul class="pagination">

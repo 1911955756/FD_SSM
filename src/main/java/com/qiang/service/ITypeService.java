@@ -57,7 +57,7 @@ public interface ITypeService {
      * @param mname
      * @return
      */
-    List<Type1> findTM(String mname);
+    List<Type1> findTM(String mname,String mdesc);
 
     /**
      * 分页模糊查询菜单类型

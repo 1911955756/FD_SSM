@@ -29,8 +29,6 @@ public class TableController {
                                 @RequestParam(required = false) String taid,
                                 @RequestParam(required = false) Integer  penum,
                                 @RequestParam(required = false) String   tasta){
-        System.out.println("表现层：查询所有订单。。。");
-        System.out.println(num+","+taid+","+penum+","+tasta);
         ModelMap modelMap=new ModelMap();
         //调用service的方法
         PageInfo<Table1> list = tableService.findAll(num,taid,penum,tasta);
@@ -46,14 +44,12 @@ public class TableController {
                                            @RequestParam(required = false) String  taid,
                                            @RequestParam(required = false) Integer  penum,
                                            @RequestParam(required = false) String   tasta){
-        System.out.println(num+","+taid+","+penum+","+tasta);
         //调用service的方法
         PageInfo<Table1> list = tableService.findAll(num,taid,penum,tasta);
         return list;
     }
     @RequestMapping("/checktableid")
     public @ResponseBody boolean checktableid(String tableid){
-        System.out.println(tableid);
         List<Table1> findtable = tableService.findtable();
         boolean table=false;
         for (Table1 table1:findtable){
@@ -69,7 +65,6 @@ public class TableController {
         table1.setTableid(tableid);
         table1.setPeople_num(people_num);
         tableService.saveTable(table1);
-        System.out.println("添加成功");
         return true;
     }
     @RequestMapping("/updatetablestatus")
@@ -78,7 +73,6 @@ public class TableController {
         table1.setTableid(tableid);
         table1.setStatus(status);
         tableService.updatetablestatus(table1);
-        System.out.println(tableid+"更新成功"+status);
         request.getRequestDispatcher("/table/findAll?num="+num+"").forward(request,response);
     }
 

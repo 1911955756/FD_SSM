@@ -58,7 +58,7 @@
                     success : function (data) {
                         if(data==false){
                             alert("授权成功");
-                            return ture;
+                            return true;
                         }else{
                             alert("已存在该授权");
                             return false;
@@ -81,6 +81,26 @@
         });
         function gonum(num) {
             $(".aurlcenter").attr("href","../user/findAll?num="+num+"&&uname="+$("#uname").val()+"&&ujob="+$("#ujob").val()+"&&uphone="+$("#uphone").val()+"")
+        };
+        function checkrole(userid) {
+            $.ajax({
+                url : "../userrole/findroleid",
+                datatype : "json",
+                data:{
+                    userid:userid
+                },
+                type : "post",
+                success : function (data) {
+                    if(data==false){
+                        alert("删除成功");
+                        window.location.href="../user/deleteUser?userid="+userid+"";
+                        return true;
+                    }else{
+                        alert("请先取消角色授权");
+                        return false;
+                    }
+                }
+            })
         }
     </script>
 </head>
@@ -111,7 +131,6 @@
             <td>用户名</td>
             <td>手机号</td>
             <td>职位</td>
-            <td>密码</td>
             <td>创建时间</td>
             <td>更新时间</td>
             <td>邮箱</td>
@@ -125,7 +144,6 @@
             <td></td>
             <td></td>
             <td></td>
-            <td></td>
             <td><button class="btn btn-success" type="submit">搜索</button></td>
             </form>
         </tr>
@@ -136,14 +154,15 @@
                 <td title="${user.username}">${user.username}</td>
                 <td title="${user.phone}">${user.phone}</td>
                 <td title="${user.job}">${user.job}</td>
-                <td title="${user.password}">${user.password}</td>
                 <td title="${user.createtime}">${user.createtime}</td>
                 <td title="${user.updatetime}">${user.updatetime}</td>
                 <td title="${user.email}">${user.email}</td>
                 <td>
                     <a href="../user/toupdateUser?userid=1" class="btn btn-primary">新增</a><br/>
                     <a href="../user/toupdateUser?userid=${user.userid}" class="btn btn-warning">修改</a><br/>
-                    <a href="../user/deleteUser?userid=${user.userid}"class="btn btn-danger">删除</a><br/>
+                    <c:if test="${user.job != '开发'}" var="result">
+                        <a href=""class="btn btn-danger" onclick="checkrole('${user.userid}')">删除</a><br/>
+                    </c:if>
                 </td>
             </tr>
         </c:forEach>

@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class ChartController {
     @RequestMapping("/findAll")
     public String findAll(){
-        System.out.println("chart/findAll方法执行了");
         return "chartlist";
     }
 }

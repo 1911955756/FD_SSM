@@ -40,7 +40,10 @@ AND m. STATUS = '上架'
 <if test="tyname!=null and tyname!=''">
     and t.name like '%${tyname}%'
 </if>
-<if test="mname!=null and mname!=''">
+<if test="mname!=null and mname!='' and mdesc=='false'">
+    and m.menuname like '%${mname}%'
+</if>
+<if test="mname!=null and mname!='' and mdesc=='true'">
     and (m.menuname like '%${mname}%' or m.description like '%${mname}%')
 </if>
 AND m.kucun > 0

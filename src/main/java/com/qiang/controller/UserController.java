@@ -3,6 +3,7 @@ package com.qiang.controller;
 import com.github.pagehelper.PageInfo;
 import com.qiang.domain.*;
 import com.qiang.service.*;
+import com.qiang.utils.Encryption;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -28,17 +29,17 @@ public class UserController{
     private IRoleService roleService;
     @Autowired
     private ILoginService loginService;
+    @Autowired
+    private Encryption encryption;
     @RequestMapping("/findByPhone")
     public @ResponseBody boolean findByPhone(@RequestBody User1 user) {
         String passwordByphone = userService.findPasswordByphone(user.getPhone());
-        if(user.getPassword().equals(passwordByphone)){
-            System.out.println("查找成功");
+        if(passwordByphone!=null){
+        String jm = encryption.JM(passwordByphone);
+        if(jm.equals(user.getPassword())){
         return true;}
-        else{
-            System.out.println("查找失败");
-            return false;
-         }
-
+        else{return false;}
+        } else{return false;}
     }
     @RequestMapping("/findPhone")
     public @ResponseBody boolean findPhone(@RequestParam String phone){
@@ -52,7 +53,6 @@ public class UserController{
     }
     @RequestMapping(value = {"/login"},method = RequestMethod.POST)
         public ModelAndView  login(String phone, HttpSession httpSession) {
-        System.out.println("表现层：密码正确，登录。。。");
         ModelMap modelMap=new ModelMap();
         //调用service的方法
         //暂无
@@ -107,36 +107,41 @@ public class UserController{
     }
     @RequestMapping("/toupdateUser")
     public ModelAndView toupdateUser(String userid){
-        System.out.println("toupdateMenu方法执行"+userid);
         ModelAndView mv=new ModelAndView();
         //调用service的方法
         User1 allByuserid = userService.findAllByuserid(userid);
+        if(allByuserid!=null){
+        String jm = encryption.JM(allByuserid.getPassword());
+        allByuserid.setPassword(jm);}
         mv.addObject("byuserid",allByuserid);
         mv.setViewName("user");
         return mv;
     }
-    @RequestMapping("/saveUser")
+    @RequestMapping(value = "/saveUser",method= {RequestMethod.POST})
     public void saveUser(User1 user1,HttpServletRequest request, HttpServletResponse response) throws Exception{
+        String s = encryption.KL(user1.getPassword());
+        user1.setPassword(s);
         userService.saveUser(user1);
         request.getRequestDispatcher("/user/findAll").forward(request,response);
     }
-    @RequestMapping("/updateUser")
+    @RequestMapping(value = "/updateUser",method= {RequestMethod.POST})
     public void updateUser(User1 user1,HttpServletRequest request, HttpServletResponse response) throws Exception{
+        String s = encryption.KL(user1.getPassword());
+        user1.setPassword(s);
         userService.updateUser(user1);
         request.getRequestDispatcher("/user/findAll").forward(request,response);
     }
     @RequestMapping(value = "/updatepassword",method = RequestMethod.POST)
     public String  updatepassword(String account,String pwd){
+        String s = encryption.KL(pwd);
         User1 user1=new User1();
         user1.setPhone(account);
-        user1.setPassword(pwd);
+        user1.setPassword(s);
         userService.updatepassword(user1);
         return "redirect:/";
     }
     @RequestMapping("/deleteUser")
     public void deleteUser(String userid,HttpServletRequest request, HttpServletResponse response) throws Exception{
-        System.out.println("deleteUser执行了"+userid);
-        //调用service的方法
         userService.updateUserDeleteflag(userid);
         request.getRequestDispatcher("/user/findAll").forward(request,response);
     }
@@ -186,5 +191,10 @@ public class UserController{
     @RequestMapping("/deletecaptcha")
     public @ResponseBody void deletecaptcha(HttpSession httpSession){
         httpSession.removeAttribute("Captcha");
+    }
+
+    @RequestMapping("/welcome")
+    public String welcome(){
+        return "welcome";
     }
 }

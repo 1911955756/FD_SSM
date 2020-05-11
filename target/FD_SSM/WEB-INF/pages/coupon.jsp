@@ -134,7 +134,7 @@
     </thead>
     <tbody>
         <c:if test="${empty bycouponid.couponname}" var="result">
-            <form action="../coupon/saveCoupon" class="form-inline" id="addform">
+            <form action="../coupon/saveCoupon" class="form-inline" id="addform" method="post">
                 <tr><td>优惠券：</td><td><input type="text" name="couponname" class="form-control" id="couname"/></td></tr>
                 <tr><td>类型:</td><td><input type="text"  name="type" class="form-control" id="coutype"/></td></tr>
                 <tr><td>优惠价格:</td><td><input type="text"  name="price" class="form-control" id="couprice"/></td></tr>
@@ -146,7 +146,7 @@
             <a href="../coupon/findAll" class="btn btn-warning">取消</a></td></tr>
         </c:if>
         <c:if test="${!result}">
-            <form action="../coupon/updateCoupon" class="form-inline">
+            <form action="../coupon/updateCoupon" class="form-inline" method="post">
                 <tr><td>菜单id:</td><td><input type="text" name="couponid" value="${bycouponid.couponid}" class="form-control" readonly/></td></tr>
                 <tr><td>优惠券：</td><td><input type="text" name="couponname" class="form-control" value="${bycouponid.couponname}"/></td></tr>
                 <tr><td>类型:</td><td><input type="text"  name="type" class="form-control" value="${bycouponid.type}"/></td></tr>

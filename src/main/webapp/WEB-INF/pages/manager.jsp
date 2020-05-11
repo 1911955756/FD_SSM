@@ -191,7 +191,8 @@
             </button>
             <a id="tittle" class="navbar-brand" href="#" data-toggle="modal" data-target="#myModal"
                role="button" data-toggle="popover" data-placement="bottom" data-trigger="hover" data-animation="true"
-               data-content="点击显示联系方式">饭店点菜系统管理后台</a>
+               data-content="点击显示联系方式" style="margin-left: 50px">饭店点菜系统管理后台</a>
+            <img src="../images/timg.jpg" style="width: 50px;height: 50px;float: left;margin-left: -250px">
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <c:forEach items="${userrolelist}" var="ur"><a class="name">您好：${ur.username}${ur.roles[0].rolename}</a></c:forEach>
@@ -228,9 +229,12 @@
                             <li data-src="../odview/findAll?role=服务员"><a href="#">上菜列表</a></li>
                             <li data-src="../table/findAll"><a href="#">餐桌列表</a></li>
                         </c:when>
-                        <c:otherwise>
+                        <c:when test="${ur.roles[0].rolename=='后厨'}">
                             <li data-src="../odview/findAll?role=后厨"><a href="#">上菜列表</a></li>
                             <li data-src="../menu/findAll"><a href="#">菜单列表</a></li>
+                        </c:when>
+                        <c:otherwise>
+                            <li>没有任何权限</li>
                         </c:otherwise>
                     </c:choose>
                     <li>
@@ -238,7 +242,7 @@
             </ul>
         </div>
 <%--        右侧内容--%>
-        <div class="col-sm-9 col-md-10 outer-container right"><iframe class="leftmore" id="iframecontext" marginWidth=0 marginHeight=0 src=""  scrolling="auto" frameBorder=0 width="103%" height="92%"></iframe></div>
+        <div class="col-sm-9 col-md-10 outer-container right"><iframe class="leftmore" id="iframecontext" marginWidth=0 marginHeight=0 src="../user/welcome"  scrolling="auto" frameBorder=0 width="103%" height="92%"></iframe></div>
     </div>
 </div>
 </body>

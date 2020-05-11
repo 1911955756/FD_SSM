@@ -26,7 +26,6 @@ public class PictureController {
     private IPictureService pictureService;
     @RequestMapping("/findAll")
     public ModelAndView findAll(@RequestParam(required = false,defaultValue ="1") Integer num){
-        System.out.println("表现层：查询所有轮播图。。。");
         ModelAndView mv=new ModelAndView();
         //调用service的方法
         PageInfo<Picture> list = pictureService.finAll(num);
@@ -38,9 +37,6 @@ public class PictureController {
     public @ResponseBody List findAll2(){
         //调用service的方法
         List<Picture> list = pictureService.finAllInused();
-        for(Picture picture:list){
-            System.out.println(picture);
-        }
         return list;
     }
 
@@ -54,16 +50,12 @@ public class PictureController {
     }
     @RequestMapping("/deletePicture")
     public void deletePicture(String pictureid,HttpServletRequest request, Integer num,HttpServletResponse response)throws Exception{
-        System.out.println(pictureid);
         pictureService.deletePicture(pictureid);
-        System.out.println("删除成功");
         request.getRequestDispatcher("/picture/findAll?=num"+num+"").forward(request,response);
     }
     @RequestMapping("/savePicture")
     public void savePicture(String url,HttpServletRequest request, HttpServletResponse response)throws Exception{
-        System.out.println(url);
         pictureService.savePicture(url);
-        System.out.println("添加成功");
         request.getRequestDispatcher("/picture/findAll").forward(request,response);
     }
 }

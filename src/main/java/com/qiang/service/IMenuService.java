@@ -1,13 +1,7 @@
 package com.qiang.service;
 
-import com.github.pagehelper.Page;
 import com.github.pagehelper.PageInfo;
-import com.qiang.domain.Book;
 import com.qiang.domain.Menu;
-import org.apache.ibatis.annotations.Delete;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;

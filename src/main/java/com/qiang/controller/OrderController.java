@@ -75,7 +75,6 @@ public class OrderController {
             orid=orderService.findOridByCsid(cs_id);
         }
         else if(oridByCsid!=null){
-            System.out.println("执行了");
             order1.setOrderid(oridByCsid);
             orderService.updateordernum(order1);
             orid=oridByCsid;
