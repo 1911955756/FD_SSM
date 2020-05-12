@@ -8,6 +8,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.List;
+
 /**
  * @author Mr.锵
  * date 2020-02-29
@@ -24,14 +26,22 @@ public class CustomerController {
         customer.setCs_name(cs_name);
         customer.setImage(image);
         String csid="";
-        String csidByOpenid = customerService.findCsidByOpenid(openid);
-        if(csidByOpenid==null){
+        List<Customer> csByOpenid = customerService.findCsidByOpenid(openid);
+        if(csByOpenid==null){
             customerService.saveCustomer(customer);
-            csid=customerService.findCsidByOpenid(openid);
+            csByOpenid = customerService.findCsidByOpenid(openid);
+            for(Customer cs : csByOpenid){
+                csid=cs.getCs_id();
+            }
         }
-        else if(csidByOpenid!=null){
-            customerService.updateCustomer(customer);
-            csid=csidByOpenid;
+        else if(csByOpenid!=null){
+            for(Customer cs : csByOpenid){
+                customer.setOpenid(cs.getOpenid());
+                customer.setCs_name(cs.getCs_name());
+                customer.setImage(cs.getImage());
+                customerService.updateCustomer(customer);
+                csid=cs.getCs_id();
+            }
         }
         return csid;
     }

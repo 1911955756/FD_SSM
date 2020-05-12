@@ -239,7 +239,7 @@
         </c:forEach>
         </tbody>
     </table>
-<div class="hhh">第${orderdetaillist.pageNum}页，共${orderdetaillist.pages}页/${orderdetaillist.prePage}条<a href="#" onclick="$('#change').val('未催单')">正常显示</a></div>
+<div class="hhh">第${orderdetaillist.pageNum}页，共${orderdetaillist.pages}页/${orderdetaillist.total}条<a href="#" onclick="$('#change').val('未催单')">正常显示</a></div>
 <%--    分页条--%>
 <nav aria-label="Page navigation" class="right">
     <ul class="pagination">

@@ -24,7 +24,7 @@ public interface ICustomerService {
      * @param openid
      * @return
      */
-    String findCsidByOpenid(String openid);
+    List<Customer> findCsidByOpenid(String openid);
 
     /**
      * 保存顾客信息

@@ -23,7 +23,7 @@ public class ICustomerServiceImpl implements ICustomerService {
     }
 
     @Override
-    public String findCsidByOpenid(String openid) {
+    public List<Customer> findCsidByOpenid(String openid) {
         return customerDao.findCsidByOpenid(openid);
     }
 

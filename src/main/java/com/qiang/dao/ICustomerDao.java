@@ -27,8 +27,8 @@ public interface ICustomerDao {
      * @param openid
      * @return
      */
-    @Select("select cs_id from customer where openid=#{openid}")
-    String findCsidByOpenid(String openid);
+    @Select("select * from customer where openid=#{openid}")
+    List<Customer> findCsidByOpenid(String openid);
 
     /**
      * 保存顾客信息
