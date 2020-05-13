@@ -112,6 +112,7 @@ public class OrderDetailController {
     public @ResponseBody void cancelOD(String odid){
         OrderDetail orderDetail=new OrderDetail();
         orderDetail.setOdid(odid);
+        orderDetail.setStatus("已取消");
         orderDetailService.updateorderDetail(orderDetail);
     }
     @RequestMapping("/findMyorderdetail")
